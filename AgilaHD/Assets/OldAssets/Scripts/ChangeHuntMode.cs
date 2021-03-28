@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
+//using UnityEngine.Rendering.PostProcessing;
 
 public class ChangeHuntMode : MonoBehaviour
 {
     [SerializeField] GameObject reference;
-    [SerializeField] PostProcessVolume volReference;
-    [SerializeField] PostProcessProfile profileReference;
+    //[SerializeField] PostProcessVolume volReference;
+    //[SerializeField] PostProcessProfile profileReference;
     
    
 
@@ -26,22 +26,22 @@ public class ChangeHuntMode : MonoBehaviour
             reference.GetComponent<Huntable>().isnormalMode = !mode;
             reference.GetComponent<Huntable>().modeSwitch();
 
-            ColorGrading cg = null;
+            //ColorGrading cg = null;
 
-            profileReference.TryGetSettings<ColorGrading>(out cg);
+            //profileReference.TryGetSettings<ColorGrading>(out cg);
 
             if (mode)
             {
                 // currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(pitch, yaw), ref rotationSmoothVelocity, rotationSmoothTime);
-                cg.lift.value = Vector4.Lerp(cg.lift.value, new Vector4(-1, -1, -1, -1), 10);
+                //cg.lift.value = Vector4.Lerp(cg.lift.value, new Vector4(-1, -1, -1, -1), 10);
                 //cg.lift.value = new Vector4(-1, -1, -1, -1);
-                cg.gamma.value = new Vector4(-1, -1, -1, -1);
+                //cg.gamma.value = new Vector4(-1, -1, -1, -1);
 
             }
             else
             {
-                cg.lift.value = Vector4.zero;
-                cg.gamma.value = Vector4.zero;
+                //cg.lift.value = Vector4.zero;
+                //cg.gamma.value = Vector4.zero;
 
             }
             
