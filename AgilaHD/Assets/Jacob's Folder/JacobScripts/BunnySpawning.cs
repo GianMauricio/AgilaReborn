@@ -7,7 +7,12 @@ public class BunnySpawning : MonoBehaviour
 
     [SerializeField] GameObject SpawnObject;
     [SerializeField] int HowManyToSpawn;
-    [SerializeField] float offset = 100.0f;
+
+    //To be used in random position spawning
+    //-----------------------------------------
+    [SerializeField] float offsetX = 20.0f;
+    [SerializeField] float offsetZ = 20.0f;
+    //------------------------------------------
     [SerializeField] float spawnTime;
     [SerializeField] int spawnDelay;
 
@@ -32,16 +37,14 @@ public class BunnySpawning : MonoBehaviour
         
         for (int i = 0; i < HowManyToSpawn; i++)
         {
-            //relic code though may use in future
-            //float x = UnityEngine.Random.Range(-offset, offset);
-            //float z = UnityEngine.Random.Range(-offset, offset);
-            //spawnedObjects.Add(Instantiate(SpawnObject, new Vector3(0, 0, 0), Quaternion.identity)); 
+            //May use in future for random position spawning
+            //float x = UnityEngine.Random.Range(-offsetX, offsetX);
+            //float z = UnityEngine.Random.Range(-offsetZ, offsetZ);
+            //spawnedObjects.Add(Instantiate(SpawnObject, new Vector3(x, 0, z), Quaternion.identity));
             spawnedObjects.Add(Instantiate(SpawnObject, transform.position, transform.rotation));
         }
 
-        //float x = UnityEngine.Random.Range(-offset, offset);
-        //float z = UnityEngine.Random.Range(-offset, offset);
-        //spawnedObjects.Add(Instantiate(SpawnObject, new Vector3(x, 0, z), Quaternion.identity));
+       
 
 
     }
