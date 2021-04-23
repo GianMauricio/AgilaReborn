@@ -1,7 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+ Concerned with Movement and Health of the Huntables will probably also have other behaviour in the future
+ 
+ 
+ */
 public class HuntableBaseScript : MonoBehaviour
 {
     [SerializeField] int Health;
@@ -61,6 +65,7 @@ public class HuntableBaseScript : MonoBehaviour
                     break;
             } //Decides which direction huntable will be moving in
 
+            //Insert Movement code here i guess
             movementTime += Time.deltaTime;
 
             if (movingLeft == true)
