@@ -11,9 +11,9 @@ public class HuntableBaseScript : MonoBehaviour
 {
     [SerializeField] int Health;
 
-    public float timer;
+    private float timer;
 
-    public int TimeToMove; 
+    public int TimeUntilMove; 
 
     public float speed;
 
@@ -21,10 +21,18 @@ public class HuntableBaseScript : MonoBehaviour
 
     public Vector3 Target;
 
+    private float myX;
+    private float myZ;
+
+    bool isEaten;
+
     // Start is called before the first frame update
     void Start()
     {
         nav = gameObject.GetComponent<NavMeshAgent>();
+        myX = gameObject.transform.position.x;
+        myZ = gameObject.transform.position.z;
+        isEaten = false;
     }
 
     // Update is called once per frame
@@ -32,9 +40,9 @@ public class HuntableBaseScript : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(timer >= TimeToMove)
+        if(timer >= TimeUntilMove)
         {
-            newTarget();
+            newTarget(); //Call newTarget until TimeUntilMove
             timer = 0;
         }
        
@@ -42,14 +50,23 @@ public class HuntableBaseScript : MonoBehaviour
 
     void newTarget()
     {
-        float myX = gameObject.transform.position.x;
-        float myZ = gameObject.transform.position.z;
+        
+
 
         float xPos = myX + Random.Range(myX - 20, myX + 20);
+
+
         float ZPos = myZ + Random.Range(myZ - 20, myZ + 20);
 
         Target = new Vector3(xPos, gameObject.transform.position.y, ZPos);
 
         nav.SetDestination(Target);
+    }
+
+    void gotEaten() //for when it gets eaten by player
+    {
+
+
+        gameObject.SetActive(false);
     }
 }
