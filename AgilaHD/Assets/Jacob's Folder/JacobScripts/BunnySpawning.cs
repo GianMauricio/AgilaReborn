@@ -14,8 +14,8 @@ public class BunnySpawning : MonoBehaviour
 
     //To be used in random position spawning
     //-----------------------------------------
-    [SerializeField] float offsetX = 20.0f;
-    [SerializeField] float offsetZ = 20.0f;
+    //[SerializeField] float offsetX = 20.0f;
+    //[SerializeField] float offsetZ = 20.0f;
     //------------------------------------------
     [SerializeField] float spawnTime;
     [SerializeField] int spawnDelay;
