@@ -1,7 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+ Rudimentary Spawning Algorithm used by a spawner to spawn the Bunnies and other objects in the future.
+ 
+ 
+ */
 public class BunnySpawning : MonoBehaviour
 {
 
