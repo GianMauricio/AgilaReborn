@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24c42b6fa6a3ce47bfa53cfaaa0f064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnObject: {fileID: 2814781268596370005, guid: a3c835ed4e06f9d44b20fe48e55c3ee2,
+  SpawnObject: {fileID: 1135866289328990864, guid: 0e5e993128071fb4fb7a615c0f2558e6,
     type: 3}
   HowManyToSpawn: 1
   spawnTime: 2
