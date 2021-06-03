@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 1714141611}
   - component: {fileID: 1714141610}
   m_Layer: 0
-  m_Name: Terrain_0_0_f54fb021-2c75-4626-86c6-ae6f6ee3e9df
+  m_Name: tutorial terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
