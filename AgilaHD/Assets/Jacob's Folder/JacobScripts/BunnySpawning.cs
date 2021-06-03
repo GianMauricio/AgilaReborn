@@ -1,7 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+ Rudimentary Spawning Algorithm used by a spawner to spawn the Bunnies and other objects in the future.
+ 
+ 
+ */
 public class BunnySpawning : MonoBehaviour
 {
 
@@ -10,8 +14,8 @@ public class BunnySpawning : MonoBehaviour
 
     //To be used in random position spawning
     //-----------------------------------------
-    [SerializeField] float offsetX = 20.0f;
-    [SerializeField] float offsetZ = 20.0f;
+    //[SerializeField] float offsetX = 20.0f;
+    //[SerializeField] float offsetZ = 20.0f;
     //------------------------------------------
     [SerializeField] float spawnTime;
     [SerializeField] int spawnDelay;

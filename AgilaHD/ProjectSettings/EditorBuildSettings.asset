@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Jacob's Folder/JScenes/MenuScene.unity
+    guid: 45fe3fc5b5046a14ebf0489572982f8a
+  - enabled: 1
+    path: Assets/Jacob's Folder/JScenes/TestSceneJacob.unity
+    guid: 634e81406e055364a914cc409e67d0ad
   m_configObjects: {}
