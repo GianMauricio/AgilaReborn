@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1961664399464508029}
   - component: {fileID: 4385886089274744503}
   m_Layer: 0
-  m_Name: Foilage
+  m_Name: Foifab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2872505296648142690}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 9.147, y: 0.5688824, z: 7.839}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.6506, y: 1.6506, z: 1.6506}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
