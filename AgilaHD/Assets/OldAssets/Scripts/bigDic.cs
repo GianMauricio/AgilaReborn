@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /*
  * this is only to try if the bird works
@@ -32,6 +33,14 @@ public class bigDic : MonoBehaviour
     private float initialDrag;
     private float initialAngularDrag;
     Vector3 lastPosition;
+
+    //Health Values
+    float maxhealth = 100.0f;
+    float currhealth = 100.0f;
+
+    //UI stuff
+    public Slider healthBar;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -93,12 +102,12 @@ public class bigDic : MonoBehaviour
             Vector3 velocity = gameObject.GetComponent<Rigidbody>().velocity;
             if (gameObject.transform.position.y <= lastPosition.y)//means we're going down
             {
-                Debug.Log("going down");
+                //Debug.Log("going down");
                 rb.AddForce(7.0f * (transform.forward + Vector3.up)); //glide
             }
             else
             {
-                Debug.Log("going up");
+                //Debug.Log("going up");
                 rb.AddForce(2.0f * (transform.forward + Vector3.up)); //glide
             }
             
@@ -133,5 +142,27 @@ public class bigDic : MonoBehaviour
 
         this.lastPosition = gameObject.transform.position;
         this.lastVelocity = gameObject.GetComponent<Rigidbody>().velocity;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+        if (collision.gameObject.name == "Ground") 
+                gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * 30, ForceMode.Impulse);
+
+        if (collision.gameObject.name.Contains("Bullet"))
+            Hurt(10);
+    }
+
+    public void Hurt(int pain)
+    {
+        currhealth -= pain;
+        setHealthPercent();
+    }
+
+    void setHealthPercent()
+    {
+        float healthPercent = 100 * (currhealth / maxhealth);
+        healthBar.value = healthPercent;
     }
 }

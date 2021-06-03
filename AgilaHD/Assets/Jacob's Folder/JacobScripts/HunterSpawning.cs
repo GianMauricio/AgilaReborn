@@ -10,6 +10,7 @@ public class HunterSpawning : MonoBehaviour
     [SerializeField] GameObject SpawnObject;
     [SerializeField] int HowManyToSpawn;
 
+    public GameObject target;
 
     [SerializeField] float spawnTime;
     [SerializeField] int spawnDelay;
@@ -32,15 +33,12 @@ public class HunterSpawning : MonoBehaviour
 
     private void SpawnObjects()
     {
-
         for (int i = 0; i < HowManyToSpawn; i++)
         {
-            spawnedObjects.Add(Instantiate(SpawnObject, transform.position, transform.rotation));
+            GameObject temp = Instantiate(SpawnObject, transform.position, transform.rotation);
+            temp.GetComponent<HAI>().setTarget(target);
+            spawnedObjects.Add(temp);
         }
 
-
-
-
     }
-
 }
