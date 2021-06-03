@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6924124160545379129}
   m_Layer: 0
   m_Name: RabbitFinal
-  m_TagString: Untagged
+  m_TagString: Huntable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
