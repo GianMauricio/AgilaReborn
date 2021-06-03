@@ -32,6 +32,7 @@ public class bigDic : MonoBehaviour
     private float initialDrag;
     private float initialAngularDrag;
     Vector3 lastPosition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -133,5 +134,13 @@ public class bigDic : MonoBehaviour
 
         this.lastPosition = gameObject.transform.position;
         this.lastVelocity = gameObject.GetComponent<Rigidbody>().velocity;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        /*
+        if (collision.gameObject.name == "Ground") 
+                gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * 100, ForceMode.Impulse);
+        */
     }
 }

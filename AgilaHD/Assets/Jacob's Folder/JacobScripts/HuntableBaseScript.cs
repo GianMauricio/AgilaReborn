@@ -11,8 +11,10 @@ public class HuntableBaseScript : MonoBehaviour
 {
     [SerializeField] int Health = 1;
     private float timer;
+    private float jumpTime = 0;
 
-    public int TimeUntilMove; 
+    public int TimeUntilMove;
+    public int bounceInterval = 3;
 
     public float speed;
 
@@ -46,20 +48,24 @@ public class HuntableBaseScript : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
+        jumpTime += Time.deltaTime;
 
         if(timer >= TimeUntilMove)
         {
             newTarget(); //Call newTarget until TimeUntilMove
             timer = 0;
         }
-       
+
+        
+        if (jumpTime >= bounceInterval)
+        {
+            gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * 100, ForceMode.Impulse);
+            jumpTime = 0;
+        }
     }
 
     void newTarget()
     {
-        
-
-
         float xPos = myX + Random.Range(myX - 20, myX + 20);
 
 
@@ -73,8 +79,6 @@ public class HuntableBaseScript : MonoBehaviour
 
     void gotEaten() //for when it gets eaten by player
     {
-
-
         gameObject.SetActive(false);
     }
 
