@@ -1,93 +1,72 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
+/*
+ Concerned with Movement and Health of the Huntables will probably also have other behaviour in the future
+ 
+ 
+ */
 public class HuntableBaseScript : MonoBehaviour
 {
     [SerializeField] int Health;
-    private bool movingLeft = false;
-    private bool movingRight = false;
-    private bool movingUp = false;
-    private bool movingDown = false;
 
-    private float movementTime;
+    private float timer;
+
+    public int TimeUntilMove; 
+
+    public float speed;
+
+    public NavMeshAgent nav;
+
+    public Vector3 Target;
+
+    private float myX;
+    private float myZ;
+
+    bool isEaten;
+
     // Start is called before the first frame update
     void Start()
     {
-        movementTime = 0.0f;
+        nav = gameObject.GetComponent<NavMeshAgent>();
+        myX = gameObject.transform.position.x;
+        myZ = gameObject.transform.position.z;
+        isEaten = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        while (movementTime < 5.0f)
+        timer += Time.deltaTime;
+
+        if(timer >= TimeUntilMove)
         {
-            int random = Random.Range(0, 4);
-            Debug.Log(random);
-
-           
-            switch (random)
-            {
-                case 0:
-                    movingLeft = true;
-                    movingRight = false;
-                    movingUp = false;
-                    movingDown = false;
-                    break;
-                case 1:
-                    movingLeft = true;
-                    movingRight = false;
-                    movingUp = false;
-                    movingDown = false;
-                    break;
-                case 2:
-                    movingLeft = true;
-                    movingRight = false;
-                    movingUp = false;
-                    movingDown = false;
-                    break;
-                case 3:
-                    movingLeft = true;
-                    movingRight = false;
-                    movingUp = false;
-                    movingDown = false;
-                    break;
-                default:
-                    movingLeft = false;
-                    movingRight = false;
-                    movingUp = false;
-                    movingDown = false;
-                    break;
-            } //Decides which direction huntable will be moving in
-
-            movementTime += Time.deltaTime;
-
-            if (movingLeft == true)
-            {
-                //transform.position -= new Vector3(0, 0, 0.001f);
-            }
-            if (movingRight == true)
-            {
-                //transform.position += new Vector3(0, 0, 0.001f);
-            }
-
-            if (movingUp == true)
-            {
-                transform.position += new Vector3(0.1f, 0,0);
-            }
-
-            if (movingDown == true)
-            {
-                transform.position -= new Vector3(0.1f, 0, 0);
-            }
-
-
-            //Debug.Log(movementTime);
-
+            newTarget(); //Call newTarget until TimeUntilMove
+            timer = 0;
         }
-        Debug.Log("I GOT OUT");
-        movementTime = 0.0f;
+       
+    }
 
+    void newTarget()
+    {
+        
+
+
+        float xPos = myX + Random.Range(myX - 20, myX + 20);
+
+
+        float ZPos = myZ + Random.Range(myZ - 20, myZ + 20);
+
+        Target = new Vector3(xPos, gameObject.transform.position.y, ZPos);
+
+        nav.SetDestination(Target);
+    }
+
+    void gotEaten() //for when it gets eaten by player
+    {
+
+
+        gameObject.SetActive(false);
     }
 }
