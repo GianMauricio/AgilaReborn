@@ -41,6 +41,8 @@ public class bigDic : MonoBehaviour
     //UI stuff
     public Slider healthBar;
 
+  
+
     // Start is called before the first frame update
     void Start()
     {
@@ -138,6 +140,15 @@ public class bigDic : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, q * transform.rotation, magnitude / 10) ;
 
             //Quaternion newFace = Quaternion.LookRotation(velocity);
+        }
+
+        if (Input.GetKey(KeyCode.S))//brakes
+        {
+            gameObject.GetComponent<Rigidbody>().drag = 10;
+        }
+        else
+        {
+            gameObject.GetComponent<Rigidbody>().drag = initialDrag;
         }
 
         this.lastPosition = gameObject.transform.position;
