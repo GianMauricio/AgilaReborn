@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
 /*
  * this is only to try if the bird works
  * 
@@ -50,6 +49,7 @@ public class bigDic : MonoBehaviour
         //cameraT = Camera.main.transform;
         initialDrag = gameObject.GetComponent<Rigidbody>().drag;
         initialAngularDrag = gameObject.GetComponent<Rigidbody>().angularDrag;
+
     }
 
     // Update is called once per frame
@@ -183,6 +183,7 @@ public class bigDic : MonoBehaviour
 
     public void Hurt(int pain)
     {
+
         currhealth -= pain;
         setHealthPercent();
     }
@@ -196,5 +197,47 @@ public class bigDic : MonoBehaviour
         {
             SceneManager.LoadScene("GameOver");
         }
+    }
+
+    public void ifFloorHit()
+    {
+        Hurt(2);
+
+        float speedPerSec = Vector3.Distance(lastPosition, transform.position) / Time.deltaTime;
+        float speed = Vector3.Distance(lastPosition, transform.position);
+
+        Rigidbody rb = gameObject.GetComponent<Rigidbody>();
+
+        
+
+        //bounce and shit idk what im doing
+        Vector3 rotateVec = transform.rotation.eulerAngles;
+        //Vector3 rotateVec = transform.localEulerAngles;
+
+        Quaternion target = Quaternion.Euler(-rotateVec.x, rotateVec.y, 0);// -rotateVec.x, rotateVec.y, rotateVec.z
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, target, speed * Time.deltaTime); //fuckin slerp me20.0f
+
+
+        
+        transform.rotation = target;
+
+
+        //stop shit
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
+        //give me some distance
+        Vector3 someposition = transform.position;
+        someposition.y = someposition.y + 0.5f;
+        Vector3 finalPos = Vector3.zero;
+        //transform.position = Vector3.SmoothDamp(transform.position, someposition,ref finalPos, 10.0f);
+        //transform.position = Vector3.Slerp(transform.position, someposition, 0.5f);
+
+        transform.position = someposition;
+
+        // rb.AddForce(0.05f * (target.eulerAngles - transform.forward), ForceMode.Impulse) ;//target.eulerAngles + (-1 *transform.forward
+        rb.AddForce(0.015f * (target.eulerAngles - this.transform.forward), ForceMode.Impulse);
+
+
     }
 }
