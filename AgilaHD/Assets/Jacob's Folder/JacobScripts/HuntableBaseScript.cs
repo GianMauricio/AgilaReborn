@@ -26,8 +26,7 @@ public class HuntableBaseScript : MonoBehaviour
     private float myZ;
 
     bool isEaten;
-
-    Rigidbody rb;
+    private Rigidbody rb;
 
 
     // Start is called before the first frame update
@@ -39,7 +38,8 @@ public class HuntableBaseScript : MonoBehaviour
         isEaten = false;
 
         rb = GetComponent<Rigidbody>();
-       
+      
+        
     }
 
     // Update is called once per frame
