@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Jacob's Folder/JScenes/TestSceneJacob.unity
     guid: 634e81406e055364a914cc409e67d0ad
+  - enabled: 1
+    path: Assets/Gian'sFolder/HunterTest.unity
+    guid: f098eeac2d211e943828398c61a9e107
   m_configObjects: {}

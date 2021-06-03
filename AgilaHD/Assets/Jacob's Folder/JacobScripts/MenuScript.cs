@@ -4,17 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MenuScript : MonoBehaviour
 {
-   
-
     public void OnClickStart()
     {
-        SceneManager.LoadScene("TestSceneJacob"); //Replace with Tutorial scene later
+        SceneManager.LoadScene("TUTORIAL TERRAIN"); //Replace with Tutorial scene later
     }
 
     public void OnClickEnd()
     {
         Application.Quit(); //Quit the application
     }
-
-
 }
