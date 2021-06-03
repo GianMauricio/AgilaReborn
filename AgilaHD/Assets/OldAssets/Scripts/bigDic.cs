@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 /*
  * this is only to try if the bird works
@@ -145,6 +146,21 @@ public class bigDic : MonoBehaviour
         if (Input.GetKey(KeyCode.S))//brakes
         {
             gameObject.GetComponent<Rigidbody>().drag = 10;
+            //Vector3 eler = transform.localRotation;
+            //float eler = transform.localRotation.x;
+            //Debug.Log(eler);
+            if (true)
+            {
+                //Vector3.Dot(Vector3.up, Vector3.forward)
+                Vector3 idk = Vector3.Cross(Vector3.up, transform.right);
+                Vector3 direction = ((transform.forward + (-idk + Vector3.up)) + transform.forward).normalized;//(Vector3.up - transform.right)// (-idk + Vector3.up)
+
+                Quaternion kwat = Quaternion.LookRotation(direction);
+                //Quaternion rotationVector = Quaternion.FromToRotation(gameObject.transform.rotation, vectorSlanted + gameObject.transform.rotation)
+                transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, kwat, 1.0f);
+            }
+            
+
         }
         else
         {
@@ -175,5 +191,10 @@ public class bigDic : MonoBehaviour
     {
         float healthPercent = 100 * (currhealth / maxhealth);
         healthBar.value = healthPercent;
+
+        if(healthPercent <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 }
