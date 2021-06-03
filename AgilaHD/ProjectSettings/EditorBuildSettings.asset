@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Gian'sFolder/HunterTest.unity
     guid: f098eeac2d211e943828398c61a9e107
+  - enabled: 1
+    path: Assets/ADONIS GAY BAR VIP LOUNGE/Scene/MAINTERRAIN.unity
+    guid: a301bddbdb7e14b4baa337f297330a0c
+  - enabled: 1
+    path: Assets/ADONIS GAY BAR VIP LOUNGE/Scene/TUTORIAL TERRAIN.unity
+    guid: cb52259e9f7c3824083fc378f30275bf
+  - enabled: 1
+    path: Assets/Gian'sFolder/GameOver.unity
+    guid: 7ae97938112874943b9d45bd4da70171
   m_configObjects: {}
