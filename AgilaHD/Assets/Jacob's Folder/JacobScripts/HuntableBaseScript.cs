@@ -9,8 +9,7 @@ using UnityEngine.AI;
  */
 public class HuntableBaseScript : MonoBehaviour
 {
-    [SerializeField] int Health;
-
+    [SerializeField] int Health = 1;
     private float timer;
 
     public int TimeUntilMove; 
@@ -21,10 +20,15 @@ public class HuntableBaseScript : MonoBehaviour
 
     public Vector3 Target;
 
+    public float thrust = 1.0f;
+
     private float myX;
     private float myZ;
 
     bool isEaten;
+
+    Rigidbody rb;
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +37,9 @@ public class HuntableBaseScript : MonoBehaviour
         myX = gameObject.transform.position.x;
         myZ = gameObject.transform.position.z;
         isEaten = false;
+
+        rb = GetComponent<Rigidbody>();
+       
     }
 
     // Update is called once per frame
@@ -59,6 +66,7 @@ public class HuntableBaseScript : MonoBehaviour
         float ZPos = myZ + Random.Range(myZ - 20, myZ + 20);
 
         Target = new Vector3(xPos, gameObject.transform.position.y, ZPos);
+       
 
         nav.SetDestination(Target);
     }
@@ -68,5 +76,12 @@ public class HuntableBaseScript : MonoBehaviour
 
 
         gameObject.SetActive(false);
+    }
+
+    public int giveHealth()
+    {
+        int addHealth = 1;
+
+        return addHealth;
     }
 }

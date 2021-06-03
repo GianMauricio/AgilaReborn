@@ -111,10 +111,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 0
+  myRigidBody: {fileID: 7536956564740131835}
   TimeUntilMove: 2
   speed: 2
   nav: {fileID: 0}
   Target: {x: 0, y: 0, z: 0}
+  thrust: 5
 --- !u!195 &7536956564740131834
 NavMeshAgent:
   m_ObjectHideFlags: 0
