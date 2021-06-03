@@ -11,13 +11,12 @@ public class HuntableBaseScript : MonoBehaviour
 {
     [SerializeField] int Health = 1;
     private float timer;
-    private float jumpTime = 0;
+    public float jumpTime = 0;
 
     public int TimeUntilMove;
-    public int bounceInterval = 3;
-
+    public int bounceInterval = 10;
+    public bool canbounce = true;
     public float speed;
-
     public NavMeshAgent nav;
 
     public Vector3 Target;
@@ -57,23 +56,29 @@ public class HuntableBaseScript : MonoBehaviour
         }
 
         
-        if (jumpTime >= bounceInterval)
+        if (jumpTime >= bounceInterval && canbounce)
         {
-            gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * 100, ForceMode.Impulse);
             jumpTime = 0;
+            rb.isKinematic = false;
+            nav.enabled = false;
+            rb.AddForce(Vector3.up * 20, ForceMode.Impulse);
+
+            if (rb.velocity.magnitude <= 0.1f)
+            {
+                rb.isKinematic = true;
+                nav.enabled = true;
+                newTarget();
+            }
         }
     }
 
     void newTarget()
     {
         float xPos = myX + Random.Range(myX - 20, myX + 20);
-
-
         float ZPos = myZ + Random.Range(myZ - 20, myZ + 20);
 
         Target = new Vector3(xPos, gameObject.transform.position.y, ZPos);
        
-
         nav.SetDestination(Target);
     }
 
@@ -87,5 +92,21 @@ public class HuntableBaseScript : MonoBehaviour
         int addHealth = 1;
 
         return addHealth;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.name == "Ground")
+        {
+            canbounce = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.name == "Ground")
+        {
+            //canbounce = false;
+        }
     }
 }
