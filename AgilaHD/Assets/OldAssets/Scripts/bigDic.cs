@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 /*
  * this is only to try if the bird works
@@ -175,5 +176,10 @@ public class bigDic : MonoBehaviour
     {
         float healthPercent = 100 * (currhealth / maxhealth);
         healthBar.value = healthPercent;
+
+        if(healthPercent <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 }
