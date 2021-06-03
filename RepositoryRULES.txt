@@ -3,5 +3,5 @@
 3. NEVER push to main or BUILD. These brnahces serve as rollback in case something horrible happens and must never be scuffed. 
 4. Pull before pushing. To prevent loss of progress; if you are pushing directly to a source branch (Dev/Art) 
 then please pull first, this will minimize the chance of someones changes being overwritten.
-5. If you wish to create your own branch, please manage it well; don't change the gitignore, or add weird files that will blot the repo
+5. If you wish to create your own branch, please manage it well; don't change the gitignore, or add weird files that will bloat the repo
 6. Lastly, be sensible; these rules are here to preserve the working state of the Git, trying to find workarounds or loopholes will only detriment everyone. 

@@ -54,20 +54,20 @@ public class ThirdPersonCamera : MonoBehaviour
         if (Input.GetAxis("Mouse X") < 0)
         {
             //Code for action on mouse moving left
-            Debug.Log("Left");
+        //    Debug.Log("Left");
             moveleft = true;
             moveright = false;
         }
         else if (Input.GetAxis("Mouse X") > 0)
         {
             //Code for action on mouse moving right
-            Debug.Log("Right");
+         //   Debug.Log("Right");
             moveleft = false;
             moveright = true;
         }
         else
         {
-            Debug.Log("IDLE");
+        //    Debug.Log("IDLE");
             moveleft = false;
             moveright = false;
         }
