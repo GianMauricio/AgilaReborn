@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MenuScript : MonoBehaviour
 {
-    private void Start()
+    public void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
+
     public void OnClickStart()
     {
         SceneManager.LoadScene("TUTORIAL TERRAIN"); //Replace with Tutorial scene later
