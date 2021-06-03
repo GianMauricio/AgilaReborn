@@ -94,19 +94,11 @@ public class HuntableBaseScript : MonoBehaviour
         return addHealth;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.name == "Ground")
+        if(other.gameObject.name == "Sphere")
         {
-            canbounce = true;
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.name == "Ground")
-        {
-            //canbounce = false;
+            Destroy(this);
         }
     }
 }
