@@ -98,7 +98,7 @@ public class HuntableBaseScript : MonoBehaviour
     {
         if(other.gameObject.name == "Sphere")
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }
