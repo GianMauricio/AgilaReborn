@@ -23,7 +23,7 @@ public class SceneChange : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "MAINTERRAIN")
         {
             Debug.Log("Active scene is: " + SceneManager.GetActiveScene().name);
-            SceneManager.LoadScene("<GAME OVER NAME>"); //CHANGE DA WORLD, MY FINAL MESSAGE
+            SceneManager.LoadScene("GameOver"); //CHANGE DA WORLD, MY FINAL MESSAGE
         }
     }
 }
