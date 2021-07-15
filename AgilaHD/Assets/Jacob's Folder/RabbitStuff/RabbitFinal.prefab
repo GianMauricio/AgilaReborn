@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 7536956564740131835}
   - component: {fileID: 7536956564740131837}
   - component: {fileID: 7536956564740131834}
+  - component: {fileID: 6924124160545379129}
   m_Layer: 0
   m_Name: RabbitFinal
-  m_TagString: Untagged
+  m_TagString: Huntable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +97,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &7536956564740131837
 MonoBehaviour:
@@ -111,8 +112,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 0
-  myRigidBody: {fileID: 7536956564740131835}
+  jumpTime: 0
   TimeUntilMove: 2
+  bounceInterval: 10
+  canbounce: 1
   speed: 2
   nav: {fileID: 0}
   Target: {x: 0, y: 0, z: 0}
@@ -139,3 +142,16 @@ NavMeshAgent:
   m_BaseOffset: 76.219406
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &6924124160545379129
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7536956564740131832}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 80.80279, y: 152.43881, z: 185.71863}
+  m_Center: {x: -0.0000038146973, y: 0, z: 0}
