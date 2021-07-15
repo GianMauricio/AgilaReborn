@@ -39,9 +39,7 @@ public class bigDic : MonoBehaviour
     float currhealth = 100.0f;
 
     //UI stuff
-    public Slider healthBar;
-
-  
+    public Image healthBar;
 
     // Start is called before the first frame update
     void Start()
@@ -190,8 +188,8 @@ public class bigDic : MonoBehaviour
 
     void setHealthPercent()
     {
-        float healthPercent = 100 * (currhealth / maxhealth);
-        healthBar.value = healthPercent;
+        float healthPercent = (currhealth / maxhealth);
+        healthBar.fillAmount = healthPercent;
 
         if(healthPercent <= 0)
         {
