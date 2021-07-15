@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class BirdHunterMode : MonoBehaviour
 {
     // [SerializeField] private Image imageReference;
-    [SerializeField] private GameObject imageHolderReference;
+    public GameObject StaminaBar;
+    public GameObject StaminaBG;
+    private Image StaminaImg;
 
     [SerializeField] private float maxCooldown;
     [SerializeField] private GameObject sphereColliderReference;
@@ -15,6 +17,7 @@ public class BirdHunterMode : MonoBehaviour
     void Start()
     {
         cooldown = maxCooldown;
+        StaminaImg = StaminaBar.GetComponent<Image>();
         if(sphereColliderReference != null && sphereColliderReference.active)
         {
             sphereColliderReference.SetActive(false);
@@ -24,6 +27,7 @@ public class BirdHunterMode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //If mouse button is clicked
         if (/*Input.GetMouseButtonDown(0)*/ Input.GetButton("Fire1"))
         {
             
@@ -31,11 +35,21 @@ public class BirdHunterMode : MonoBehaviour
             {
                 cooldown -= Time.deltaTime;
                 //allow hunt
-                imageHolderReference.transform.localScale = new Vector3(cooldown / maxCooldown, 1, 1);
+
+                // (Legacy)Adjusts the position of the image based on stamine to keep centered
+                // imageHolderReference.transform.localScale = new Vector3(cooldown / maxCooldown, 1, 1);
                 if (!sphereColliderReference.active)
                 {
                     sphereColliderReference.SetActive(true);
                 }
+
+                //Activate Hunt UI
+                //TODO: Fade In
+                StaminaBG.SetActive(true);
+
+                //Set hunt stamina to current stamina
+                float fillpercent = cooldown / maxCooldown;
+                StaminaImg.fillAmount = fillpercent;
             }
             else
             {
@@ -46,16 +60,32 @@ public class BirdHunterMode : MonoBehaviour
             }
 
         }
+
+        //Otherwise
         else
         {
-             if (cooldown < maxCooldown)
+            //Recharge hunt mode stamina if still not max
+            if (cooldown < maxCooldown)
             {
+                //Ensure that the hunter mode is kept inactive
                 if (sphereColliderReference.active)
                 {
                     sphereColliderReference.SetActive(false);
                 }
-                cooldown += (Time.deltaTime * 0.2f);//slower recorvery
-                imageHolderReference.transform.localScale = new Vector3(cooldown / maxCooldown, 1, 1);
+
+                //Stamina recharges 80% slower than consumption 
+                cooldown += (Time.deltaTime * 0.2f);//slower recovery
+
+                //imageHolderReference.transform.localScale = new Vector3(cooldown / maxCooldown, 1, 1);
+                float fillpercent = cooldown / maxCooldown;
+                StaminaImg.fillAmount = fillpercent;
+            }
+
+            //Deactivate UI
+            else
+            {
+                //TODO: Fade out
+                StaminaBG.SetActive(false);
             }
         }
 
