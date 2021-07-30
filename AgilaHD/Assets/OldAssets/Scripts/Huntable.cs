@@ -1,7 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// This is the legacy code fro spawning huntable objects to test, this script is only used in the huntable spawner inside the
+/// SampleScene inside the OldAsets folder. Upon deletion of that scene can this script be safely deleted.
+/// This script was replaced by either spawning script within Jacobs folder.
+/// </summary>
 public class Huntable : MonoBehaviour
 {
     [SerializeField] GameObject prefab;
@@ -14,7 +18,6 @@ public class Huntable : MonoBehaviour
     [SerializeField] Material huntMode;
     public bool isnormalMode = true;
 
-    // Start is called before the first frame update
     void Start()
     {
         SpawnObjects();
@@ -54,10 +57,5 @@ public class Huntable : MonoBehaviour
         {
             objects.GetComponent<MeshRenderer>().material = mat;
         }
-    }
-
-    public void Update()
-    {
-        
     }
 }

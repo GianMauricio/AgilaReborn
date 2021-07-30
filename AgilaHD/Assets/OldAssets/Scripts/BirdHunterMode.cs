@@ -29,21 +29,22 @@ public class BirdHunterMode : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         //If mouse button is clicked
-        if (/*Input.GetMouseButtonDown(0)*/ Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
-            
+            //If the cooldown has not ben started yet
             if (cooldown > 0)
             {
+                //Start the cool down
                 cooldown -= Time.deltaTime;
+
                 //allow hunt
 
                 // (Legacy)Adjusts the position of the image based on stamine to keep centered
                 // imageHolderReference.transform.localScale = new Vector3(cooldown / maxCooldown, 1, 1);
-                if (!sphereColliderReference.active)
+                if (!sphereColliderReference.active) //Uses legacy Unity functions but who cares?
                 {
                     sphereColliderReference.SetActive(true);
                 }
@@ -58,7 +59,7 @@ public class BirdHunterMode : MonoBehaviour
             }
             else
             {
-                if (sphereColliderReference.active)
+                if (sphereColliderReference.active) //Shhhhh hush you
                 {
                     sphereColliderReference.SetActive(false);
                 }

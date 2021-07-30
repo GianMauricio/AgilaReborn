@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// TL;DR this script changes the scene depending on what scene called the script
+/// </summary>
+
 public class SceneChange : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)

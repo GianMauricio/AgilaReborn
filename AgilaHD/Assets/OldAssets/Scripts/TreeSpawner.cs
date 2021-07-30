@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// LEGACY CODE, this can be deleted once the SampleScene in Old Assets has also been deleted. All this script does is spawn trees, which will
+/// now be dodne statitcally
+/// </summary>
+
 public class TreeSpawner : MonoBehaviour
 {
     [SerializeField] GameObject prefab;
