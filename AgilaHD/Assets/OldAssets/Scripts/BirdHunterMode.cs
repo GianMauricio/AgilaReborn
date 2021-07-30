@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class BirdHunterMode : MonoBehaviour
 {
-    // [SerializeField] private Image imageReference;
     public GameObject StaminaBar;
     public GameObject StaminaBG;
     private Image StaminaImg;
@@ -13,11 +12,17 @@ public class BirdHunterMode : MonoBehaviour
     [SerializeField] private float maxCooldown;
     [SerializeField] private GameObject sphereColliderReference;
     private float cooldown;
-    // Start is called before the first frame update
+
     void Start()
     {
+
+        //Ensure that the cooldowans start at max so that the player can actually use the skills
         cooldown = maxCooldown;
+
+        //Set UI components
         StaminaImg = StaminaBar.GetComponent<Image>();
+
+        //Make sure that sphere thing starts off
         if(sphereColliderReference != null && sphereColliderReference.active)
         {
             sphereColliderReference.SetActive(false);

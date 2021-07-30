@@ -3,32 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-/*
- * this is only to try if the bird works
- * 
- * */
 public class bigDic : MonoBehaviour
 {
+    //All to make birb fly
     [SerializeField] private Rigidbody rb;
-    //[SerializeField] private Transform transform;
     [SerializeField] private float ForwardForce;
     [SerializeField] private float IdleForce;
 
-//    [SerializeField] private float turnSmoothTime = 0.2f;
-//    [SerializeField] private float turnSmoothVelocity;
-
+    //To make birb seen
     [SerializeField] private Transform cameraT;
     public ThirdPersonCamera tpsReference;
 
     //Smoothing
+    //For time
     public float rotationSmoothTime = 0.02f;
-    Vector3 rotationSmoothVelocity;
-    Vector3 currentRotation;
-
     private float yawRotation;
     private float currRot = 0;
     private float smoothVel;
 
+    //From time to movement
     Vector3 lastVelocity;
     private float initialDrag;
     private float initialAngularDrag;
@@ -41,19 +34,17 @@ public class bigDic : MonoBehaviour
     //UI stuff
     public Image healthBar;
 
-    // Start is called before the first frame update
     void Start()
     {
-        //cameraT = Camera.main.transform;
+        //Set initials for use in succeeding calculations due to being suspended in air already
         initialDrag = gameObject.GetComponent<Rigidbody>().drag;
         initialAngularDrag = gameObject.GetComponent<Rigidbody>().angularDrag;
-
     }
 
-    // Update is called once per frame
+    //Movement
     void FixedUpdate()
     {
-
+        //Sprint implementation
         if (Input.GetKey(KeyCode.LeftShift))
         {
             ForwardForce = 100;
@@ -63,15 +54,16 @@ public class bigDic : MonoBehaviour
             ForwardForce = 50;
         }
 
-       
-
+        //Moving forward
         if (Input.GetKey(KeyCode.W))
         {
 
+            //Calculate where the eagle is facing
             gameObject.GetComponent<Rigidbody>().drag = initialDrag;
             gameObject.GetComponent<Rigidbody>().angularDrag = 0.3f;
             yawRotation = tpsReference.GetComponent<ThirdPersonCamera>().yawRotation;
 
+            //Set according to camera
             if (tpsReference.GetComponent<ThirdPersonCamera>().moveleft)
             {
                 yawRotation = -15* 10;
@@ -85,104 +77,115 @@ public class bigDic : MonoBehaviour
                 yawRotation = 0;
             }
 
+            //Do the corrections smoothly
             currRot = Mathf.SmoothDamp(currRot, yawRotation, ref smoothVel, 1);
 
+            //Calculate direction
             Quaternion too;
             too = Quaternion.Euler(1, 1, -currRot);
 
+            //Apply direction over time
+            transform.rotation = Quaternion.Slerp(transform.rotation, cameraT.rotation * too, Time.deltaTime / rotationSmoothTime);
 
-            transform.rotation = Quaternion.Slerp(transform.rotation, cameraT.rotation * too, Time.deltaTime / rotationSmoothTime) ;
-            
-            
+            //Add force according to current direction (Even if the current direction does not match intended destination)
             rb.AddForce(ForwardForce * transform.forward);
-            
 
+            ///This is where the wierd floaty feeling comes from, this is what makes the eagle feel natural
         }
+
+        //Not moving
         else
         {
+            //Get current velocity
             Vector3 velocity = gameObject.GetComponent<Rigidbody>().velocity;
-            if (gameObject.transform.position.y <= lastPosition.y)//means we're going down
+
+            //if the eagle is moving downwards
+            if (gameObject.transform.position.y <= lastPosition.y)
             {
-                //Debug.Log("going down");
+                //Slow fall force and add more forward force
                 rb.AddForce(7.0f * (transform.forward + Vector3.up)); //glide
             }
+
+            //if the eagle is moving up
             else
             {
-                //Debug.Log("going up");
+                //Slow forward force (by virtue of physics this also applies a downward force)
                 rb.AddForce(2.0f * (transform.forward + Vector3.up)); //glide
             }
             
+            //The fucking magic begins here
 
+            //This whole thing makes the eagle not spinout bu countering the spin force by a certain deltaTime after it breaches 0.15 units of "drag"
             gameObject.GetComponent<Rigidbody>().angularDrag = initialAngularDrag;
             float nice = gameObject.GetComponent<Rigidbody>().drag;
             if(nice > 0.15f)
             {
                 gameObject.GetComponent<Rigidbody>().drag = nice - Time.deltaTime;
             }
-            
-            //transform.position += transform.forward * (IdleForce) * Time.deltaTime;
-
-            //look forward based on velocity
-            //Vector3 velocity= gameObject.GetComponent<Rigidbody>().velocity;
+           
+            //This ensures that the rotation calcultations above are actually applied prior to the next physics calculations
+            //...at least partially
             float magnitude = velocity.magnitude;
-            
-
             Vector3 orignialDirection = this.lastVelocity;
             Vector3 nowDirection = gameObject.GetComponent<Rigidbody>().velocity;
-            Vector3 rotationAxis = (Vector3.Cross(orignialDirection, nowDirection));
-            float angle = (Vector3.Angle(orignialDirection, gameObject.GetComponent<Rigidbody>().velocity)) * Mathf.Deg2Rad / 2;
             Quaternion q = Quaternion.FromToRotation(orignialDirection, nowDirection);
 
-
-            //Quaternion quat = Quaternion.Euler(interpTo);
-            //Debug.Log(magnitude);
             transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, q * transform.rotation, magnitude / 10) ;
-
-            //Quaternion newFace = Quaternion.LookRotation(velocity);
         }
 
         if (Input.GetKey(KeyCode.S))//brakes
         {
+            //Force eagle to slow
             gameObject.GetComponent<Rigidbody>().drag = 10;
-            //Vector3 eler = transform.localRotation;
-            //float eler = transform.localRotation.x;
-            //Debug.Log(eler);
-            if (true)
-            {
-                //Vector3.Dot(Vector3.up, Vector3.forward)
-                Vector3 idk = Vector3.Cross(Vector3.up, transform.right);
-                Vector3 direction = ((transform.forward + (-idk + Vector3.up)) + transform.forward).normalized;//(Vector3.up - transform.right)// (-idk + Vector3.up)
 
-                Quaternion kwat = Quaternion.LookRotation(direction);
-                //Quaternion rotationVector = Quaternion.FromToRotation(gameObject.transform.rotation, vectorSlanted + gameObject.transform.rotation)
-                transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, kwat, 1.0f);
-            }
+
+            //Get counter forward vector
+            Vector3 crossVector = Vector3.Cross(Vector3.up, transform.right);
+
+            //Calcutalte "backwards" vector in context of eagle with normalization to avoid gimballing
+            Vector3 direction = ((transform.forward + (-crossVector + Vector3.up)) + transform.forward).normalized;
+
+            //Denote as direction quaternion
+            Quaternion kwat = Quaternion.LookRotation(direction);
+
+            //As the eagle brakes, the eagle also turns towards the "counter forwards"
+            transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, kwat, 1.0f);
             
 
         }
+
+        //Upon release of "S"
         else
         {
+            //Set drag to normal as held prior to the pressing of S
             gameObject.GetComponent<Rigidbody>().drag = initialDrag;
         }
 
+        //reset calclation initials to preserve accuracy for the next frame
         this.lastPosition = gameObject.transform.position;
         this.lastVelocity = gameObject.GetComponent<Rigidbody>().velocity;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        
-        if (collision.gameObject.name == "Ground") 
-                gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * 30, ForceMode.Impulse);
-
+        //REPEL THE GODDAMN FLOOR
+        //using tags to preserve throughout scenes
+        if (collision.gameObject.CompareTag("Flour"))
+        {
+            //gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * 30, ForceMode.Impulse);
+            ifFloorHit();
+        }
+                
+        //Get hurt
         if (collision.gameObject.name.Contains("Bullet"))
             Hurt(10);
     }
 
     public void Hurt(int pain)
     {
-
         currhealth -= pain;
+
+        //Update UI
         setHealthPercent();
     }
 
@@ -193,49 +196,40 @@ public class bigDic : MonoBehaviour
 
         if(healthPercent <= 0)
         {
+            //If he died then demo ends U wU
             SceneManager.LoadScene("GameOver");
         }
     }
 
     public void ifFloorHit()
     {
+        //Apply pain
         Hurt(2);
 
-        float speedPerSec = Vector3.Distance(lastPosition, transform.position) / Time.deltaTime;
+        //Get speed at which the eagle smacked the ground
         float speed = Vector3.Distance(lastPosition, transform.position);
-
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
 
-        
-
-        //bounce and shit idk what im doing
+        //Forcefully face eagle a bit more skyward
         Vector3 rotateVec = transform.rotation.eulerAngles;
-        //Vector3 rotateVec = transform.localEulerAngles;
 
-        Quaternion target = Quaternion.Euler(-rotateVec.x, rotateVec.y, 0);// -rotateVec.x, rotateVec.y, rotateVec.z
+        //Using Quaternions just in case so we don't gimball the eagle into the ground
+        Quaternion target = Quaternion.Euler(-rotateVec.x, rotateVec.y, 0);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, target, speed * Time.deltaTime); //fuckin slerp me20.0f
-
-
-        
         transform.rotation = target;
 
 
-        //stop shit
+        //Remove active velocity for both linear and angular so that the eagle doesn't freeze or super boost
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 
-        //give me some distance
+
+        //Literally teleport upwards a bit
         Vector3 someposition = transform.position;
         someposition.y = someposition.y + 0.5f;
-        Vector3 finalPos = Vector3.zero;
-        //transform.position = Vector3.SmoothDamp(transform.position, someposition,ref finalPos, 10.0f);
-        //transform.position = Vector3.Slerp(transform.position, someposition, 0.5f);
-
         transform.position = someposition;
 
-        // rb.AddForce(0.05f * (target.eulerAngles - transform.forward), ForceMode.Impulse) ;//target.eulerAngles + (-1 *transform.forward
+        //Set new force using the new forward direction to give the player time to course correct themselves
         rb.AddForce(0.015f * (target.eulerAngles - this.transform.forward), ForceMode.Impulse);
-
-
     }
 }
