@@ -34,16 +34,37 @@ public class bigDic : MonoBehaviour
     //UI stuff
     public Image healthBar;
 
+    //Animation
+    [SerializeField] private Animator animator;
+    private enum BIRDSTATE{
+    flapping = 0,
+    grabbing = 1
+    };
+    BIRDSTATE birdState = BIRDSTATE.flapping;
+
+    private bool shiftPressed = false;
+    public float current_speed = 0;
+    private float animationFlapMultInitVal;
+    private float flapspeed = 0;
+    private float lerpVal = 0;
+
     void Start()
     {
         //Set initials for use in succeeding calculations due to being suspended in air already
         initialDrag = gameObject.GetComponent<Rigidbody>().drag;
         initialAngularDrag = gameObject.GetComponent<Rigidbody>().angularDrag;
+
+        animationFlapMultInitVal = animator.GetFloat("flapSpeed");
     }
 
     //Movement
     void FixedUpdate()
     {
+        //initial velocity compute at first update
+       current_speed = rb.velocity.magnitude;
+
+
+        
         //Sprint implementation
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -57,6 +78,27 @@ public class bigDic : MonoBehaviour
         //Moving forward
         if (Input.GetKey(KeyCode.W))
         {
+            //set animation
+            birdState = BIRDSTATE.flapping;
+            animator.SetInteger("birdState", (int)birdState);
+            float rate = current_speed / 20;//topspeed
+            flapspeed *= rate;
+            //Debug.Log(flapspeed);
+
+            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
+            {
+                flapspeed = Mathf.Clamp(flapspeed, 2, 10);//10
+                // Debug.LogError("EHEHHE");
+            }
+            else
+            {
+                flapspeed = Mathf.Clamp(flapspeed, 2, 5);
+            }
+
+            animator.SetFloat("flapSpeed", flapspeed);
+
+
+
 
             //Calculate where the eagle is facing
             gameObject.GetComponent<Rigidbody>().drag = initialDrag;
@@ -66,7 +108,7 @@ public class bigDic : MonoBehaviour
             //Set according to camera
             if (tpsReference.GetComponent<ThirdPersonCamera>().moveleft)
             {
-                yawRotation = -15* 10;
+                yawRotation = -15 * 10;
             }
             else if (tpsReference.GetComponent<ThirdPersonCamera>().moveright)
             {
@@ -93,9 +135,13 @@ public class bigDic : MonoBehaviour
             ///This is where the wierd floaty feeling comes from, this is what makes the eagle feel natural
         }
 
+      
+
         //Not moving
-        else
+       if (Input.GetKeyUp(KeyCode.W)) 
         {
+            Debug.Log("Released W");
+            normalizeWingFlap();
             //Get current velocity
             Vector3 velocity = gameObject.GetComponent<Rigidbody>().velocity;
 
@@ -131,10 +177,32 @@ public class bigDic : MonoBehaviour
             Quaternion q = Quaternion.FromToRotation(orignialDirection, nowDirection);
 
             transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, q * transform.rotation, magnitude / 10) ;
+
         }
 
         if (Input.GetKey(KeyCode.S))//brakes
         {
+            //set animator
+            if (current_speed > 0.01)
+            {
+                birdState = BIRDSTATE.flapping;
+                animator.SetInteger("birdState", (int)birdState);
+                float rate = current_speed / 20;//topspeed
+                flapspeed *= rate;
+                flapspeed = Mathf.Clamp(flapspeed, 11, 25);
+                animator.SetFloat("flapSpeed", flapspeed);
+            }
+            else
+            {
+                birdState = BIRDSTATE.flapping;
+                animator.SetInteger("birdState", (int)birdState);
+                float rate = current_speed / 20;//topspeed
+                flapspeed *= rate;
+                flapspeed = Mathf.Clamp(flapspeed, 5, 20);
+                animator.SetFloat("flapSpeed", flapspeed);
+            }
+
+
             //Force eagle to slow
             gameObject.GetComponent<Rigidbody>().drag = 10;
 
@@ -150,20 +218,43 @@ public class bigDic : MonoBehaviour
 
             //As the eagle brakes, the eagle also turns towards the "counter forwards"
             transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, kwat, 1.0f);
-            
+
 
         }
 
+       else
+        {
+            Debug.Log("Released S");
+            //Set drag to normal as held prior to the pressing of S
+            gameObject.GetComponent<Rigidbody>().drag = initialDrag;
+            normalizeWingFlap();
+        }
+
+        /*
         //Upon release of "S"
         else
         {
             //Set drag to normal as held prior to the pressing of S
-            gameObject.GetComponent<Rigidbody>().drag = initialDrag;
-        }
+           // gameObject.GetComponent<Rigidbody>().drag = initialDrag;
+            //normalizeWingFlap();
+           
+        }*/
 
         //reset calclation initials to preserve accuracy for the next frame
         this.lastPosition = gameObject.transform.position;
         this.lastVelocity = gameObject.GetComponent<Rigidbody>().velocity;
+    }
+
+    private void normalizeWingFlap()
+    {
+        //check if velocity is still moving
+        birdState = BIRDSTATE.flapping;
+        animator.SetInteger("birdState", (int)birdState);
+        float rate = current_speed / 20;//topspeed
+        flapspeed *= rate;
+        //lerpVal = Mathf.Lerp(flapspeed, 1, Time.deltaTime);
+        flapspeed = Mathf.Clamp(flapspeed, 3, 9);
+        animator.SetFloat("flapSpeed", flapspeed);
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -31,7 +31,7 @@ public class BirdHunterMode : MonoBehaviour
 
     void Update()
     {
-        //If mouse button is clicked
+        //If mouse button is held
         if (Input.GetButton("Fire1"))
         {
             //If the cooldown has not ben started yet
@@ -51,11 +51,13 @@ public class BirdHunterMode : MonoBehaviour
 
                 //Activate Hunt UI
                 //TODO: Fade In
-                StaminaBG.SetActive(true);
+                //StaminaBG.SetActive(true);
 
                 //Set hunt stamina to current stamina
                 float fillpercent = cooldown / maxCooldown;
-                StaminaImg.fillAmount = fillpercent;
+                //StaminaImg.fillAmount = fillpercent;
+                StaminaBar.transform.localScale = new Vector3( fillpercent, 1, 1);
+               // Debug.Log("HAIDUAHSDIUAHSD");
             }
             else
             {
@@ -84,14 +86,15 @@ public class BirdHunterMode : MonoBehaviour
 
                 //imageHolderReference.transform.localScale = new Vector3(cooldown / maxCooldown, 1, 1);
                 float fillpercent = cooldown / maxCooldown;
-                StaminaImg.fillAmount = fillpercent;
+                //StaminaImg.fillAmount = fillpercent;
+                StaminaBar.transform.localScale = new Vector3(fillpercent, 1, 1);
             }
 
             //Deactivate UI
             else
             {
                 //TODO: Fade out
-                StaminaBG.SetActive(false);
+                //StaminaBG.SetActive(false);
             }
         }
 
