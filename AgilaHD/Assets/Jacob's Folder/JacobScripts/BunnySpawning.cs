@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 /*
  Rudimentary Spawning Algorithm used by a spawner to spawn the Bunnies and other objects in the future.
- 
- 
+
  */
 public class BunnySpawning : MonoBehaviour
 {
@@ -47,10 +46,5 @@ public class BunnySpawning : MonoBehaviour
             //spawnedObjects.Add(Instantiate(SpawnObject, new Vector3(x, 0, z), Quaternion.identity));
             spawnedObjects.Add(Instantiate(SpawnObject, transform.position, transform.rotation));
         }
-
-       
-
-
     }
-
 }

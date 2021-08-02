@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This is the legacy code for the eagles movement, it is no longer relevant and can be removed at any time
+/// </summary>
+
 public class Glider : MonoBehaviour
 {
+    //LEGACY CODE, only refrenced by the old eagle, once deleted, ensure that the reference from the old eagle is also subsequently borken
     static float EAGLE_START_X = 0;
     static float EAGLE_START_Y = 10;
     static float EAGLE_START_Z = 0;

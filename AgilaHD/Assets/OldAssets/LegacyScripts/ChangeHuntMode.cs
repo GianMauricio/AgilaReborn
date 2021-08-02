@@ -22,9 +22,14 @@ public class ChangeHuntMode : MonoBehaviour
     {
         if(Input.GetKeyUp(KeyCode.T))
         {
+            //if hunter mode activated, send signal to all huntable objects
             bool mode = reference.GetComponent<Huntable>().isnormalMode;
             reference.GetComponent<Huntable>().isnormalMode = !mode;
             reference.GetComponent<Huntable>().modeSwitch();
+
+
+
+            //LEGACY CODE relegated to the huntable script entirely
 
             //ColorGrading cg = null;
 

@@ -23,37 +23,48 @@ public class HAI : MonoBehaviour
     
     private Vector3 AITarget;
 
-    // Start is called before the first frame update
     void Start()
     {
+        //Get the AI agent
         nav = gameObject.GetComponent<NavMeshAgent>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //set agent to target the birbs location
         AITarget = BirbTarget.gameObject.transform.position;
+
+        //Offset move timer so the hunter doesn't home in on birb instantly
         moveTimer += Time.deltaTime;
 
         //Get current range and make bang bang based on distance
         Vector3 currPos = gameObject.transform.position;
         Vector3 targetPos = gameObject.transform.position;
 
+        //reference firerate to make the hunter not fire full auto
         fireRate -= Time.deltaTime;
 
+        //Make hunter bullet spawner face eagle
         CrossHair.transform.LookAt(BirbTarget.transform.position);
 
+        //if the Eagle is within "Cone of Sight" and the hunter has not fired in a while
         if(Vector3.Distance(currPos, targetPos) < rangeLimit && fireRate <= 0.0)
         {
+            //Create bullet
             GameObject BulletClone = Instantiate(bullet, CrossHair.transform.position,
                                                      CrossHair.transform.rotation);
 
+            //Make bullet look at birb
             BulletClone.transform.LookAt(BirbTarget.transform.position);
 
+            //YEET the bullet has hard as you can
             BulletClone.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 3000);
+
+            //Reset firerate
             fireRate = 5.0f;
         }
 
+        //If the hunter has not moved in a while, allow movement
         if (moveTimer >= resetTargetInterval)
         {
             moveTimer = 0;
@@ -66,12 +77,15 @@ public class HAI : MonoBehaviour
         BirbTarget = newTarget;
     }
 
+    //Get nearest location on the nav mesh depending on a given target with a possible margin of error of 100
     void newTarget()
     {
+        
         NavMeshHit hit;
-        NavMesh.SamplePosition(AITarget, out hit, 1000, NavMesh.AllAreas);
+        NavMesh.SamplePosition(AITarget, out hit, 100, NavMesh.AllAreas);
         Vector3 meshLoc = hit.position;
 
+        //Tell agent to go to new target location
         nav.SetDestination(meshLoc);
     }
 }

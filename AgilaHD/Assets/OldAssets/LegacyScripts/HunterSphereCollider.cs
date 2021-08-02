@@ -5,9 +5,9 @@ using UnityEngine;
 public class HunterSphereCollider : MonoBehaviour
 {
     [SerializeField] private bigDic mainBirdComponent;
-    // Start is called before the first frame update
     void Start()
     {
+        //Keep self intact at all times
         if(mainBirdComponent == null)
         {
             mainBirdComponent = this.gameObject.GetComponentInParent<bigDic>();
@@ -15,11 +15,8 @@ public class HunterSphereCollider : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+    //Redundant, the huntable kills itself aswell, might lead to errors
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Huntable")
@@ -28,10 +25,4 @@ public class HunterSphereCollider : MonoBehaviour
             GameObject.Destroy(other);
         }
     }
-
-
-
-
-
-
 }
