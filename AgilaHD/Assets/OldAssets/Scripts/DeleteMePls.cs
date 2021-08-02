@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// This script should never be deleted.
+/// It's purpose here is to suffer
+/// </summary>
 public class DeleteMePls : MonoBehaviour
 {
     // Start is called before the first frame update
