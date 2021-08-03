@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 8607946444779520658}
   m_Layer: 0
   m_Name: Agila_Main_Eagle_Body
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -675,6 +675,8 @@ MonoBehaviour:
   tpsReference: {fileID: 1305942289267606569}
   rotationSmoothTime: 0.88
   healthBar: {fileID: 5206901798763171983}
+  animator: {fileID: 0}
+  current_speed: 0
 --- !u!114 &8607946444779520658
 MonoBehaviour:
   m_ObjectHideFlags: 0
