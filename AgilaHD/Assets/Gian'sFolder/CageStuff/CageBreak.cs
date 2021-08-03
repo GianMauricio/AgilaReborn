@@ -5,10 +5,21 @@ using UnityEngine;
 public class CageBreak : MonoBehaviour
 {
     public GameObject BrokenCage;
+    public float timer = 5;
+
+    // Update is called once per frame
+    void Update()
+    {
+        timer -= Time.deltaTime;
+        if (timer < 0)
+        {
+            Break();
+        }
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Bird"))
         {
             Break();
         }
