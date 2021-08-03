@@ -447,6 +447,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2608036362539416814, guid: 520e2f60f0f9813498fddaa23b37e1a7,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4294884967248022199, guid: 520e2f60f0f9813498fddaa23b37e1a7,
         type: 3}
       propertyPath: m_AnchorMax.x
