@@ -571,6 +571,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4163845174953860104, guid: 5e904fbc3d0f3e4418277491684d6ed9,
         type: 3}
+      propertyPath: timer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163845174953860104, guid: 5e904fbc3d0f3e4418277491684d6ed9,
+        type: 3}
       propertyPath: BrokenCage
       value: 
       objectReference: {fileID: 9041079720028030177, guid: 828b16e3fb5edb54db90d7b9de4a821c,
