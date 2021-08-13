@@ -75,7 +75,7 @@ public class BirdHunterMode : MonoBehaviour
         //Otherwise
         else
         {
-            animator.doFlap();
+            animator.stopGrab();
             //Recharge hunt mode stamina if still not max
             if (cooldown < maxCooldown)
             {

@@ -13,6 +13,10 @@ public class BirdAnimationHandler : MonoBehaviour
     //Animation
     public Animator animControl;
 
+    bool flapping = true;
+    bool grabbing = true;
+    bool diving = false;
+
     private enum BIRDSTATE
     {
         flapping = 0,
@@ -33,6 +37,24 @@ public class BirdAnimationHandler : MonoBehaviour
     {
         //Always set new flapspeed at end of process
         animControl.SetFloat("flapSpeed", flapspeed);
+
+        //Determine which state is highest priority at the moment
+        if (grabbing)
+        {
+            birdState = BIRDSTATE.grabbing;
+        }
+
+        else if (diving)
+        {
+            birdState = BIRDSTATE.enterDive;
+        }
+
+        else
+        {
+            birdState = BIRDSTATE.flapping;
+        }
+
+        animControl.SetInteger("birdState", (int)birdState);
     }
 
     public void SetFlapSpeed(float newFlapSpeed)
@@ -42,25 +64,34 @@ public class BirdAnimationHandler : MonoBehaviour
 
     public void doFlap()
     {
-        birdState = BIRDSTATE.flapping;
-        animControl.SetInteger("birdState", (int)birdState);
+        //birdState = BIRDSTATE.flapping;
+        //animControl.SetInteger("birdState", (int)birdState);
+        flapping = true;
     }
 
     public void doGrab()
     {
-        birdState = BIRDSTATE.grabbing;
-        animControl.SetInteger("birdState", (int)birdState);
+        //birdState = BIRDSTATE.grabbing;
+        //animControl.SetInteger("birdState", (int)birdState);
+        grabbing = true;
+    }
+
+    public void stopGrab()
+    {
+        grabbing = false;
     }
 
     public void startDive()
     {
-        birdState = BIRDSTATE.enterDive;
-        animControl.SetInteger("birdState", (int)birdState);
+        //birdState = BIRDSTATE.enterDive;
+        //animControl.SetInteger("birdState", (int)birdState);
+        diving = true;
     }
 
     public void leaveDive()
     {
-        birdState = BIRDSTATE.exitDive;
-        animControl.SetInteger("birdState", (int)birdState);
+        //birdState = BIRDSTATE.exitDive;
+        //animControl.SetInteger("birdState", (int)birdState);
+        diving = false;
     }
 }

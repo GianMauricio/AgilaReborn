@@ -112,11 +112,11 @@ public class BirdMainScript : MonoBehaviour
             //Ascertain the relative position of the TPS camera
             float relativePosition;
 
-            Debug.Log("Current speed: " + current_speed);
+            //Debug.Log("Current speed: " + current_speed);
 
             relativePosition = tpsReference.gameObject.transform.position.y - gameObject.transform.position.y;
 
-            Debug.Log("Camera relative pos: " + relativePosition);
+            //Debug.Log("Camera relative pos: " + relativePosition);
 
             //If camera is above eagle and eagle is "plummetting"
             if(relativePosition > 0 && current_speed > 27.0f)
