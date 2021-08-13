@@ -109,6 +109,29 @@ public class BirdMainScript : MonoBehaviour
             //Do the corrections smoothly
             currRot = Mathf.SmoothDamp(currRot, yawRotation, ref smoothVel, 1);
 
+            //Ascertain the relative position of the TPS camera
+            float relativePosition;
+
+            Debug.Log("Current speed: " + current_speed);
+
+            relativePosition = tpsReference.gameObject.transform.position.y - gameObject.transform.position.y;
+
+            Debug.Log("Camera relative pos: " + relativePosition);
+
+            //If camera is above eagle and eagle is "plummetting"
+            if(relativePosition > 0 && current_speed > 27.0f)
+            {
+                //Start dive
+                animator.startDive();
+            }
+
+            //Once the eagle bleeds og enoug speed, release the dive
+            else if(current_speed < 27.0f)
+            {
+                //Leave dive
+                animator.leaveDive();
+            }
+
             //Calculate direction
             Quaternion too;
             too = Quaternion.Euler(1, 1, -currRot);
@@ -124,9 +147,15 @@ public class BirdMainScript : MonoBehaviour
 
         //Not moving
        if (Input.GetKeyUp(KeyCode.W)) 
-        {
-            Debug.Log("Released W");
+       {
+
+            //Debug.Log("Released W");
             //normalizeWingFlap();
+            //Ensure dive is left once speed normalizes
+            if(current_speed < 22.5f)
+            {
+                animator.leaveDive();
+            }
 
             //Get current velocity
             Vector3 velocity = gameObject.GetComponent<Rigidbody>().velocity;
@@ -167,7 +196,10 @@ public class BirdMainScript : MonoBehaviour
         }
 
        if (Input.GetKey(KeyCode.S))//brakes
-        {
+       {
+            //Ensure dive leaves the moment S is pressed
+            animator.leaveDive();
+
             //set animator
             if (current_speed > 0.01)
             {
