@@ -5,20 +5,18 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Take 001
+    second: Flapping1
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Bird
-    second: {fileID: 5868016923656062304, guid: 0de7c625a80d2cf4b96a64be1d94c5d5,
-      type: 3}
+    second: {instanceID: 0}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Bird1
-    second: {fileID: 5868016923656062304, guid: 0de7c625a80d2cf4b96a64be1d94c5d5,
-      type: 3}
+    second: {instanceID: 0}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -65,7 +63,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Take 001
+      name: Flapping1
       takeName: Take 001
       internalID: 0
       firstFrame: 1

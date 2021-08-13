@@ -9,8 +9,7 @@ public class ChangeHuntMode : MonoBehaviour
     //[SerializeField] PostProcessVolume volReference;
     //[SerializeField] PostProcessProfile profileReference;
     
-   
-
+  
     // Start is called before the first frame update
     void Start()
     {

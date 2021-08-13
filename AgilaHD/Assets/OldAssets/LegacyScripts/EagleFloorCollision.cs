@@ -9,7 +9,7 @@ public class EagleFloorCollision : MonoBehaviour
     {
         if(collision.collider.tag == "Flour")
         {
-            this.gameObject.GetComponent<bigDic>().ifFloorHit();
+            this.gameObject.GetComponent<BirdMainScript>().ifFloorHit();
         }
     }
 }
