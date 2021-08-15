@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class HunterSphereCollider : MonoBehaviour
 {
-    [SerializeField] private bigDic mainBirdComponent;
+    [SerializeField] private BirdMainScript mainBirdComponent;
     void Start()
     {
         //Keep self intact at all times
         if(mainBirdComponent == null)
         {
-            mainBirdComponent = this.gameObject.GetComponentInParent<bigDic>();
+            mainBirdComponent = this.gameObject.GetComponentInParent<BirdMainScript>();
         }
 
     }

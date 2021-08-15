@@ -7,7 +7,9 @@ public class BirdHunterMode : MonoBehaviour
 {
     public GameObject StaminaBar;
     public GameObject StaminaBG;
+    public BirdAnimationHandler animator;
     private Image StaminaImg;
+
 
     [SerializeField] private float maxCooldown;
     [SerializeField] private GameObject sphereColliderReference;
@@ -34,6 +36,7 @@ public class BirdHunterMode : MonoBehaviour
         //If mouse button is held
         if (Input.GetButton("Fire1"))
         {
+            animator.doGrab();
             //If the cooldown has not ben started yet
             if (cooldown > 0)
             {
@@ -72,6 +75,7 @@ public class BirdHunterMode : MonoBehaviour
         //Otherwise
         else
         {
+            animator.stopGrab();
             //Recharge hunt mode stamina if still not max
             if (cooldown < maxCooldown)
             {
