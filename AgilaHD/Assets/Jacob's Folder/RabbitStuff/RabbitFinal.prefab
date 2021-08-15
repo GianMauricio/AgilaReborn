@@ -114,9 +114,9 @@ MonoBehaviour:
   jumpTime: 0
   TimeUntilMove: 2
   bounceInterval: 10
+  moving: 0
   canbounce: 1
   speed: 2
-  nav: {fileID: 0}
   Target: {x: 0, y: 0, z: 0}
   thrust: 5
 --- !u!65 &6924124160545379129

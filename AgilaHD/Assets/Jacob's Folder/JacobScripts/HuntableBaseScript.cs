@@ -10,14 +10,11 @@ using UnityEngine.AI;
 public class HuntableBaseScript : MonoBehaviour
 {
     [SerializeField] int Health = 1;
-    private float timer;
     public float jumpTime = 0;
+    public int bounceInterval = 5;
 
-    public int TimeUntilMove;
-    public int bounceInterval = 10;
-    public bool canbounce = true;
+    public bool moving = false;
     public float speed;
-    public NavMeshAgent nav;
 
     public Vector3 Target;
 
@@ -33,53 +30,81 @@ public class HuntableBaseScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nav = gameObject.GetComponent<NavMeshAgent>();
+        //Ascertain starting position
         myX = gameObject.transform.position.x;
         myZ = gameObject.transform.position.z;
         isEaten = false;
 
         rb = GetComponent<Rigidbody>();
-      
-        
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        timer += Time.deltaTime;
-        jumpTime += Time.deltaTime;
-
-        if(timer >= TimeUntilMove)
+        //Once the bunny has stopped moving
+        if (rb.velocity.magnitude <= 0.1f)
         {
-            newTarget(); //Call newTarget until TimeUntilMove
-            timer = 0;
+            //Allow counter to start again
+            moving = false;
         }
 
-        
-        if (jumpTime >= bounceInterval && canbounce)
+        //Calculate time till next move, if not moving
+        if (!moving)
         {
-            jumpTime = 0;
-            rb.isKinematic = false;
-            nav.enabled = false;
-            rb.AddForce(Vector3.up * 20, ForceMode.Impulse);
+            //timer += Time.deltaTime;
+            jumpTime += Time.deltaTime;
+        }
 
-            if (rb.velocity.magnitude <= 0.1f)
-            {
-                rb.isKinematic = true;
-                nav.enabled = true;
-                newTarget();
-            }
+        if (jumpTime >= bounceInterval)
+        {
+            //Reset jump timer
+            jumpTime = 0;
+
+            //Ask for new target
+            newTarget();
+
+            //Apply upwards force first
+            rb.AddForce(Vector3.up * 10, ForceMode.Impulse);
+
+            //Apply x-ward and z-ward force next
+            rb.AddForce(Target, ForceMode.Impulse);
         }
     }
 
     void newTarget()
     {
-        float xPos = myX + Random.Range(myX - 20, myX + 20);
-        float ZPos = myZ + Random.Range(myZ - 20, myZ + 20);
+        //Calculate direction vector for where to jump to
+        float xPos = Random.Range(-10, 10);
+        float zPos = Random.Range(-10, 10);
 
-        Target = new Vector3(xPos, gameObject.transform.position.y, ZPos);
-       
-        nav.SetDestination(Target);
+        if(xPos < 0 && xPos > -5.0f)
+        {
+            xPos = -5.0f;
+        }
+
+        else if(xPos > 0 && xPos < 5.0f)
+        {
+            xPos = 5.0f;
+        }
+
+        if (zPos < 0 && zPos > -5.0f)
+        {
+            zPos = -5.0f;
+        }
+
+        else if (zPos > 0 && zPos < 5.0f)
+        {
+            zPos = 5.0f;
+        }
+
+        //Look at new destination position
+        Vector3 offset = new Vector3(transform.position.x + xPos, transform.position.y, transform.position.z + zPos);
+        transform.LookAt(offset);
+
+        //Give new target, with 0'd Y 
+        Target = new Vector3(xPos, 0, zPos);
+
+        moving = true;
     }
 
     void gotEaten() //for when it gets eaten by player

@@ -35,6 +35,7 @@ public class BirdMainScript : MonoBehaviour
     public Image healthBar;
     public Image staminaBarBG;
     public Image staminaBar;
+    public GameObject TutorialUI;
 
     //Stamina stuff
     public float opacVal = 0;
@@ -67,6 +68,11 @@ public class BirdMainScript : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            TutorialUI.SetActive(!TutorialUI.activeSelf);
+        }
+
         if (Input.GetKey(KeyCode.LeftShift) && currSprint > 0)
         {
             currSprint -= Time.deltaTime * 10.0f;
