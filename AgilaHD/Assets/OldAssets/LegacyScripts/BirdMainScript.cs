@@ -33,6 +33,15 @@ public class BirdMainScript : MonoBehaviour
 
     //UI stuff
     public Image healthBar;
+    public Image staminaBarBG;
+    public Image staminaBar;
+
+    //Stamina stuff
+    public float opacVal = 0;
+    private bool isFading = false;
+
+    private float maxSprint = 100.0f;
+    private float currSprint = 100.0f;
 
     //Animator Ref
     public BirdAnimationHandler animator;
@@ -48,23 +57,82 @@ public class BirdMainScript : MonoBehaviour
         initialDrag = gameObject.GetComponent<Rigidbody>().drag;
         initialAngularDrag = gameObject.GetComponent<Rigidbody>().angularDrag;
 
+        //Start flapping
         animator.doFlap();
+
+        //Stamina bar starts as invisible
+        staminaBar.color = new Color(0, 0, 0, 0);
+        staminaBarBG.color = new Color(0, 0, 0, 0);
+    }
+
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.LeftShift) && currSprint > 0)
+        {
+            currSprint -= Time.deltaTime * 10.0f;
+
+            //Display both UI elements for stamina
+            opacVal = 255;
+        }
+
+        //Otherwise
+        else
+        {
+            currSprint += Time.deltaTime * 5.0f;
+            if (currSprint >= 100.0f)
+            {
+                currSprint = 100.0f;
+            }
+        }
+
+        //If the player just stopped sprinting
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            Debug.Log("LShift released");
+            //Once player is done sprinting, or stamina is gone, begin the fade
+            isFading = true;
+        }
+
+        //Fade until gone
+        if (isFading)
+        {
+            opacVal -= Time.deltaTime * 50;
+
+            if (opacVal <= 0.0f)
+            {
+                //prevent weird things from happening and stop fading
+                isFading = false;
+                opacVal = 0;
+            }
+        }
+
+        //Reflect relative stamina values into the UI
+        staminaBar.fillAmount = currSprint / maxSprint;
+
+        //Transparency is a value of 0 - 1 apparently
+        float transpVal = opacVal / 255;
+        staminaBar.color = new Color(255, 255, 255, transpVal);
+        staminaBarBG.color = new Color(255, 255, 255, transpVal);
     }
 
     //Movement
     void FixedUpdate()
     {
         //initial velocity compute at first update
-       current_speed = rb.velocity.magnitude;/*Can be utilized for anim transitions*/
-        
+        current_speed = rb.velocity.magnitude; /*Can be utilized for anim transitions*/
+
         //Sprint implementation
-        if (Input.GetKey(KeyCode.LeftShift))
+        //If the player can sprint
+        if (Input.GetKey(KeyCode.LeftShift) && currSprint > 5)
         {
             ForwardForce = 100;
+            currSprint -= Time.deltaTime * 10.0f;
         }
 
+        //Otherwise
         else
         {
+            currSprint += Time.deltaTime * 5.0f;
             ForwardForce = 50;
         }
 
@@ -116,7 +184,7 @@ public class BirdMainScript : MonoBehaviour
 
             relativePosition = tpsReference.gameObject.transform.position.y - gameObject.transform.position.y;
 
-            Debug.Log("Camera relative pos: " + relativePosition);
+            //Debug.Log("Camera relative pos: " + relativePosition);
 
             //If camera is above eagle and eagle is "plummetting"
             if(relativePosition > 5 && current_speed > 27.0f)
@@ -236,7 +304,7 @@ public class BirdMainScript : MonoBehaviour
 
        else
         {
-            Debug.Log("Released S");
+            //Debug.Log("Released S");
             //Set drag to normal as held prior to the pressing of S
             gameObject.GetComponent<Rigidbody>().drag = initialDrag;
             normalizeWingFlap();
