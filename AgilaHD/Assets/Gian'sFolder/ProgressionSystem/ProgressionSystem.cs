@@ -417,6 +417,10 @@ public class ProgressionSystem : MonoBehaviour
         Timer.SetText(timerString);
 
         //TODO:When timer runs out, load game over scene
+        if(timeRemaining <= 0)
+        {
+            SceneManager.LoadScene("GameLost");
+        }
     }
 
     //Update the objectives list with a tag of the object requested

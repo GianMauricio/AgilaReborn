@@ -14,7 +14,7 @@ public class CageBreak : MonoBehaviour
         }
     }
 
-    void Break()
+    public void Break()
     {
         //Set new cage to be where the old cage was
         Vector3 newPos = gameObject.transform.position;

@@ -27,6 +27,6 @@ public class MenuScript : MonoBehaviour
 
     public void OnClickBack()
     {
-        SceneManager.LoadScene("Menu Scene");
+        SceneManager.LoadScene("MenuScene");
     }
 }

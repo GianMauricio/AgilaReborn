@@ -1209,10 +1209,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5023689145246738386, guid: e80df428c4a4a6349be5ad52d634394d,
         type: 3}
+      propertyPath: Total2
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023689145246738386, guid: e80df428c4a4a6349be5ad52d634394d,
+        type: 3}
       propertyPath: Target1
       value: 
       objectReference: {fileID: 7536956564740131832, guid: 818a2d528ac7f134794a7e9ce339c7a7,
         type: 3}
+    - target: {fileID: 5023689145246738386, guid: e80df428c4a4a6349be5ad52d634394d,
+        type: 3}
+      propertyPath: Target2
+      value: 
+      objectReference: {fileID: 1543190410369316466, guid: daaa3f4dcbde14c45988787774a5a7ca,
+        type: 3}
+    - target: {fileID: 5023689145246738386, guid: e80df428c4a4a6349be5ad52d634394d,
+        type: 3}
+      propertyPath: objectives
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7145362621319689463, guid: e80df428c4a4a6349be5ad52d634394d,
         type: 3}
       propertyPath: m_Name

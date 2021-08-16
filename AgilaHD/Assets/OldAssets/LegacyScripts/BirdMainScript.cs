@@ -401,6 +401,11 @@ public class BirdMainScript : MonoBehaviour
     {
         currhealth -= pain;
 
+        if(currhealth <= 0)
+        {
+            SceneManager.LoadScene("GameLost");
+        }
+
         //Update UI
         setHealthPercent();
     }

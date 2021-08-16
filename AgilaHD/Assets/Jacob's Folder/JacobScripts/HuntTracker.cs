@@ -14,5 +14,10 @@ public class HuntTracker : MonoBehaviour
     {
         Debug.Log("Impact confirmed");
         levelObjectives.updateObjectives(other.gameObject.tag);
+
+        if (other.CompareTag("Cage"))
+        {
+            other.GetComponent<CageBreak>().Break();
+        }
     }
 }
