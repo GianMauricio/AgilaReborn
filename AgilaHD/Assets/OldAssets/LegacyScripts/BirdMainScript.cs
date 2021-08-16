@@ -57,6 +57,9 @@ public class BirdMainScript : MonoBehaviour
     bool isPaused = false;
     public BirdHunterMode hunterRef;
 
+    //Objectives implementation
+    ProgressionSystem levelObjectives;
+
     void Start()
     {
         //Set initials for use in succeeding calculations due to being suspended in air already

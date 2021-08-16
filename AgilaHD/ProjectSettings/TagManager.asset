@@ -5,8 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayerObject
-  - Huntable
   - Flour
+  - Cage
+  - Bunny
+  - Monkey
   layers:
   - Default
   - TransparentFX
