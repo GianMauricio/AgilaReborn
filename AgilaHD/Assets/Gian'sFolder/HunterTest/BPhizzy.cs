@@ -20,5 +20,8 @@ public class BPhizzy : MonoBehaviour
     {
         //Confirm hit
         Debug.Log("Hit " + collision.gameObject.name);
+
+        //And then vanish
+        Destroy(gameObject);
     }
 }

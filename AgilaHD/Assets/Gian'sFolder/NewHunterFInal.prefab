@@ -329,7 +329,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3521505494411229917}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 207.20924, y: 33.598957, z: 409.986}
+  m_LocalPosition: {x: 207.20924, y: 33.598957, z: 410.007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1003311969477813116}
@@ -397,10 +397,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 333615363800ce749b5c6173fcfe947f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BirbTarget: {fileID: 0}
   bullet: {fileID: 1994976918211552142, guid: 17cb35335e33e1246a73a9462ee4c0fa, type: 3}
   CrossHair: {fileID: 8331596441760758332}
+  fireRate: 1
   seekLimit: 300
   huntLimit: 150
+  resetTargetInterval: 5
+  moveTimer: 0
+  xRadius: 5
+  zRadius: 5
 --- !u!136 &626807483047998747
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -411,7 +417,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.41283852
+  m_Radius: 0.19938272
   m_Height: 1.837932
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: -0.2}

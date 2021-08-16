@@ -19,15 +19,15 @@ public enum HunterMode {Wander, Seek, Hunt}
 public class HAI : MonoBehaviour
 {
     //All hunters start in wander mode
-    private HunterMode mode = HunterMode.Wander;
+    private HunterMode mode = HunterMode.Hunt;
 
     [Header("ObjectReferences")]
-    private GameObject BirbTarget;
+    public GameObject BirbTarget;
     public GameObject bullet;
     public GameObject CrossHair;
 
     [Header("Behavior Params")]
-    public float fireRate = 0.1f;
+    public float fireRate = 1.0f;
     public float seekLimit = 300.0f;
     public float huntLimit = 150.0f;
     public float resetTargetInterval = 5.0f;
@@ -46,6 +46,7 @@ public class HAI : MonoBehaviour
         //Check what the current mode is
         switch (mode)
         {
+            //In wander mode, the hunter will simply choose a random spot to move to that is nearby
             case HunterMode.Wander:
                 //Randomize the next location to move
                 float offsetX = Random.Range(-xRadius, xRadius);
@@ -57,10 +58,27 @@ public class HAI : MonoBehaviour
 
                 break;
 
+            //In seek mode, the hunter will choose locations closer to thw bird to move towards, also they will aim at the bird
             case HunterMode.Seek:
                 break;
 
+            //in hunt mode, the hunter doesn't move and simply stays stationary and shoots at the bird
             case HunterMode.Hunt:
+                //Get current range and make bang bang based on distance
+                Vector3 currPos = gameObject.transform.position;
+                Vector3 targetPos = gameObject.transform.position;
+
+                //Make hunter bullet spawner face eagle
+                CrossHair.transform.LookAt(BirbTarget.transform.position);
+
+                if (Vector3.Distance(currPos, targetPos) < 200)
+                {
+                    if(fireRate < 0)
+                    {
+                        fireRate = 2.0f;
+                        Shoot();
+                    }
+                }
                 break;
         }
 
@@ -70,15 +88,8 @@ public class HAI : MonoBehaviour
         //Offset move timer so the hunter doesn't home in on birb instantly
         moveTimer += Time.deltaTime;
 
-        //Get current range and make bang bang based on distance
-        Vector3 currPos = gameObject.transform.position;
-        Vector3 targetPos = gameObject.transform.position;
-
         //reference firerate to make the hunter not fire full auto
         fireRate -= Time.deltaTime;
-
-        //Make hunter bullet spawner face eagle
-        CrossHair.transform.LookAt(BirbTarget.transform.position);
 
         //If the hunter has not moved in a while, allow movement
         if (moveTimer >= resetTargetInterval)
