@@ -16,13 +16,12 @@ public class CageBreak : MonoBehaviour
 
     void Break()
     {
-        //Make broken cage
-        Instantiate(BrokenCage);
-
         //Set new cage to be where the old cage was
         Vector3 newPos = gameObject.transform.position;
         Quaternion newRot = gameObject.transform.rotation;
-        BrokenCage.transform.SetPositionAndRotation(newPos, newRot);
+
+        //Make broken cage
+        Instantiate(BrokenCage, newPos, newRot);
 
         //Delete old cage
         Destroy(gameObject);

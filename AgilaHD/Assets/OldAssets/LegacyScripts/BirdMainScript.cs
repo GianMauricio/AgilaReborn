@@ -36,6 +36,7 @@ public class BirdMainScript : MonoBehaviour
     public Image staminaBarBG;
     public Image staminaBar;
     public GameObject TutorialUI;
+    public GameObject PauseUI;
 
     //Stamina stuff
     public float opacVal = 0;
@@ -51,6 +52,10 @@ public class BirdMainScript : MonoBehaviour
     public float current_speed = 0;
     private float flapspeed = 0;
     private float lerpVal = 0;
+
+    //Pause implementation
+    bool isPaused = false;
+    public BirdHunterMode hunterRef;
 
     void Start()
     {
@@ -119,216 +124,247 @@ public class BirdMainScript : MonoBehaviour
         float transpVal = opacVal / 255;
         staminaBar.color = new Color(255, 255, 255, transpVal);
         staminaBarBG.color = new Color(255, 255, 255, transpVal);
+
+        //Detect pause key
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            isPaused = !isPaused;
+            Debug.Log(isPaused);
+
+            if(isPaused == true)
+            {
+                animator.SetFlapSpeed(0);
+                tpsReference.Pause();
+                hunterRef.Pause();
+
+                PauseUI.SetActive(true);
+            }
+
+            else
+            {
+                tpsReference.Unpause();
+                PauseUI.SetActive(false);
+                hunterRef.Unpause();
+            }
+        }
     }
 
     //Movement
     void FixedUpdate()
     {
-        //initial velocity compute at first update
-        current_speed = rb.velocity.magnitude; /*Can be utilized for anim transitions*/
-
-        //Sprint implementation
-        //If the player can sprint
-        if (Input.GetKey(KeyCode.LeftShift) && currSprint > 5)
+        if (!isPaused)
         {
-            ForwardForce = 100;
-            currSprint -= Time.deltaTime * 10.0f;
-        }
+            //initial velocity compute at first update
+            current_speed = rb.velocity.magnitude; /*Can be utilized for anim transitions*/
 
-        //Otherwise
-        else
-        {
-            currSprint += Time.deltaTime * 5.0f;
-            ForwardForce = 50;
-        }
-
-        //Moving forward
-        if (Input.GetKey(KeyCode.W))
-        {
-            float rate = current_speed / 20;//topspeed
-            flapspeed *= rate;
-            //Debug.Log(flapspeed);
-
-            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
+            //Sprint implementation
+            //If the player can sprint
+            if (Input.GetKey(KeyCode.LeftShift) && currSprint > 5)
             {
-                flapspeed = Mathf.Clamp(flapspeed, 2, 10);//10
-                // Debug.LogError("EHEHHE");
+                ForwardForce = 100;
+                currSprint -= Time.deltaTime * 10.0f;
             }
+
+            //Otherwise
             else
             {
-                flapspeed = Mathf.Clamp(flapspeed, 2, 5);
+                currSprint += Time.deltaTime * 5.0f;
+                ForwardForce = 50;
             }
 
-            animator.SetFlapSpeed(flapspeed);
-
-            //Calculate where the eagle is facing
-            gameObject.GetComponent<Rigidbody>().drag = initialDrag;
-            gameObject.GetComponent<Rigidbody>().angularDrag = 0.3f;
-            yawRotation = tpsReference.GetComponent<ThirdPersonCamera>().yawRotation;
-
-            //Set according to camera
-            if (tpsReference.GetComponent<ThirdPersonCamera>().moveleft)
-            {
-                yawRotation = -15 * 10;
-            }
-            else if (tpsReference.GetComponent<ThirdPersonCamera>().moveright)
-            {
-                yawRotation = 15 * 10;
-            }
-            else
-            {
-                yawRotation = 0;
-            }
-
-            //Do the corrections smoothly
-            currRot = Mathf.SmoothDamp(currRot, yawRotation, ref smoothVel, 1);
-
-            //Ascertain the relative position of the TPS camera
-            float relativePosition;
-
-            //Debug.Log("Current speed: " + current_speed);
-
-            relativePosition = tpsReference.gameObject.transform.position.y - gameObject.transform.position.y;
-
-            //Debug.Log("Camera relative pos: " + relativePosition);
-
-            //If camera is above eagle and eagle is "plummetting"
-            if(relativePosition > 5 && current_speed > 27.0f)
-            {
-                //Start dive
-                animator.startDive();
-            }
-
-            //Once the eagle bleeds og enoug speed, release the dive
-            else if(current_speed < 27.0f)
-            {
-                //Leave dive
-                animator.leaveDive();
-            }
-
-            //Calculate direction
-            Quaternion too;
-            too = Quaternion.Euler(1, 1, -currRot);
-
-            //Apply direction over time
-            transform.rotation = Quaternion.Slerp(transform.rotation, cameraT.rotation * too, Time.deltaTime / rotationSmoothTime);
-
-            //Add force according to current direction (Even if the current direction does not match intended destination)
-            rb.AddForce(ForwardForce * transform.forward);
-
-            ///This is where the wierd floaty feeling comes from, this is what makes the eagle feel natural
-        }
-
-        //Not moving
-       if (Input.GetKeyUp(KeyCode.W)) 
-       {
-
-            //Debug.Log("Released W");
-            //normalizeWingFlap();
-            //Ensure dive is left once speed normalizes
-            if(current_speed < 22.5f)
-            {
-                animator.leaveDive();
-            }
-
-            //Get current velocity
-            Vector3 velocity = gameObject.GetComponent<Rigidbody>().velocity;
-
-            //if the eagle is moving downwards
-            if (gameObject.transform.position.y <= lastPosition.y)
-            {
-                //Slow fall force and add more forward force
-                rb.AddForce(7.0f * (transform.forward + Vector3.up)); //glide
-            }
-
-            //if the eagle is moving up
-            else
-            {
-                //Slow forward force (by virtue of physics this also applies a downward force)
-                rb.AddForce(2.0f * (transform.forward + Vector3.up)); //glide
-            }
-            
-            //The fucking magic begins here
-
-            //This whole thing makes the eagle not spinout bu countering the spin force by a certain deltaTime after it breaches 0.15 units of "drag"
-            gameObject.GetComponent<Rigidbody>().angularDrag = initialAngularDrag;
-            float nice = gameObject.GetComponent<Rigidbody>().drag;
-            if(nice > 0.15f)
-            {
-                gameObject.GetComponent<Rigidbody>().drag = nice - Time.deltaTime;
-            }
-           
-            //This ensures that the rotation calcultations above are actually applied prior to the next physics calculations
-            //...at least partially
-            float magnitude = velocity.magnitude;
-            Vector3 orignialDirection = this.lastVelocity;
-            Vector3 nowDirection = gameObject.GetComponent<Rigidbody>().velocity;
-            Quaternion q = Quaternion.FromToRotation(orignialDirection, nowDirection);
-
-            transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, q * transform.rotation, magnitude / 10) ;
-
-        }
-
-       if (Input.GetKey(KeyCode.S))//brakes
-       {
-            //Ensure dive leaves the moment S is pressed
-            animator.leaveDive();
-
-            //set animator
-            if (current_speed > 0.01)
+            //Moving forward
+            if (Input.GetKey(KeyCode.W))
             {
                 float rate = current_speed / 20;//topspeed
                 flapspeed *= rate;
-                flapspeed = Mathf.Clamp(flapspeed, 11, 25);
+                //Debug.Log(flapspeed);
+
+                if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
+                {
+                    flapspeed = Mathf.Clamp(flapspeed, 2, 10);//10
+                                                              // Debug.LogError("EHEHHE");
+                }
+                else
+                {
+                    flapspeed = Mathf.Clamp(flapspeed, 2, 5);
+                }
+
                 animator.SetFlapSpeed(flapspeed);
+
+                //Calculate where the eagle is facing
+                gameObject.GetComponent<Rigidbody>().drag = initialDrag;
+                gameObject.GetComponent<Rigidbody>().angularDrag = 0.3f;
+                yawRotation = tpsReference.GetComponent<ThirdPersonCamera>().yawRotation;
+
+                //Set according to camera
+                if (tpsReference.GetComponent<ThirdPersonCamera>().moveleft)
+                {
+                    yawRotation = -15 * 10;
+                }
+                else if (tpsReference.GetComponent<ThirdPersonCamera>().moveright)
+                {
+                    yawRotation = 15 * 10;
+                }
+                else
+                {
+                    yawRotation = 0;
+                }
+
+                //Do the corrections smoothly
+                currRot = Mathf.SmoothDamp(currRot, yawRotation, ref smoothVel, 1);
+
+                //Ascertain the relative position of the TPS camera
+                float relativePosition;
+
+                //Debug.Log("Current speed: " + current_speed);
+
+                relativePosition = tpsReference.gameObject.transform.position.y - gameObject.transform.position.y;
+
+                //Debug.Log("Camera relative pos: " + relativePosition);
+
+                //If camera is above eagle and eagle is "plummetting"
+                if (relativePosition > 5 && current_speed > 27.0f)
+                {
+                    //Start dive
+                    animator.startDive();
+                }
+
+                //Once the eagle bleeds og enoug speed, release the dive
+                else if (current_speed < 27.0f)
+                {
+                    //Leave dive
+                    animator.leaveDive();
+                }
+
+                //Calculate direction
+                Quaternion too;
+                too = Quaternion.Euler(1, 1, -currRot);
+
+                //Apply direction over time
+                transform.rotation = Quaternion.Slerp(transform.rotation, cameraT.rotation * too, Time.deltaTime / rotationSmoothTime);
+
+                //Add force according to current direction (Even if the current direction does not match intended destination)
+                rb.AddForce(ForwardForce * transform.forward);
+
+                ///This is where the wierd floaty feeling comes from, this is what makes the eagle feel natural
             }
+
+            //Not moving
+            if (Input.GetKeyUp(KeyCode.W))
+            {
+
+                //Debug.Log("Released W");
+                //normalizeWingFlap();
+                //Ensure dive is left once speed normalizes
+                if (current_speed < 22.5f)
+                {
+                    animator.leaveDive();
+                }
+
+                //Get current velocity
+                Vector3 velocity = gameObject.GetComponent<Rigidbody>().velocity;
+
+                //if the eagle is moving downwards
+                if (gameObject.transform.position.y <= lastPosition.y)
+                {
+                    //Slow fall force and add more forward force
+                    rb.AddForce(7.0f * (transform.forward + Vector3.up)); //glide
+                }
+
+                //if the eagle is moving up
+                else
+                {
+                    //Slow forward force (by virtue of physics this also applies a downward force)
+                    rb.AddForce(2.0f * (transform.forward + Vector3.up)); //glide
+                }
+
+                //The fucking magic begins here
+
+                //This whole thing makes the eagle not spinout bu countering the spin force by a certain deltaTime after it breaches 0.15 units of "drag"
+                gameObject.GetComponent<Rigidbody>().angularDrag = initialAngularDrag;
+                float nice = gameObject.GetComponent<Rigidbody>().drag;
+                if (nice > 0.15f)
+                {
+                    gameObject.GetComponent<Rigidbody>().drag = nice - Time.deltaTime;
+                }
+
+                //This ensures that the rotation calcultations above are actually applied prior to the next physics calculations
+                //...at least partially
+                float magnitude = velocity.magnitude;
+                Vector3 orignialDirection = this.lastVelocity;
+                Vector3 nowDirection = gameObject.GetComponent<Rigidbody>().velocity;
+                Quaternion q = Quaternion.FromToRotation(orignialDirection, nowDirection);
+
+                transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, q * transform.rotation, magnitude / 10);
+
+            }
+
+            if (Input.GetKey(KeyCode.S))//brakes
+            {
+                //Ensure dive leaves the moment S is pressed
+                animator.leaveDive();
+
+                //set animator
+                if (current_speed > 0.01)
+                {
+                    float rate = current_speed / 20;//topspeed
+                    flapspeed *= rate;
+                    flapspeed = Mathf.Clamp(flapspeed, 11, 25);
+                    animator.SetFlapSpeed(flapspeed);
+                }
+                else
+                {
+                    float rate = current_speed / 20;//topspeed
+                    flapspeed *= rate;
+                    flapspeed = Mathf.Clamp(flapspeed, 5, 20);
+                    animator.SetFlapSpeed(flapspeed);
+                }
+
+
+                //Force eagle to slow
+                gameObject.GetComponent<Rigidbody>().drag = 10;
+
+
+                //Get counter forward vector
+                Vector3 crossVector = Vector3.Cross(Vector3.up, transform.right);
+
+                //Calcutalte "backwards" vector in context of eagle with normalization to avoid gimballing
+                Vector3 direction = ((transform.forward + (-crossVector + Vector3.up)) + transform.forward).normalized;
+
+                //Denote as direction quaternion
+                Quaternion kwat = Quaternion.LookRotation(direction);
+
+                //As the eagle brakes, the eagle also turns towards the "counter forwards"
+                transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, kwat, 1.0f);
+            }
+
             else
             {
-                float rate = current_speed / 20;//topspeed
-                flapspeed *= rate;
-                flapspeed = Mathf.Clamp(flapspeed, 5, 20);
-                animator.SetFlapSpeed(flapspeed);
+                //Debug.Log("Released S");
+                //Set drag to normal as held prior to the pressing of S
+                gameObject.GetComponent<Rigidbody>().drag = initialDrag;
+                normalizeWingFlap();
             }
 
+            /*
+            //Upon release of "S"
+            else
+            {
+                //Set drag to normal as held prior to the pressing of S
+               // gameObject.GetComponent<Rigidbody>().drag = initialDrag;
+                //normalizeWingFlap();
 
-            //Force eagle to slow
-            gameObject.GetComponent<Rigidbody>().drag = 10;
+            }*/
 
-
-            //Get counter forward vector
-            Vector3 crossVector = Vector3.Cross(Vector3.up, transform.right);
-
-            //Calcutalte "backwards" vector in context of eagle with normalization to avoid gimballing
-            Vector3 direction = ((transform.forward + (-crossVector + Vector3.up)) + transform.forward).normalized;
-
-            //Denote as direction quaternion
-            Quaternion kwat = Quaternion.LookRotation(direction);
-
-            //As the eagle brakes, the eagle also turns towards the "counter forwards"
-            transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, kwat, 1.0f);
+            //reset calclation initials to preserve accuracy for the next frame
+            this.lastPosition = gameObject.transform.position;
+            this.lastVelocity = gameObject.GetComponent<Rigidbody>().velocity;
         }
 
-       else
-        {
-            //Debug.Log("Released S");
-            //Set drag to normal as held prior to the pressing of S
-            gameObject.GetComponent<Rigidbody>().drag = initialDrag;
-            normalizeWingFlap();
-        }
-
-        /*
-        //Upon release of "S"
         else
         {
-            //Set drag to normal as held prior to the pressing of S
-           // gameObject.GetComponent<Rigidbody>().drag = initialDrag;
-            //normalizeWingFlap();
-           
-        }*/
-
-        //reset calclation initials to preserve accuracy for the next frame
-        this.lastPosition = gameObject.transform.position;
-        this.lastVelocity = gameObject.GetComponent<Rigidbody>().velocity;
+            rb.Sleep();
+        }
     }
 
     private void normalizeWingFlap()
