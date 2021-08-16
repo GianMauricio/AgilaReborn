@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.AI;
 
 /// <summary>
-/// Basic logic, the hunter will get the nearest point in the navmesh to the current location of the eagle and move towards it.
-/// Every X time intervals the "nearest point" will change to update to the eagles current position
-/// Once the hunter is within range, start shooting the birb
+/// Basic logic, the hunter will periodaically check if the bird is within range to enter "seek" mode
+/// in seek mode the hunter will follow and aim at the bird. If the hunter is in seek mode, the hunter will periodically 
+/// check if the bird is within a close enough range to shoot
 /// </summary>
 public class HAI : MonoBehaviour
 {
