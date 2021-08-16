@@ -9,6 +9,7 @@ TagManager:
   - Cage
   - Bunny
   - Monkey
+  - HunterSphere
   layers:
   - Default
   - TransparentFX

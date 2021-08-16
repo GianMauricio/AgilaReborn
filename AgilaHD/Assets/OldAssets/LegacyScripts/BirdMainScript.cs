@@ -391,7 +391,7 @@ public class BirdMainScript : MonoBehaviour
             //gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * 30, ForceMode.Impulse);
             ifFloorHit();
         }
-                
+
         //Get hurt
         if (collision.gameObject.name.Contains("Bullet"))
             Hurt(10);

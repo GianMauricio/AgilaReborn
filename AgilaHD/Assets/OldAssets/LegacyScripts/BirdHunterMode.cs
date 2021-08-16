@@ -9,6 +9,7 @@ using UnityEngine.UI;
 /// </summary>
 public class BirdHunterMode : MonoBehaviour
 {
+    public ProgressionSystem levelObjectives;
     public BirdAnimationHandler animator;
     [SerializeField] private GameObject sphereColliderReference;
 

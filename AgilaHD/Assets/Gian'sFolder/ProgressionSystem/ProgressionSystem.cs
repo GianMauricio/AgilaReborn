@@ -48,6 +48,11 @@ public class ProgressionSystem : MonoBehaviour
         //Timer is always visible
         Timer.gameObject.SetActive(true);
 
+        //Set up progresses to 0 / max
+        Progress1.SetText(current1.ToString() + "/" + Total1.ToString());
+        Progress2.SetText(current2.ToString() + "/" + Total2.ToString());
+        Progress3.SetText(current3.ToString() + "/" + Total3.ToString());
+
         //Edit visibility of objectives depending on the number in the level
         switch (objectives)
         {
@@ -382,8 +387,6 @@ public class ProgressionSystem : MonoBehaviour
                 Debug.Log("Objective count " + objectives + " is unexpected");
                 break;
         }
-
-        
     }
     
     // Update is called once per frame
@@ -416,7 +419,7 @@ public class ProgressionSystem : MonoBehaviour
     }
 
     //Update the objectives list with a tag of the object requested
-    void updateObjectives(string objectTag)
+    public void updateObjectives(string objectTag)
     {
         //If the object tag matches target 1...
         if (Target1.CompareTag(objectTag))
@@ -424,8 +427,23 @@ public class ProgressionSystem : MonoBehaviour
             current1++;
 
             //Update objective 1 UI
+            Progress1.SetText(current1.ToString() + "/" + Total1.ToString());
+        }
 
+        else if (objectives > 1  && Target2.CompareTag(objectTag))
+        {
+            current2++;
 
+            //Update objective 1 UI
+            Progress2.SetText(current2.ToString() + "/" + Total2.ToString());
+        }
+
+        else if (objectives > 2 && Target3.CompareTag(objectTag))
+        {
+            current3++;
+
+            //Update objective 1 UI
+            Progress3.SetText(current3.ToString() + "/" + Total3.ToString());
         }
     }
 }

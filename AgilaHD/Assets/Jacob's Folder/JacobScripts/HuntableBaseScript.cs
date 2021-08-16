@@ -121,7 +121,7 @@ public class HuntableBaseScript : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Sphere")
+        if (other.gameObject.name == "HuntCollider")
         {
             gotEaten();
         }

@@ -52,19 +52,5 @@ public class RepeatedSpawning : MonoBehaviour
         {
             spawnTime += Time.deltaTime;
         }
-
-        //Check if any bunny has been eaten
-        foreach(GameObject curr in spawnedObjects) /*This implementation is prone to overflow... too bad!*/
-        {
-            //If it has been eaten
-            if(curr.activeSelf == false)
-            {
-                //Remove it from list
-                spawnedObjects.Remove(curr);
-
-                //And destroy it
-                Destroy(curr);
-            }
-        }
     }
 }

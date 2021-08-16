@@ -8,7 +8,7 @@ public class CageBreak : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("HunterSphere"))
         {
             Break();
         }
