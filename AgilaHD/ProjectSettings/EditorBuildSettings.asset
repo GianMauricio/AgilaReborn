@@ -21,6 +21,12 @@ EditorBuildSettings:
     path: Assets/ADONIS GAY BAR VIP LOUNGE/Scene/TUTORIAL TERRAIN.unity
     guid: cb52259e9f7c3824083fc378f30275bf
   - enabled: 1
-    path: Assets/Gian'sFolder/GameOver.unity
+    path: Assets/Gian'sFolder/GameLost.unity
     guid: 7ae97938112874943b9d45bd4da70171
+  - enabled: 1
+    path: Assets/Gian'sFolder/GameWon.unity
+    guid: b6776bca6e7a27b4388beabaa5542e2b
+  - enabled: 1
+    path: Assets/Gian'sFolder/StoryIntro.unity
+    guid: dd891682f3ea3434eadeccacb6bb6bd1
   m_configObjects: {}

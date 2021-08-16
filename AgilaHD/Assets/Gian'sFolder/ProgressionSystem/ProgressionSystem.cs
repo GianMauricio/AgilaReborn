@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ProgressionSystem : MonoBehaviour
 {
@@ -424,26 +425,78 @@ public class ProgressionSystem : MonoBehaviour
         //If the object tag matches target 1...
         if (Target1.CompareTag(objectTag))
         {
-            current1++;
+            if(current1 < Total1)
+            {
+                current1++;
+            }
 
             //Update objective 1 UI
             Progress1.SetText(current1.ToString() + "/" + Total1.ToString());
+
+            //Change UI text if objective is complete
+            if(current1 >= Total1)
+            {
+                Progress1.color = Color.green;
+            }
         }
 
         else if (objectives > 1  && Target2.CompareTag(objectTag))
         {
-            current2++;
+            if (current2 < Total2)
+            {
+                current2++;
+            }
 
             //Update objective 1 UI
             Progress2.SetText(current2.ToString() + "/" + Total2.ToString());
+
+            //Change UI text if objective is complete
+            if (current2 >= Total2)
+            {
+                Progress2.color = Color.green;
+            }
         }
 
         else if (objectives > 2 && Target3.CompareTag(objectTag))
         {
-            current3++;
+            if (current3 < Total3)
+            {
+                current3++;
+            }
 
             //Update objective 1 UI
             Progress3.SetText(current3.ToString() + "/" + Total3.ToString());
+
+            //Change UI text if objective is complete
+            if (current3 >= Total3)
+            {
+                Progress3.color = Color.green;
+            }
+        }
+
+        //Check if all objectives have been met
+        if(objectives == 1)
+        {
+            if(current1 >= Total1)
+            {
+                SceneManager.LoadScene("GameWon");
+            }
+        }
+
+        else if (objectives == 2)
+        {
+            if (current1 >= Total1 && current2 >= Total2)
+            {
+                SceneManager.LoadScene("GameWon");
+            }
+        }
+
+        else if (objectives == 3)
+        {
+            if (current1 >= Total1 && current2 >= Total2 && current3 >= Total3)
+            {
+                SceneManager.LoadScene("GameWon");
+            }
         }
     }
 }

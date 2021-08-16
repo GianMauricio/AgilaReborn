@@ -10,6 +10,11 @@ public class MenuScript : MonoBehaviour
         Cursor.visible = true;
     }
 
+    public void onClickPlay()
+    {
+        SceneManager.LoadScene("StoryIntro");
+    }
+
     public void OnClickStart()
     {
         SceneManager.LoadScene("TUTORIAL TERRAIN"); //Replace with Tutorial scene later
@@ -18,5 +23,10 @@ public class MenuScript : MonoBehaviour
     public void OnClickEnd()
     {
         Application.Quit(); //Quit the application
+    }
+
+    public void OnClickBack()
+    {
+        SceneManager.LoadScene("Menu Scene");
     }
 }
