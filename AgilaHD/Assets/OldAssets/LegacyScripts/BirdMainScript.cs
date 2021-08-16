@@ -30,11 +30,13 @@ public class BirdMainScript : MonoBehaviour
     //Health Values
     float maxhealth = 100.0f;
     float currhealth = 100.0f;
+    float dmgOpac = 0;
 
     //UI stuff
     public Image healthBar;
     public Image staminaBarBG;
     public Image staminaBar;
+    public Image dmgVignette;
     public GameObject TutorialUI;
     public GameObject PauseUI;
 
@@ -127,6 +129,14 @@ public class BirdMainScript : MonoBehaviour
         float transpVal = opacVal / 255;
         staminaBar.color = new Color(255, 255, 255, transpVal);
         staminaBarBG.color = new Color(255, 255, 255, transpVal);
+
+        //Fade the dmg Vignette constantly, but never below 0
+        if(dmgOpac > 0)
+        {
+            dmgOpac -= Time.deltaTime;
+
+            dmgVignette.color = new Color(255, 255, 255, dmgOpac);
+        }
 
         //Detect pause key
         if (Input.GetKeyDown(KeyCode.P))
@@ -399,6 +409,7 @@ public class BirdMainScript : MonoBehaviour
 
     public void Hurt(int pain)
     {
+        Debug.Log("Ow");
         currhealth -= pain;
 
         if(currhealth <= 0)
@@ -408,6 +419,12 @@ public class BirdMainScript : MonoBehaviour
 
         //Update UI
         setHealthPercent();
+
+        //Set dmg Vignette to display context sensitive levels of red
+        dmgOpac += (maxhealth - currhealth) / maxhealth;
+
+        //Opacity must not exceed 1
+        dmgOpac = dmgOpac > 1 ? 1 : dmgOpac;
     }
 
     void setHealthPercent()
