@@ -11,7 +11,7 @@ using UnityEngine;
 //Random --> Spawns objects within a random range
 public enum SpawnType {Single, Cluster, Random}
 
-public class CageSpawning : MonoBehaviour
+public class SingularInstanceSpawn : MonoBehaviour
 {
     public GameObject Template;
     public SpawnType type = SpawnType.Single;
@@ -41,8 +41,10 @@ public class CageSpawning : MonoBehaviour
         {
             for (int i = 0; i < objectsToSpawn; i++)
             {
-                float randomX = Random.Range(-spawnRadius, -spawnRadius);
-                float randomZ = Random.Range(-spawnRadius, -spawnRadius);
+                float randomX = Random.Range(-spawnRadius, spawnRadius);
+                float randomZ = Random.Range(-spawnRadius, spawnRadius);
+
+                //TODO: Make sure objects cannot spawn INSIDE each other
 
                 //Spawn some units away from the spawner, y is 50 just to make sure that objects don't fall through the world
                 Vector3 spawnPos = new Vector3(transform.position.x + randomX, 50, transform.position.z + randomZ);

@@ -96,7 +96,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BrokenCage: {fileID: 9041079720028030177, guid: 828b16e3fb5edb54db90d7b9de4a821c,
     type: 3}
-  timer: 5
 --- !u!54 &3450495084746197545
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -111,7 +110,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 90
   m_CollisionDetection: 0
 --- !u!65 &3450495084746197544
 BoxCollider:
