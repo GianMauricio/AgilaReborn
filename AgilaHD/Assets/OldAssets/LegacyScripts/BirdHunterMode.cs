@@ -9,9 +9,10 @@ using UnityEngine.UI;
 /// </summary>
 public class BirdHunterMode : MonoBehaviour
 {
-
     public BirdAnimationHandler animator;
     [SerializeField] private GameObject sphereColliderReference;
+
+    bool isPaused = false;
 
     void Start()
     {
@@ -24,27 +25,40 @@ public class BirdHunterMode : MonoBehaviour
 
     void Update()
     {
-        //If mouse button is held
-        if (Input.GetButton("Fire1"))
+        if (!isPaused)
         {
-            animator.doGrab();
-            //If the cooldown has not ben started yet
-           
-            //allow hunt
-
-            // (Legacy)Adjusts the position of the image based on stamine to keep centered
-            // imageHolderReference.transform.localScale = new Vector3(cooldown / maxCooldown, 1, 1);
-            if (!sphereColliderReference.active) //Uses legacy Unity functions but who cares?
+            //If mouse button is held
+            if (Input.GetButton("Fire1"))
             {
-                sphereColliderReference.SetActive(true);
+                animator.doGrab();
+                //If the cooldown has not ben started yet
+
+                //allow hunt
+
+                // (Legacy)Adjusts the position of the image based on stamine to keep centered
+                // imageHolderReference.transform.localScale = new Vector3(cooldown / maxCooldown, 1, 1);
+                if (!sphereColliderReference.active) //Uses legacy Unity functions but who cares?
+                {
+                    sphereColliderReference.SetActive(true);
+                }
+            }
+
+            //Otherwise
+            else
+            {
+                animator.stopGrab();
+                sphereColliderReference.SetActive(false);
             }
         }
+    }
 
-        //Otherwise
-        else
-        {
-            animator.stopGrab();
-            sphereColliderReference.SetActive(false);
-        }
+    public void Pause()
+    {
+        isPaused = true;
+    }
+
+    public void Unpause()
+    {
+        isPaused = false;
     }
 }
