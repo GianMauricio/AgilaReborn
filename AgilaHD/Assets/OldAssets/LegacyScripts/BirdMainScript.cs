@@ -162,6 +162,13 @@ public class BirdMainScript : MonoBehaviour
         }
     }
 
+    public void Paused()
+    {
+        isPaused = !isPaused;
+        tpsReference.Unpause();
+        PauseUI.SetActive(false);
+        hunterRef.Unpause();
+    }
     //Movement
     void FixedUpdate()
     {
