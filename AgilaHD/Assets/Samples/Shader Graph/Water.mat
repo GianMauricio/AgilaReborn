@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_WaterShadr
+  m_Name: Water
   m_Shader: {fileID: -6465566751694194690, guid: c0c0988c264256c41af553654b5ea751,
     type: 3}
   m_ShaderKeywords: 
@@ -43,9 +43,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_4AC78CFA: 8
+    - Vector1_4AC78CFA: 5
     - Vector1_4CC190FE: 0.69
+    - Vector1_581302AB: 1
+    - Vector1_AE3207FB: 1
     - Vector1_B1E24A4D: 0.78
+    - Vector1_BC96D0D1: 1
+    - Vector1_E9297543: 2
     - Vector1_FBAF8AA2: 0.06
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 0
