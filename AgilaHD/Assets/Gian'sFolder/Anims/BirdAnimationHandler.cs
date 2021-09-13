@@ -12,6 +12,7 @@ public class BirdAnimationHandler : MonoBehaviour
 {
     //Animation
     public Animator animControl;
+    public SpeedLinesAnimator speedLines;
 
     bool flapping = true;
     bool grabbing = true;
@@ -86,6 +87,8 @@ public class BirdAnimationHandler : MonoBehaviour
         //birdState = BIRDSTATE.enterDive;
         //animControl.SetInteger("birdState", (int)birdState);
         diving = true;
+
+        speedLines.changeState(SpeedLinesAnimator.SpeedState.ACCELERATING);
     }
 
     public void leaveDive()
@@ -93,5 +96,7 @@ public class BirdAnimationHandler : MonoBehaviour
         //birdState = BIRDSTATE.exitDive;
         //animControl.SetInteger("birdState", (int)birdState);
         diving = false;
+
+        speedLines.changeState(SpeedLinesAnimator.SpeedState.DECELERATING);
     }
 }
