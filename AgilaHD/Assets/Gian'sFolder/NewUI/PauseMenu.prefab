@@ -237,7 +237,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2842715212083086072}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4535006212050977962}
+        m_MethodName: OnClickBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2842715212130684754
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,7 +367,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2842715212130684759}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4535006212050977962}
+        m_MethodName: unPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2842715213340678970}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2842715212991454394
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,7 +670,7 @@ GameObject:
   - component: {fileID: 2842715213340678975}
   - component: {fileID: 2842715213340678968}
   - component: {fileID: 2842715213340678969}
-  - component: {fileID: 9013268259672549427}
+  - component: {fileID: 4535006212050977962}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -725,7 +758,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &9013268259672549427
+--- !u!114 &4535006212050977962
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

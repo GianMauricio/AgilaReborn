@@ -1076,7 +1076,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2842715212879162971}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1703408998
+--- !u!114 &1703408994
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1379,6 +1379,11 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6818976207342451297, guid: 0de6b901114e20e478d9b2976ab2a333,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8046499192791309484, guid: 0de6b901114e20e478d9b2976ab2a333,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1636,7 +1641,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1703408998}
+      objectReference: {fileID: 0}
     - target: {fileID: 2842715212083086073, guid: 4786dc48e709a1e4ea85b2b91fce3799,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
