@@ -101,9 +101,9 @@ public class BirdAnimationHandler : MonoBehaviour
         speedLines.changeState(SpeedLinesAnimator.SpeedState.DECELERATING);
     }
 
-    public void launchPing()
+    public void launchPing(Vector3 source)
     {
-        InteractibleManager.pingAll(transform.position);
+        InteractibleManager.pingAll(source);
 
         huntUI.SetActive(true);
     }

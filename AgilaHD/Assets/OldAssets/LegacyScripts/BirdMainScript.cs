@@ -93,7 +93,7 @@ public class BirdMainScript : MonoBehaviour
 
         if (isHunting)
         {
-            animator.launchPing();
+            animator.launchPing(tpsReference.transform.position);
         }
 
         else
