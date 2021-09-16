@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class ProgressionSystem : MonoBehaviour
 {
     public int objectives = 1;
@@ -36,6 +36,10 @@ public class ProgressionSystem : MonoBehaviour
 
     public int Total3;
     private int current3;
+
+    public int avgFrameRate;
+    public Text display_Text;
+
 
     // Start is called before the first frame update
     void Start()
@@ -393,6 +397,12 @@ public class ProgressionSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float current = 0;
+        current = (int)(1f / Time.unscaledDeltaTime);
+        avgFrameRate = (int)current;
+        display_Text.text = avgFrameRate.ToString() + " FPS";
+
+
         //Timer
         //increase time elapsed
         TimeElapsed += Time.deltaTime;

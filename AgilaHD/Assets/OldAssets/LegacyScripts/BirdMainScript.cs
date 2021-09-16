@@ -169,6 +169,7 @@ public class BirdMainScript : MonoBehaviour
         PauseUI.SetActive(false);
         hunterRef.Unpause();
     }
+
     //Movement
     void FixedUpdate()
     {

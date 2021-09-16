@@ -36,6 +36,8 @@ public class HuntableBaseScript : MonoBehaviour
         isEaten = false;
 
         rb = GetComponent<Rigidbody>();
+
+        //Give self to ~god~ the interactible manager
     }
 
     // Update is called once per frame
