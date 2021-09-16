@@ -17,7 +17,7 @@ public class MenuScript : MonoBehaviour
 
     public void onClickPlay()
     {
-        SceneManager.LoadScene("StoryIntro");
+        SceneManager.LoadScene("IntroStoryScene");
     }
 
     public void OnClickStart()
