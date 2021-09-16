@@ -10,6 +10,11 @@ public class MenuScript : MonoBehaviour
         Cursor.visible = true;
     }
 
+    public void unPause()
+    {
+        transform.GetComponentInParent<BirdMainScript>().Paused();
+    }
+
     public void onClickPlay()
     {
         SceneManager.LoadScene("StoryIntro");
