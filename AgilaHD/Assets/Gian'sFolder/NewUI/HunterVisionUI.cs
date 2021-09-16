@@ -10,6 +10,8 @@ using UnityEngine.UI;
 public class HunterVisionUI : MonoBehaviour
 {
     public enum HuntState { ACTIVE, INACTIVE };
+    public GameObject UIHolder;
+    public Vector3 lockLocation;
     public Image Ping;
     public List<string> filePathsHold;
     public List<Sprite> imagesHold;
@@ -23,6 +25,7 @@ public class HunterVisionUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        lockLocation = Vector3.zero;
         //Ready frames file paths via resource folder
         for (int i = 2; i <= 91; i++)
         {
@@ -59,6 +62,8 @@ public class HunterVisionUI : MonoBehaviour
     {
         if(state == HuntState.ACTIVE)
         {
+            UIHolder.transform.LookAt(lockLocation);
+
             if (timeElapsed >= frameChange)
             {
                 timeElapsed = 0.0f;
@@ -87,8 +92,10 @@ public class HunterVisionUI : MonoBehaviour
     //Takes in a location from which the ping was sent and orients the UI towards the position
     public void EngagePing(Vector3 origin)
     {
+        lockLocation = origin;
         //Set own state to active and enable image element
         state = HuntState.ACTIVE;
+        Ping.enabled = true;
     }
 
     public void DisablePing()

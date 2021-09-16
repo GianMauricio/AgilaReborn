@@ -47,6 +47,9 @@ public class BirdMainScript : MonoBehaviour
     private float maxSprint = 100.0f;
     private float currSprint = 100.0f;
 
+    //Hunt stuff
+    public bool isHunting = false;
+
     //Animator Ref
     public BirdAnimationHandler animator;
 
@@ -81,6 +84,21 @@ public class BirdMainScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H))
         {
             TutorialUI.SetActive(!TutorialUI.activeSelf);
+        }
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            isHunting = !isHunting;
+        }
+
+        if (isHunting)
+        {
+            animator.launchPing();
+        }
+
+        else
+        {
+            animator.unPing();
         }
 
         if (Input.GetKey(KeyCode.LeftShift) && currSprint > 0)

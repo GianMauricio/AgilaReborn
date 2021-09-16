@@ -99,4 +99,14 @@ public class BirdAnimationHandler : MonoBehaviour
 
         speedLines.changeState(SpeedLinesAnimator.SpeedState.DECELERATING);
     }
+
+    public void launchPing()
+    {
+        InteractibleManager.pingAll(transform.position);
+    }
+
+    public void unPing()
+    {
+        InteractibleManager.unpingAll();
+    }
 }

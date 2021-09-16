@@ -19,7 +19,7 @@ public class BPhizzy : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //Confirm hit
-        Debug.Log("Hit " + collision.gameObject.name);
+        //Debug.Log("Hit " + collision.gameObject.name);
 
         //And then vanish
         Destroy(gameObject);
