@@ -49,6 +49,9 @@ public class HunterVisionUI : MonoBehaviour
 
         //Set current frame to first;
         currFrame = 0;
+
+        //give own reference to the static class
+        InteractibleManager.addInteractible(gameObject);
     }
 
     // Update is called once per frame

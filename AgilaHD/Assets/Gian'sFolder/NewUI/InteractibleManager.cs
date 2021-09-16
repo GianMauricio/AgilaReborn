@@ -52,4 +52,9 @@ public static class InteractibleManager
             }
         }
     }
+
+    public static void addInteractible(GameObject possibleinteractible)
+    {
+        interactible.Add(possibleinteractible);
+    }
 }
