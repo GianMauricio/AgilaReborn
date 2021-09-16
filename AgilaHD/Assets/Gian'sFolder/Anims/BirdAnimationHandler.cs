@@ -13,6 +13,7 @@ public class BirdAnimationHandler : MonoBehaviour
     //Animation
     public Animator animControl;
     public SpeedLinesAnimator speedLines;
+    public GameObject huntUI;
 
     bool flapping = true;
     bool grabbing = true;
@@ -103,10 +104,14 @@ public class BirdAnimationHandler : MonoBehaviour
     public void launchPing()
     {
         InteractibleManager.pingAll(transform.position);
+
+        huntUI.SetActive(true);
     }
 
     public void unPing()
     {
         InteractibleManager.unpingAll();
+
+        huntUI.SetActive(false);
     }
 }
