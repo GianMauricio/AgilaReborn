@@ -34,4 +34,45 @@ public class MenuScript : MonoBehaviour
     {
         SceneManager.LoadScene("MenuScene");
     }
+
+    public void IntroScenePlay()
+    {
+        SceneManager.LoadScene("IntroStoryScene");
+    }
+
+    public void MidStoryScenePlay()
+    {
+        SceneManager.LoadScene("MidStoryScene");
+    }
+
+    public void FinalStoryScenePlay()
+    {
+        SceneManager.LoadScene("FinalStoryScene");
+    }
+
+    public void Level1Play()
+    {
+        SceneManager.LoadScene("Level1");
+    }
+
+    public void Level2Play()
+    {
+        SceneManager.LoadScene("Level2");
+    }
+
+    public void Level3Play()
+    {
+        SceneManager.LoadScene("Level3");
+    }
+
+    public void Level4Play()
+    {
+        SceneManager.LoadScene("Level4");
+    }
+
+    public void Level5Play()
+    {
+        SceneManager.LoadScene("Level5");
+    }
 }
+
