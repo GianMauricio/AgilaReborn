@@ -180,6 +180,7 @@ MonoBehaviour:
   Ping: {fileID: 7398798098514502697}
   filePathsHold: []
   imagesHold: []
+  ScalarMult: 1
   state: 1
 --- !u!1001 &5182331964758098283
 PrefabInstance:
@@ -321,7 +322,22 @@ PrefabInstance:
     - target: {fileID: 2397771928476968258, guid: 702af5e03c435be478247424838d129a,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397771928476968258, guid: 702af5e03c435be478247424838d129a,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: ceed580e51774a6489d8223e5ac0b811, type: 2}
+    - target: {fileID: 2397771928476968259, guid: 702af5e03c435be478247424838d129a,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397771928476968259, guid: 702af5e03c435be478247424838d129a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2397771928476968316, guid: 702af5e03c435be478247424838d129a,
         type: 3}
@@ -343,7 +359,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 5182331964758098283}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
