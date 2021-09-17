@@ -144,7 +144,7 @@ public class WeaponIk : MonoBehaviour
         Quaternion rot = Quaternion.FromToRotation(aimDirection, dir);
 
         //var poof = GameObject.Instantiate(muzzleFlash, aimTransform.position, rot);
-        var poof = GameObject.Instantiate(muzzleFlash, aimTransform.position, hand.rotation);
+        var poof = GameObject.Instantiate(muzzleFlash, aimTransform.position, aimTransform.rotation);
         var wee = GameObject.Instantiate(bullet, aimTransform.position, aimTransform.rotation);
     }
 }
