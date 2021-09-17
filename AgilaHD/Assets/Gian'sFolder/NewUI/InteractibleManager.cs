@@ -6,9 +6,9 @@ using UnityEngine;
 /// This script will compile ALL objects that CAN be pinged by hunter vision.
 /// If the eagle calls the script, it will either start or stop the ping being sent out by the huntable.
 /// </summary>
-public static class InteractibleManager 
+public class InteractibleManager 
 {
-    public static List<GameObject> interactible;
+    public static List<GameObject> interactible = new List<GameObject>();
 
     //Ping all interactibles
     public static void pingAll(Vector3 radarCenter)
@@ -22,7 +22,7 @@ public static class InteractibleManager
 
             if(ping != null)
             {
-                ping.EngagePing(hit.transform.position);
+                ping.EngagePing(radarCenter);
             }
 
             else

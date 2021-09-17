@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2808771187103335012
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 854995646600189563}
+  m_Layer: 0
+  m_Name: UIHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &854995646600189563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2808771187103335012}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7398798099829315198}
+  m_Father: {fileID: 7193223582658466114}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7536956564740131832
 GameObject:
   m_ObjectHideFlags: 0
@@ -33,7 +64,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
-  - {fileID: 7398798099829315198}
+  - {fileID: 854995646600189563}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -144,16 +175,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b282a0a41adbda74e86fd573e8a54cb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIHolder: {fileID: 2808771187103335012}
+  lockLocation: {x: 0, y: 0, z: 0}
   Ping: {fileID: 7398798098514502697}
   filePathsHold: []
   imagesHold: []
+  ScalarMult: 1
   state: 1
 --- !u!1001 &5182331964758098283
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 7193223582658466114}
+    m_TransformParent: {fileID: 854995646600189563}
     m_Modifications:
     - target: {fileID: 2397771927157888785, guid: 702af5e03c435be478247424838d129a,
         type: 3}
@@ -285,8 +319,32 @@ PrefabInstance:
       propertyPath: m_RenderMode
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2397771928476968256, guid: 702af5e03c435be478247424838d129a, type: 3}
+    - target: {fileID: 2397771928476968258, guid: 702af5e03c435be478247424838d129a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397771928476968258, guid: 702af5e03c435be478247424838d129a,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: ceed580e51774a6489d8223e5ac0b811, type: 2}
+    - target: {fileID: 2397771928476968259, guid: 702af5e03c435be478247424838d129a,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397771928476968259, guid: 702af5e03c435be478247424838d129a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397771928476968316, guid: 702af5e03c435be478247424838d129a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 702af5e03c435be478247424838d129a, type: 3}
 --- !u!224 &7398798099829315198 stripped
 RectTransform:

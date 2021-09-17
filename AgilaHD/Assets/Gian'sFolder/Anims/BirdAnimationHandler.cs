@@ -13,6 +13,7 @@ public class BirdAnimationHandler : MonoBehaviour
     //Animation
     public Animator animControl;
     public SpeedLinesAnimator speedLines;
+    public GameObject huntUI;
 
     bool flapping = true;
     bool grabbing = true;
@@ -98,5 +99,19 @@ public class BirdAnimationHandler : MonoBehaviour
         diving = false;
 
         speedLines.changeState(SpeedLinesAnimator.SpeedState.DECELERATING);
+    }
+
+    public void launchPing(Vector3 source)
+    {
+        InteractibleManager.pingAll(source);
+
+        huntUI.SetActive(true);
+    }
+
+    public void unPing()
+    {
+        InteractibleManager.unpingAll();
+
+        huntUI.SetActive(false);
     }
 }
