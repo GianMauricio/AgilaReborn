@@ -104,7 +104,7 @@ public class BirdMainScript : MonoBehaviour
         //If the player just stopped sprinting
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            Debug.Log("LShift released");
+            //Debug.Log("LShift released");
             //Once player is done sprinting, or stamina is gone, begin the fade
             isFading = true;
         }
@@ -409,7 +409,7 @@ public class BirdMainScript : MonoBehaviour
 
     public void Hurt(int pain)
     {
-        Debug.Log("Ow");
+        //Debug.Log("Ow");
         currhealth -= pain;
 
         if(currhealth <= 0)
