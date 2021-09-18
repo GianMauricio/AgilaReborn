@@ -119,12 +119,13 @@ public class HuntableBaseScript : MonoBehaviour
 
     void gotEaten() //for when it gets eaten by player
     {
+       
         gameObject.SetActive(false);
     }
 
     public int giveHealth()
     {
-        int addHealth = 1;
+        int addHealth = 20;
 
         return addHealth;
     }

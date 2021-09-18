@@ -32,6 +32,9 @@ public class BirdMainScript : MonoBehaviour
     float currhealth = 100.0f;
     float dmgOpac = 0;
 
+    [SerializeField] private GameObject sphereColliderReference; // For Healing bird
+
+
     //UI stuff
     public Image healthBar;
     public Image staminaBarBG;
@@ -404,9 +407,14 @@ public class BirdMainScript : MonoBehaviour
 
             }*/
 
+           
+
+
             //reset calclation initials to preserve accuracy for the next frame
             this.lastPosition = gameObject.transform.position;
             this.lastVelocity = gameObject.GetComponent<Rigidbody>().velocity;
+
+
         }
 
         else
@@ -437,9 +445,13 @@ public class BirdMainScript : MonoBehaviour
             ifFloorHit();
         }
 
+        
+       
         //Get hurt
         if (collision.gameObject.name.Contains("Bullet"))
+        {
             Hurt(10);
+        }
     }
 
     public void Hurt(int pain)
