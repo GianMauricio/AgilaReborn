@@ -88,7 +88,7 @@ public class AiAgent : MonoBehaviour
             //if(this.stateMachine.currentState != AiStateId.Walk && this.stateMachine.currentState != AiStateId.Shoot && this.stateMachine.currentState == AiStateId.Idle)
            // {
                 {
-                    Debug.Log("nice");
+                    //Debug.Log("nice");
                     this.stateMachine.ChangeState(AiStateId.Shoot);
                 }
            // }
@@ -98,9 +98,8 @@ public class AiAgent : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player" && this.stateMachine.currentState == AiStateId.Shoot)
-
         {
-            Debug.Log("idlestate now");
+            //Debug.Log("idlestate now");
             this.stateMachine.ChangeState(AiStateId.Idle);
         }
     }
