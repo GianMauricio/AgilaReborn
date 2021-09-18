@@ -9,7 +9,7 @@ using UnityEngine;
 public class HuntTracker : MonoBehaviour
 {
     public ProgressionSystem levelObjectives;
-
+    public BirdMainScript MainBirdreference;
     public void OnTriggerEnter(Collider other)
     {
         Debug.Log("Impact confirmed");
@@ -18,6 +18,11 @@ public class HuntTracker : MonoBehaviour
         if (other.CompareTag("Cage"))
         {
             other.GetComponent<CageBreak>().Break();
+        }
+
+        if (other.CompareTag("Bunny"))
+        {
+            MainBirdreference.Hurt(-20);
         }
     }
 }

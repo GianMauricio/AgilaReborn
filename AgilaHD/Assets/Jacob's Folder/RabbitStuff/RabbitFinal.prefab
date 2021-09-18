@@ -143,13 +143,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6939792a608cd2469deb904fbcbb755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 0
+  Health: 1
   jumpTime: 0
   bounceInterval: 5
   moving: 0
   speed: 2
   Target: {x: 0, y: 0, z: 0}
   thrust: 5
+  isPaused: 0
 --- !u!65 &6924124160545379129
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -180,6 +181,7 @@ MonoBehaviour:
   Ping: {fileID: 7398798098514502697}
   filePathsHold: []
   imagesHold: []
+  isPaused: 0
   ScalarMult: 1
   state: 1
 --- !u!1001 &5182331964758098283
