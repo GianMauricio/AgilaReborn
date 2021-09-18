@@ -12,6 +12,7 @@ public class WeaponIk : MonoBehaviour
     public Transform initTransform; //forward object
     public Transform eagleTransform;
     public Transform hand;
+    public AudioSource Shoot;
 
     public int iterations = 10;
 
@@ -155,6 +156,9 @@ public class WeaponIk : MonoBehaviour
         Vector3 one = Vector3.one;
         Vector3 aimDirection = aimTransform.forward;
         Quaternion rot = Quaternion.FromToRotation(aimDirection, dir);
+
+        //Play sound regardless of hit result
+        Shoot.Play();
 
         //Cointoss for damage taking into account distance of Eagle
         //Calculate distance of hunter to eagle
