@@ -200,20 +200,54 @@ public class WeaponIk : MonoBehaviour
         //Call only when bullet is launched
         if (contact) //Simulate hit
         {
-            eagleTransform.gameObject.GetComponent<BirdMainScript>().Hurt(damage);
+            //If the gun is the rifle, then use full damage
+            if(type == GunType.RIFLE)
+            {
+                eagleTransform.gameObject.GetComponent<BirdMainScript>().Hurt(damage);
+
+                //var poof = GameObject.Instantiate(muzzleFlash, aimTransform.position, aimTransform.rotation);
+                //var wee = GameObject.Instantiate(bullet, aimTransform.position, aimTransform.rotation);
+
+                Instantiate(muzzleFlash, aimTransform.position, aimTransform.rotation); /*Flash!*/
+                Instantiate(bullet, aimTransform.position, aimTransform.rotation); /*Bang!*/
+            }
+            
+            //If the gun is the shotgun, impose penalties via distance
+            else if(type == GunType.SHOTGUN)
+            {
+                //The closer the better
+                int finalDamage = Mathf.FloorToInt(damage * ((dist + 2) / 100));
+
+                //Min damage
+                if(finalDamage < 20)
+                {
+                    finalDamage = 20;
+                }
+
+                eagleTransform.gameObject.GetComponent<BirdMainScript>().Hurt(finalDamage);
+
+                //Add more muzzle flashes to the shotguns
+                Instantiate(muzzleFlash, aimTransform.position, aimTransform.rotation);/*Flash*/
+                Instantiate(muzzleFlash, aimTransform.position, aimTransform.rotation);/*Flash*/
+                Instantiate(muzzleFlash, aimTransform.position, aimTransform.rotation);/*Flash*/
+
+                Instantiate(bullet, aimTransform.position, aimTransform.rotation);/*Bang*/
+            }
 
             //var poof = GameObject.Instantiate(muzzleFlash, aimTransform.position, rot);
-            var poof = GameObject.Instantiate(muzzleFlash, aimTransform.position, aimTransform.rotation);
-            var wee = GameObject.Instantiate(bullet, aimTransform.position, aimTransform.rotation);
-
-            //Debug.Log("Hit");
+            //var poof = GameObject.Instantiate(muzzleFlash, aimTransform.position, aimTransform.rotation);
+            //var wee = GameObject.Instantiate(bullet, aimTransform.position, aimTransform.rotation);
         }
 
         else //Simulate Miss
         {
-            var poof = GameObject.Instantiate(muzzleFlash, aimTransform.position, aimTransform.rotation);
+            //Add more muzzle to the shotguns
+            Instantiate(muzzleFlash, aimTransform.position, aimTransform.rotation); /*Flash*/
+            Instantiate(muzzleFlash, aimTransform.position, aimTransform.rotation);/*Flash*/
+            Instantiate(muzzleFlash, aimTransform.position, aimTransform.rotation);/*Flash*/
+            
+
             //Debug.Log("Miss");
         }
-        
     }
 }
