@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AiIdleState : AiState
 {
-    private float idleMaxTime = 7;
-    private float idleMinTime = 3;
+    private float idleMaxTime = 17;
+    private float idleMinTime = 13;
     private float waitTime;
     public void Enter(AiAgent agent)
     {

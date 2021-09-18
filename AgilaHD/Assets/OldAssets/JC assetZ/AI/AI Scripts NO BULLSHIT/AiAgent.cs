@@ -13,8 +13,8 @@ public class AiAgent : MonoBehaviour
     public enum ANIMATIONSTATE
     {
         idle = (int)0,
-        run = (int)1,
-        aim = (int)2,
+        run = (int)2,
+        aim = (int)1,
     };
 
     public string AnimationName = "AIState";
