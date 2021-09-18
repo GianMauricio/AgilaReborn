@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 5534528610962113073}
   - component: {fileID: 3109379380591549021}
   - component: {fileID: 3792117360778572170}
+  - component: {fileID: 3647326139523977290}
   m_Layer: 0
-  m_Name: CliffLong(Clone)
+  m_Name: CliffLongFab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,3 +80,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &3647326139523977290
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206259106173585356}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8004585005959194157, guid: aaa7effc9a93d9e4084035a5cccc6ac0, type: 3}
