@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class AiIdleState : AiState
 {
-    private float idleMaxTime = 10;
-    private float idleMinTime = 4;
+    private float idleMaxTime = 7;
+    private float idleMinTime = 3;
     private float waitTime;
     public void Enter(AiAgent agent)
     {
         Debug.Log("Entered idle state");
+        agent.currentStateRead = AiStateId.Idle;
         agent.animator.SetInteger(agent.AnimationName, (int)AiAgent.ANIMATIONSTATE.idle);
         waitTime = Random.Range(idleMinTime, idleMaxTime);
     }
@@ -27,12 +28,13 @@ public class AiIdleState : AiState
 
     public void Update(AiAgent agent)
     {
-       if(waitTime > 0)
+        waitTime -= Time.deltaTime;
+        if (waitTime > 0)
         {
             //do something idling
         }
-        waitTime -= Time.deltaTime;
-       if(waitTime <= 0)
+       
+       if(waitTime < 0)
         {
             agent.stateMachine.ChangeState(AiStateId.Walk);
             Debug.Log("Done Idleing");

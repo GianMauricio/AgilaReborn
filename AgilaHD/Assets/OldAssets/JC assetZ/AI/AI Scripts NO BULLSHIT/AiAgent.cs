@@ -34,6 +34,9 @@ public class AiAgent : MonoBehaviour
     //moving agent?
     public bool isMovable = false;
 
+    //check for the state
+    public AiStateId currentStateRead;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +57,7 @@ public class AiAgent : MonoBehaviour
         //Eagle reference for the location and damage calls
         eagleReference = GameObject.FindGameObjectWithTag("Player");
 
+        currentStateRead = stateMachine.currentState;
     }
 
     // Update is called once per frame

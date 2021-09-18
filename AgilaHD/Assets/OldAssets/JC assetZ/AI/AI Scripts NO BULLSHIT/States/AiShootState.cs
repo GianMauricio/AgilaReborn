@@ -9,6 +9,7 @@ public class AiShootState : AiState
     public void Enter(AiAgent agent)
     {
         Debug.Log("Entered shoot mode");
+        agent.currentStateRead = AiStateId.Shoot;
         agent.animator.SetInteger(agent.AnimationName, (int)AiAgent.ANIMATIONSTATE.aim);
         timeToShoot = maxTimeToShoot;
 
