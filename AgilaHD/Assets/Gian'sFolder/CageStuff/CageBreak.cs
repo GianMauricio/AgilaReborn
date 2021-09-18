@@ -9,10 +9,12 @@ public class CageBreak : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        /*
         if (collision.gameObject.CompareTag("HunterSphere"))
         {
             Break();
         }
+        */
     }
 
     public void Break()
@@ -28,11 +30,8 @@ public class CageBreak : MonoBehaviour
         Instantiate(BrokenCage, newPos, newRot);
 
         //Make freeagle
-        Instantiate(Freeagle);
-
-        Freeagle.transform.position = newPos;
-        Freeagle.transform.rotation = newRot;
-        Freeagle.transform.Rotate(-35, 0, 0);
+        GameObject newFreeagle = Instantiate(Freeagle, newPos, newRot);
+        newFreeagle.transform.Rotate(-35, 0, 0);
 
         //Delete old cage
         Destroy(gameObject);
