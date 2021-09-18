@@ -410,7 +410,7 @@ GameObject:
   - component: {fileID: 2725768959409536144}
   m_Layer: 10
   m_Name: HuntCollider
-  m_TagString: Untagged
+  m_TagString: HunterSphere
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
