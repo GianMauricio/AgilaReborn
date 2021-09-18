@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 626807483047998747}
   - component: {fileID: 5328206506806499990}
   m_Layer: 0
-  m_Name: NewHunterFInal
+  m_Name: OldHunter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
