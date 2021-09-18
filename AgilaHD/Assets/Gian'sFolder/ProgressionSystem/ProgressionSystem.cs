@@ -10,7 +10,7 @@ public class ProgressionSystem : MonoBehaviour
 
     [Header("Timer Stuff")]
     public TextMeshProUGUI Timer;
-    public float maxTime = 600000.0f;
+    private float maxTime = 600.0f;
     public float TimeElapsed;
     bool isPaused = false;
 
@@ -419,12 +419,32 @@ public class ProgressionSystem : MonoBehaviour
         seconds = Mathf.Round(seconds);
 
         //Calculate minutes
-        float minutes = timeRemaining / 60000;
+        float minutes = timeRemaining / 60;
 
-        minutes = Mathf.Round(minutes);
+        minutes = Mathf.Floor(minutes);
 
         //Determine what the timer would display
-        string timerString = "Time - " + minutes.ToString() + ":" + seconds.ToString();
+        string timerString;
+
+        if(minutes < 10)
+        {
+            timerString = "Time - 0" + minutes.ToString();
+        }
+
+        else
+        {
+            timerString = "Time - " + minutes.ToString();
+        }
+
+        if(seconds < 10)
+        {
+            timerString = timerString + ":0" + seconds.ToString();
+        }
+
+        else
+        {
+            timerString = timerString + ":" + seconds.ToString();
+        }
 
         //Set the timer text
         Timer.SetText(timerString);

@@ -15,6 +15,7 @@ public class HunterVisionUI : MonoBehaviour
     public Image Ping;
     public List<string> filePathsHold;
     public List<Sprite> imagesHold;
+    public bool isPaused = false;
 
     private float frameChange = 0.01f;
     private float timeElapsed = 0.0f;
@@ -67,6 +68,11 @@ public class HunterVisionUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isPaused)
+        {
+            return;
+        }
+
         if(state == HuntState.ACTIVE)
         {
             //Set rotation to always look at eagle
@@ -162,5 +168,25 @@ public class HunterVisionUI : MonoBehaviour
         //Also Reset own rotation and scale in order to avoid problems
         Ping.enabled = false;
         state = HuntState.INACTIVE;
+    }
+
+    public void Pause()
+    {
+        isPaused = true;
+        //This is fucking cursed
+        if (gameObject.CompareTag("Bunny"))
+        {
+            gameObject.GetComponent<HuntableBaseScript>().Pause();
+        }
+    }
+
+    public void Unpause()
+    {
+        isPaused = false;
+        //This is fucking cursed(2)
+        if (gameObject.CompareTag("Bunny"))
+        {
+            gameObject.GetComponent<HuntableBaseScript>().Unpause();
+        }
     }
 }

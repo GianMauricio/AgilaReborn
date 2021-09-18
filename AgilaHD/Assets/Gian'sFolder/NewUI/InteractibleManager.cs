@@ -9,6 +9,7 @@ using UnityEngine;
 public class InteractibleManager 
 {
     public static List<GameObject> interactible = new List<GameObject>();
+    public static List<GameObject> spawners = new List<GameObject>();
 
     //Ping all interactibles
     public static void pingAll(Vector3 radarCenter)
@@ -53,8 +54,43 @@ public class InteractibleManager
         }
     }
 
+    public static void freezeAll()
+    {
+        foreach (GameObject target in interactible)
+        {
+            //Because of course, the only script that has connections to all is the UI
+            //Because why not
+            target.GetComponent<HunterVisionUI>().Pause();
+        }
+
+        foreach (GameObject spawner in spawners)
+        {
+            spawner.GetComponent<RepeatedSpawning>().Pause();
+        }
+    }
+
+    public static void unfreezeAll()
+    {
+        foreach (GameObject target in interactible)
+        {
+            //Because of course, the only script that has connections to all is the UI
+            //Because why not(2)
+            target.GetComponent<HunterVisionUI>().Unpause();
+        }
+
+        foreach (GameObject spawner in spawners)
+        {
+            spawner.GetComponent<RepeatedSpawning>().Unpause();
+        }
+    }
+
     public static void addInteractible(GameObject possibleinteractible)
     {
         interactible.Add(possibleinteractible);
+    }
+
+    public static void addSpawner(GameObject newSpawner)
+    {
+        spawners.Add(newSpawner);
     }
 }

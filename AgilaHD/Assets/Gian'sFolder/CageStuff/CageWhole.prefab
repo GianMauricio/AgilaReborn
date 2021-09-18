@@ -65,6 +65,8 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
   - {fileID: 5273276429236303708}
+  - {fileID: 87857203644045178}
+  - {fileID: 4824892634984727902}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -94,7 +96,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: 55bd638fb4c6e5846bb082f5f1726302, type: 3}
+  - {fileID: 2100000, guid: fc064ad8cdb6be24b9038d95892a2c32, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -128,6 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BrokenCage: {fileID: 9041079720028030177, guid: 828b16e3fb5edb54db90d7b9de4a821c,
+    type: 3}
+  Freeagle: {fileID: 1991856179629749152, guid: 15e9e611439fd6546a4f44776d233647,
     type: 3}
 --- !u!54 &3450495084746197545
 Rigidbody:
@@ -175,7 +179,104 @@ MonoBehaviour:
   Ping: {fileID: 3487442791592322830}
   filePathsHold: []
   imagesHold: []
+  isPaused: 0
+  ScalarMult: 1
   state: 1
+--- !u!1001 &482616147331838097
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2171107944289692872}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a9b75961e3533784681b095277e028cd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9b75961e3533784681b095277e028cd,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9b75961e3533784681b095277e028cd,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9b75961e3533784681b095277e028cd,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9b75961e3533784681b095277e028cd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9b75961e3533784681b095277e028cd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 47.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9b75961e3533784681b095277e028cd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 24.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9b75961e3533784681b095277e028cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9b75961e3533784681b095277e028cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9b75961e3533784681b095277e028cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9b75961e3533784681b095277e028cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9b75961e3533784681b095277e028cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9b75961e3533784681b095277e028cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a9b75961e3533784681b095277e028cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a9b75961e3533784681b095277e028cd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9a4669ed994c70d4c91eee2bc7f5e6b7, type: 2}
+    - target: {fileID: 919132149155446097, guid: a9b75961e3533784681b095277e028cd,
+        type: 3}
+      propertyPath: m_Name
+      value: IEPROJ3 Branch Perch for Caged Eagle 300X SCALE
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a9b75961e3533784681b095277e028cd, type: 3}
+--- !u!4 &87857203644045178 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a9b75961e3533784681b095277e028cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 482616147331838097}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1234965278486331980
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -338,3 +439,103 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &5007949136076776117
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2171107944289692872}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 578ba71936430d1469b43200e59043cb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 578ba71936430d1469b43200e59043cb,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 578ba71936430d1469b43200e59043cb,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 578ba71936430d1469b43200e59043cb,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 578ba71936430d1469b43200e59043cb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 578ba71936430d1469b43200e59043cb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 125.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 578ba71936430d1469b43200e59043cb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 578ba71936430d1469b43200e59043cb,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 578ba71936430d1469b43200e59043cb,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 578ba71936430d1469b43200e59043cb,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 578ba71936430d1469b43200e59043cb,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 578ba71936430d1469b43200e59043cb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 578ba71936430d1469b43200e59043cb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 578ba71936430d1469b43200e59043cb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 578ba71936430d1469b43200e59043cb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e45b29142c8a6e042a430605d04ad15d, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 578ba71936430d1469b43200e59043cb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 599f72303fcc58c49965c69df36b65b4, type: 2}
+    - target: {fileID: 919132149155446097, guid: 578ba71936430d1469b43200e59043cb,
+        type: 3}
+      propertyPath: m_Name
+      value: IEPROJ3 Eagle Captive Perched 300X SCALE
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 578ba71936430d1469b43200e59043cb, type: 3}
+--- !u!4 &4824892634984727902 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 578ba71936430d1469b43200e59043cb,
+    type: 3}
+  m_PrefabInstance: {fileID: 5007949136076776117}
+  m_PrefabAsset: {fileID: 0}

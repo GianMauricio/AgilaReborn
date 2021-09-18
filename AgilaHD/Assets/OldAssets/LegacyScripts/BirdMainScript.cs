@@ -164,11 +164,13 @@ public class BirdMainScript : MonoBehaviour
 
             if(isPaused == true)
             {
+                InteractibleManager.freezeAll();
                 animator.SetFlapSpeed(0);
                 tpsReference.Pause();
                 hunterRef.Pause();
                 levelObjectives.Pause();
 
+                animator.Pause();
                 PauseUI.SetActive(true);
             }
 
@@ -177,7 +179,9 @@ public class BirdMainScript : MonoBehaviour
                 tpsReference.Unpause();
                 PauseUI.SetActive(false);
                 hunterRef.Unpause();
+                animator.Unpause();
                 levelObjectives.Unpause();
+                InteractibleManager.unfreezeAll();
             }
         }
     }
@@ -189,6 +193,8 @@ public class BirdMainScript : MonoBehaviour
         PauseUI.SetActive(false);
         hunterRef.Unpause();
         levelObjectives.Unpause();
+        InteractibleManager.unfreezeAll();
+        animator.Unpause();
     }
 
     //Movement

@@ -17,6 +17,7 @@ public class HuntableBaseScript : MonoBehaviour
     public float speed;
 
     public Vector3 Target;
+    private Vector3 lastForce;
 
     public float thrust = 1.0f;
 
@@ -24,8 +25,8 @@ public class HuntableBaseScript : MonoBehaviour
     private float myZ;
 
     bool isEaten;
+    public bool isPaused = false;
     private Rigidbody rb;
-
 
     // Start is called before the first frame update
     void Start()
@@ -35,14 +36,21 @@ public class HuntableBaseScript : MonoBehaviour
         myZ = gameObject.transform.position.z;
         isEaten = false;
 
-        rb = GetComponent<Rigidbody>();
-
+        rb = gameObject.GetComponent<Rigidbody>();
         //Give self to ~god~ the interactible manager
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        //This is terrible implementation...Too Bad!
+        //Do only if not paused
+        if (isPaused)
+        {
+            rb.Sleep();
+            return;
+        }
+
         //Once the bunny has stopped moving
         if (rb.velocity.magnitude <= 0.1f)
         {
@@ -119,6 +127,21 @@ public class HuntableBaseScript : MonoBehaviour
         int addHealth = 1;
 
         return addHealth;
+    }
+
+    public void Pause()
+    {
+        //Destroy(rb);
+        lastForce = rb.velocity;
+        isPaused = true;
+    }
+
+    public void Unpause()
+    {
+        //rb = gameObject.AddComponent<Rigidbody>();
+        //rb.constraints = lastState;
+        isPaused = false;
+        rb.velocity = lastForce;
     }
 
     public void OnTriggerEnter(Collider other)

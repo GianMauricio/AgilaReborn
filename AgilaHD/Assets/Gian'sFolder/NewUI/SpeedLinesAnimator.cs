@@ -18,6 +18,7 @@ public class SpeedLinesAnimator : MonoBehaviour
     private float timeElapsed = 0.0f;
     private int currFrame = 0;
     private float opac = 0.0f;
+    private bool isPaused = false;
 
     public SpeedState state = SpeedState.HOLDINGSLOW;
 
@@ -60,6 +61,11 @@ public class SpeedLinesAnimator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isPaused)
+        {
+            return;
+        }
+
         //Maintain starter values if currently at slow
         if(state == SpeedState.HOLDINGSLOW)
         {
@@ -173,5 +179,15 @@ public class SpeedLinesAnimator : MonoBehaviour
         state = newState;
         currFrame = 0;
         timeElapsed = 0.0f;
+    }
+
+    public void Pause()
+    {
+        isPaused = true;
+    }
+
+    public void Unpause()
+    {
+        isPaused = false;
     }
 }

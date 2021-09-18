@@ -7,7 +7,7 @@ using UnityEngine;
  */
 public class RepeatedSpawning : MonoBehaviour
 {
-
+    bool isPaused = false;
     [SerializeField] GameObject SpawnObject;
     [SerializeField] int HowManyToSpawn = 35;
 
@@ -27,6 +27,8 @@ public class RepeatedSpawning : MonoBehaviour
     {
         //Clear any lasting objects from the spawn list
         spawnedObjects.Clear();
+
+        InteractibleManager.addSpawner(gameObject);
     }
 
     // Update is called once per frame
@@ -48,9 +50,19 @@ public class RepeatedSpawning : MonoBehaviour
             }
         }
 
-        else
+        else if(!isPaused)
         {
             spawnTime += Time.deltaTime;
         }
     }
+
+   public void Pause()
+   {
+        isPaused = true;
+   }
+
+   public void Unpause()
+   {
+        isPaused = false;
+   }
 }
