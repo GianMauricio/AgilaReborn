@@ -302,6 +302,7 @@ MonoBehaviour:
   cameraT: {fileID: 2263009516522852903}
   tpsReference: {fileID: 2263009516320857291}
   rotationSmoothTime: 0.02
+  sphereColliderReference: {fileID: 0}
   healthBar: {fileID: 7693364829691181864}
   staminaBarBG: {fileID: 8771685852444156522}
   staminaBar: {fileID: 5219964391992869138}
@@ -501,6 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelObjectives: {fileID: 0}
+  MainBirdreference: {fileID: 2027770838155507518}
 --- !u!1 &2263009516320857293
 GameObject:
   m_ObjectHideFlags: 0
