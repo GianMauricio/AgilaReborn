@@ -4421,7 +4421,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416024722446337150}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.913588, y: 2.9, z: -10.114761}
+  m_LocalPosition: {x: 43.1, y: 3, z: 146}
   m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_Children:
   - {fileID: 8046499193010317859}
@@ -4607,6 +4607,7 @@ MonoBehaviour:
   TutorialUI: {fileID: 0}
   PauseUI: {fileID: 0}
   opacVal: 0
+  isHunting: 0
   animator: {fileID: 6073245685390543739}
   current_speed: 0
   hunterRef: {fileID: 0}
@@ -5308,7 +5309,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3032970488710932399}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: -0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1994724822300748347}
@@ -8677,6 +8678,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animControl: {fileID: 5570534361135984705}
+  speedLines: {fileID: 0}
+  huntUI: {fileID: 0}
   current_speed: 0
 --- !u!33 &6087931190514991002
 MeshFilter:
