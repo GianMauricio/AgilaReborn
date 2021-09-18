@@ -114,4 +114,14 @@ public class BirdAnimationHandler : MonoBehaviour
 
         huntUI.SetActive(false);
     }
+
+    public void Pause()
+    {
+        speedLines.Pause();
+    }
+
+    public void Unpause()
+    {
+        speedLines.Unpause();
+    }
 }
