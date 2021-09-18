@@ -5218,7 +5218,7 @@ MonoBehaviour:
   targetTransform: {fileID: 1713543550}
   aimTransform: {fileID: 1997531077}
   initTransform: {fileID: 1775664394}
-  eagleTransform: {fileID: 0}
+  eagleTransform: {fileID: 1994724823137726380}
   hand: {fileID: 443290007}
   iterations: 10
   weight: 1
@@ -5252,7 +5252,7 @@ MonoBehaviour:
   AnimationName: AIState
   rb: {fileID: 1505313113}
   sphereCollider: {fileID: 1505313111}
-  eagleReference: {fileID: 0}
+  eagleReference: {fileID: 1217518933212886294}
   weaponikReference: {fileID: 1505313109}
   isMovable: 1
   currentStateRead: 0
@@ -7649,7 +7649,7 @@ MonoBehaviour:
   targetTransform: {fileID: 817390211}
   aimTransform: {fileID: 1837465809}
   initTransform: {fileID: 1659349263}
-  eagleTransform: {fileID: 0}
+  eagleTransform: {fileID: 1994724823137726380}
   hand: {fileID: 498334750}
   iterations: 10
   weight: 1
@@ -7683,7 +7683,7 @@ MonoBehaviour:
   AnimationName: AIState
   rb: {fileID: 2119741305}
   sphereCollider: {fileID: 2119741303}
-  eagleReference: {fileID: 0}
+  eagleReference: {fileID: 1217518933212886294}
   weaponikReference: {fileID: 2119741301}
   isMovable: 1
   currentStateRead: 0

@@ -32,6 +32,9 @@ public class BirdMainScript : MonoBehaviour
     float currhealth = 100.0f;
     float dmgOpac = 0;
 
+    [SerializeField] private GameObject sphereColliderReference; // For Healing bird
+
+
     //UI stuff
     public Image healthBar;
     public Image staminaBarBG;
@@ -164,11 +167,13 @@ public class BirdMainScript : MonoBehaviour
 
             if(isPaused == true)
             {
+                InteractibleManager.freezeAll();
                 animator.SetFlapSpeed(0);
                 tpsReference.Pause();
                 hunterRef.Pause();
                 levelObjectives.Pause();
 
+                animator.Pause();
                 PauseUI.SetActive(true);
             }
 
@@ -177,7 +182,9 @@ public class BirdMainScript : MonoBehaviour
                 tpsReference.Unpause();
                 PauseUI.SetActive(false);
                 hunterRef.Unpause();
+                animator.Unpause();
                 levelObjectives.Unpause();
+                InteractibleManager.unfreezeAll();
             }
         }
     }
@@ -189,6 +196,8 @@ public class BirdMainScript : MonoBehaviour
         PauseUI.SetActive(false);
         hunterRef.Unpause();
         levelObjectives.Unpause();
+        InteractibleManager.unfreezeAll();
+        animator.Unpause();
     }
 
     //Movement
@@ -398,9 +407,14 @@ public class BirdMainScript : MonoBehaviour
 
             }*/
 
+           
+
+
             //reset calclation initials to preserve accuracy for the next frame
             this.lastPosition = gameObject.transform.position;
             this.lastVelocity = gameObject.GetComponent<Rigidbody>().velocity;
+
+
         }
 
         else
@@ -431,9 +445,13 @@ public class BirdMainScript : MonoBehaviour
             ifFloorHit();
         }
 
+        
+       
         //Get hurt
         if (collision.gameObject.name.Contains("Bullet"))
+        {
             Hurt(10);
+        }
     }
 
     public void Hurt(int pain)

@@ -26,16 +26,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Gian'sFolder/GameWon.unity
     guid: b6776bca6e7a27b4388beabaa5542e2b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Gian'sFolder/StoryIntro.unity
     guid: dd891682f3ea3434eadeccacb6bb6bd1
   - enabled: 1
-    path: Assets/Jacob's Folder/JScenes/FinalStoryScene.unity
+    path: Assets/Jacob's Folder/JScenes/StoryScene3.unity
     guid: e7cfa2fbb1eff92438e9640c766533f0
   - enabled: 1
-    path: Assets/Jacob's Folder/JScenes/IntroStoryScene.unity
+    path: Assets/Jacob's Folder/JScenes/StoryScene1.unity
     guid: b288aae0022d9264dadd87ab82f36147
   - enabled: 1
-    path: Assets/Jacob's Folder/JScenes/MidStoryScene.unity
+    path: Assets/Jacob's Folder/JScenes/StoryScene2.unity
     guid: 7137b910838dd6a4488beba9de416ac8
+  - enabled: 1
+    path: Assets/Jacob's Folder/JScenes/StoryScene4.unity
+    guid: 1dfa65a08493e2747aaf0fc230b40458
+  - enabled: 1
+    path: Assets/Jacob's Folder/JScenes/StoryScene5.unity
+    guid: 2c0a9ec465c16fd4a805edd1f656dea5
   m_configObjects: {}

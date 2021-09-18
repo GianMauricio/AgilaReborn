@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000015258789, y: -26.825}
+  m_AnchoredPosition: {x: 0, y: -26.825}
   m_SizeDelta: {x: 0, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4211795927914720492
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -247,7 +247,7 @@ Transform:
   - {fileID: 2005876467515808701}
   - {fileID: 5534954340575681296}
   m_Father: {fileID: 1796208750017013835}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &5570534360916805326
 Animator:
@@ -302,7 +302,8 @@ MonoBehaviour:
   cameraT: {fileID: 2263009516522852903}
   tpsReference: {fileID: 2263009516320857291}
   rotationSmoothTime: 0.02
-  healthBar: {fileID: 5219964391992869138}
+  sphereColliderReference: {fileID: 0}
+  healthBar: {fileID: 7693364829691181864}
   staminaBarBG: {fileID: 8771685852444156522}
   staminaBar: {fileID: 5219964391992869138}
   dmgVignette: {fileID: 6029550820409466741}
@@ -386,11 +387,11 @@ Transform:
   m_LocalPosition: {x: 2.913588, y: 2.9, z: -10.114761}
   m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_Children:
-  - {fileID: 8046499192791309484}
-  - {fileID: 2425249882558107450}
-  - {fileID: 6818976207342451297}
   - {fileID: 2263009516320857292}
   - {fileID: 1994724822049889460}
+  - {fileID: 6818976207342451297}
+  - {fileID: 8046499192791309484}
+  - {fileID: 2425249882558107450}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -501,6 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelObjectives: {fileID: 0}
+  MainBirdreference: {fileID: 2027770838155507518}
 --- !u!1 &2263009516320857293
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +533,7 @@ Transform:
   m_Children:
   - {fileID: 2263009516522852903}
   m_Father: {fileID: 1796208750017013835}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2263009516320857291
 MonoBehaviour:
@@ -573,7 +575,7 @@ GameObject:
   - component: {fileID: 2263009516522852900}
   m_Layer: 11
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -807,7 +809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -912,7 +914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1097,7 +1099,7 @@ RectTransform:
   - {fileID: 7332179548071374364}
   - {fileID: 5594183661695326785}
   m_Father: {fileID: 1796208750017013835}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1123,7 +1125,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &8818623660788242147
 MonoBehaviour:
@@ -1346,7 +1348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1424,7 +1426,7 @@ RectTransform:
   m_Children:
   - {fileID: 2285422923348120057}
   m_Father: {fileID: 1796208750017013835}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2018,7 +2020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.654902}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2044,6 +2046,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpeedLines
+      objectReference: {fileID: 0}
+    - target: {fileID: 6049919813295385996, guid: 0a6f25c252c99a24aa3223bd53d00ea2,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6049919813295385999, guid: 0a6f25c252c99a24aa3223bd53d00ea2,
         type: 3}
@@ -2148,6 +2155,11 @@ PrefabInstance:
     - target: {fileID: 6049919813295385999, guid: 0a6f25c252c99a24aa3223bd53d00ea2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6049919814326575264, guid: 0a6f25c252c99a24aa3223bd53d00ea2,
+        type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

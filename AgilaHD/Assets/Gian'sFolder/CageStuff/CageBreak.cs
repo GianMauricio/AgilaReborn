@@ -5,6 +5,7 @@ using UnityEngine;
 public class CageBreak : MonoBehaviour
 {
     public GameObject BrokenCage;
+    public GameObject Freeagle;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -20,8 +21,18 @@ public class CageBreak : MonoBehaviour
         Vector3 newPos = gameObject.transform.position;
         Quaternion newRot = gameObject.transform.rotation;
 
+        //Unset self as a UIelement
+        gameObject.GetComponent<HunterVisionUI>().declareDeath();
+
         //Make broken cage
         Instantiate(BrokenCage, newPos, newRot);
+
+        //Make freeagle
+        Instantiate(Freeagle);
+
+        Freeagle.transform.position = newPos;
+        Freeagle.transform.rotation = newRot;
+        Freeagle.transform.Rotate(-35, 0, 0);
 
         //Delete old cage
         Destroy(gameObject);
