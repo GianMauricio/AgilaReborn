@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 439358044518200121}
   - component: {fileID: 439358044518200120}
   - component: {fileID: 439358044518200127}
+  - component: {fileID: 6510759323132935001}
   m_Layer: 0
   m_Name: RiflePoacherB
   m_TagString: Untagged
@@ -159,7 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialState: 0
   config: {fileID: 11400000, guid: 759fcdbef4c785c418ac7735e48345ea, type: 2}
-  animator: {fileID: 0}
+  animator: {fileID: 6510759323132935001}
   AnimationName: AIState
   rb: {fileID: 439358044518200121}
   sphereCollider: {fileID: 439358044518200125}
@@ -196,6 +197,25 @@ MonoBehaviour:
   muzzleFlash: {fileID: 1336949550903370, guid: 4543ab5e3d405ec40a8d4e9aa5165030,
     type: 3}
   bullet: {fileID: 9091885684153166852, guid: 1c32195b89b40e340bd4dfe0f364d391, type: 3}
+--- !u!95 &6510759323132935001
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439358044518200124}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ebb8db064c253844eb1b23fec91a2396, type: 3}
+  m_Controller: {fileID: 9100000, guid: c253066221ebc664a9b52efce99c8b4d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &632371442698406955
 GameObject:
   m_ObjectHideFlags: 0
