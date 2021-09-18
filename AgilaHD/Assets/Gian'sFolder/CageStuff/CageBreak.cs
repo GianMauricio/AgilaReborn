@@ -21,6 +21,9 @@ public class CageBreak : MonoBehaviour
         Vector3 newPos = gameObject.transform.position;
         Quaternion newRot = gameObject.transform.rotation;
 
+        //Unset self as a UIelement
+        gameObject.GetComponent<HunterVisionUI>().declareDeath();
+
         //Make broken cage
         Instantiate(BrokenCage, newPos, newRot);
 
