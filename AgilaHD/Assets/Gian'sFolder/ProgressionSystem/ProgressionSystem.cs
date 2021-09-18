@@ -12,6 +12,7 @@ public class ProgressionSystem : MonoBehaviour
     public TextMeshProUGUI Timer;
     public float maxTime = 600000.0f;
     public float TimeElapsed;
+    bool isPaused = false;
 
     [Header("Objective 1 Data")]
     public GameObject Target1;
@@ -402,10 +403,12 @@ public class ProgressionSystem : MonoBehaviour
         avgFrameRate = (int)current;
         display_Text.text = avgFrameRate.ToString() + " FPS";
 
-
         //Timer
         //increase time elapsed
-        TimeElapsed += Time.deltaTime;
+        if (!isPaused)
+        {
+            TimeElapsed += Time.deltaTime;
+        }
 
         float timeRemaining = maxTime - TimeElapsed;
 
@@ -512,5 +515,16 @@ public class ProgressionSystem : MonoBehaviour
                 SceneManager.LoadScene("GameWon");
             }
         }
+    }
+
+    //Declare paused/unpause
+    public void Pause()
+    {
+        isPaused = true;
+    }
+
+    public void Unpause()
+    {
+        isPaused = false;
     }
 }

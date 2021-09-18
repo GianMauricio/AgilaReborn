@@ -63,7 +63,7 @@ public class BirdMainScript : MonoBehaviour
     public BirdHunterMode hunterRef;
 
     //Objectives implementation
-    ProgressionSystem levelObjectives;
+    public ProgressionSystem levelObjectives;
 
     void Start()
     {
@@ -167,6 +167,7 @@ public class BirdMainScript : MonoBehaviour
                 animator.SetFlapSpeed(0);
                 tpsReference.Pause();
                 hunterRef.Pause();
+                levelObjectives.Pause();
 
                 PauseUI.SetActive(true);
             }
@@ -176,6 +177,7 @@ public class BirdMainScript : MonoBehaviour
                 tpsReference.Unpause();
                 PauseUI.SetActive(false);
                 hunterRef.Unpause();
+                levelObjectives.Unpause();
             }
         }
     }
@@ -186,6 +188,7 @@ public class BirdMainScript : MonoBehaviour
         tpsReference.Unpause();
         PauseUI.SetActive(false);
         hunterRef.Unpause();
+        levelObjectives.Unpause();
     }
 
     //Movement
