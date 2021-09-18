@@ -63,7 +63,7 @@ public class BirdMainScript : MonoBehaviour
     public BirdHunterMode hunterRef;
 
     //Objectives implementation
-    ProgressionSystem levelObjectives;
+    public ProgressionSystem levelObjectives;
 
     void Start()
     {
@@ -122,7 +122,7 @@ public class BirdMainScript : MonoBehaviour
         //If the player just stopped sprinting
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            Debug.Log("LShift released");
+            //Debug.Log("LShift released");
             //Once player is done sprinting, or stamina is gone, begin the fade
             isFading = true;
         }
@@ -167,6 +167,7 @@ public class BirdMainScript : MonoBehaviour
                 animator.SetFlapSpeed(0);
                 tpsReference.Pause();
                 hunterRef.Pause();
+                levelObjectives.Pause();
 
                 PauseUI.SetActive(true);
             }
@@ -176,6 +177,7 @@ public class BirdMainScript : MonoBehaviour
                 tpsReference.Unpause();
                 PauseUI.SetActive(false);
                 hunterRef.Unpause();
+                levelObjectives.Unpause();
             }
         }
     }
@@ -186,6 +188,7 @@ public class BirdMainScript : MonoBehaviour
         tpsReference.Unpause();
         PauseUI.SetActive(false);
         hunterRef.Unpause();
+        levelObjectives.Unpause();
     }
 
     //Movement
@@ -435,7 +438,7 @@ public class BirdMainScript : MonoBehaviour
 
     public void Hurt(int pain)
     {
-        Debug.Log("Ow");
+        //Debug.Log("Ow");
         currhealth -= pain;
 
         if(currhealth <= 0)
