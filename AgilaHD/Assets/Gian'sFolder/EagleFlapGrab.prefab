@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: -19.999998}
+  m_AnchoredPosition: {x: -0.000015258789, y: -26.825}
   m_SizeDelta: {x: 0, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4211795927914720492
@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 6073245683462405620}
   m_Layer: 0
   m_Name: MODEL WITH BONER
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -240,7 +240,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217518932118750734}
   m_LocalRotation: {x: -0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: 1652.723, y: 454.28577, z: 1513.6499}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 14.285715, y: 14.285715, z: 14.285715}
   m_Children:
   - {fileID: 2408984594469489121}
@@ -313,6 +313,7 @@ MonoBehaviour:
   animator: {fileID: 6073245683462405620}
   current_speed: 0
   hunterRef: {fileID: 0}
+  levelObjectives: {fileID: 0}
 --- !u!114 &2027770838155507517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -781,8 +782,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -380, y: -41}
-  m_SizeDelta: {x: -800, y: 40}
+  m_AnchoredPosition: {x: -221.41, y: -34.17}
+  m_SizeDelta: {x: -482.82715, y: 53.65056}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1294788102301349421
 CanvasRenderer:
