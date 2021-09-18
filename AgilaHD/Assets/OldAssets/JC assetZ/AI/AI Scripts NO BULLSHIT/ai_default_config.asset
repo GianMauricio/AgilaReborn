@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abe78319b7de5649bb527c17d4b0b2b, type: 3}
   m_Name: ai_default_config
   m_EditorClassIdentifier: 
-  maxWalkTime: 8
-  minWalkTIme: 3
+  maxWalkTime: 5
+  minWalkTIme: 2
   minAngle: 30
   maxAngle: 360
   turnSpeed: 30

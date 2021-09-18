@@ -20,8 +20,10 @@ public class AiWalkState : AiState
     public void Enter(AiAgent agent)
     {
         Debug.Log("Entered walk state");
+        agent.currentStateRead = AiStateId.Walk;
         agent.animator.SetInteger(agent.AnimationName, (int)AiAgent.ANIMATIONSTATE.run);
-        walkTime = Random.Range(agent.config.minWalkTIme, agent.config.maxWalkTime);
+        walkTime = Random.Range(Mathf.Abs(agent.config.minWalkTIme), Mathf.Abs(agent.config.maxWalkTime));
+        walkTime = Mathf.Abs(walkTime);
         randomAngle = Random.Range(agent.config.minAngle, agent.config.maxAngle);
         finalRotation = Quaternion.Euler(0, randomAngle, 0);
         maxRotateTime = 5;
@@ -52,8 +54,9 @@ public class AiWalkState : AiState
             //floating point comparison bug idgaf 
             float currY = Mathf.Abs(currentRotation.y);
             float finalY = Mathf.Abs(finalRotation.y);
-
-            if (currY != finalY || maxRotateTime < 0)
+            float c = Mathf.Abs(currentRotation.y - finalRotation.y);
+            maxRotateTime -= Time.deltaTime;
+            if ( c > 0.001 && maxRotateTime > 0)//currY != finalY|| maxRotateTime > 0
             { 
                 agent.transform.rotation = Quaternion.Slerp(currentRotation, finalRotation, agent.config.turnSpeed * Time.deltaTime);
             }
@@ -69,11 +72,12 @@ public class AiWalkState : AiState
                 Debug.Log("Done Rotating");
                 substate = SUBSTATE.walking;
             }*/
-            maxRotateTime -= Time.deltaTime;
+            
         }
        
-        if(substate == SUBSTATE.walking)
+        else if(substate == SUBSTATE.walking)
         {
+            walkTime -= Time.deltaTime;
             if (walkTime > 0)
             {
                 Vector3 agentVec = agent.transform.position;
@@ -85,8 +89,8 @@ public class AiWalkState : AiState
             
                 //Debug.Log(walkTime);
             }
-            walkTime -= Time.deltaTime;
-            if (walkTime <= 0)
+          
+            if (walkTime < 0)
             {
                 //Debug.Log("Done Walking");
                 //walkTime = Random.Range(agent.config.minWalkTIme, agent.config.maxWalkTime);
