@@ -189,4 +189,9 @@ public class HunterVisionUI : MonoBehaviour
             gameObject.GetComponent<HuntableBaseScript>().Unpause();
         }
     }
+
+    public void declareDeath()
+    {
+        InteractibleManager.removeInteractible(gameObject);
+    }
 }

@@ -89,6 +89,11 @@ public class InteractibleManager
         interactible.Add(possibleinteractible);
     }
 
+    public static void removeInteractible(GameObject destroyThis)
+    {
+        interactible.Remove(destroyThis);
+    }
+
     public static void addSpawner(GameObject newSpawner)
     {
         spawners.Add(newSpawner);
