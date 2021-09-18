@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class WeaponIk : MonoBehaviour
 {
+    public enum GunType { SHOTGUN, RIFLE};
+    public GunType type = GunType.RIFLE;
     public Transform targetTransform;
     public Transform aimTransform; //raycast node
     public Transform initTransform; //forward object
@@ -21,19 +23,34 @@ public class WeaponIk : MonoBehaviour
     public float angleLimit = 90;
     public float distanceLimit = 1;
 
-
     public float rotationSpeed = 0.1f;
     public float positionSpeed = 0.1f;
     public bool shootMode = false;
 
+    //Shooting
+    private float minHitChance = 0.0f;
+    private int damage = 10;
+    private float maxRange = 0.0f;
+
     //particle system
     public GameObject muzzleFlash;
     public GameObject bullet;
-    // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
-        
-        
+        if(type == GunType.RIFLE)
+        {
+            damage = 35;
+            maxRange = 22.5f;
+            minHitChance = 30.0f;
+        }
+
+        else if(type == GunType.SHOTGUN)
+        {
+            damage = 50;
+            maxRange = 15.0f;
+            minHitChance = 10.0f;
+        }
     }
 
     // Update is called once per frame
@@ -89,8 +106,6 @@ public class WeaponIk : MonoBehaviour
             blendOut += distanceLimit - targetDistance;
         }
 
-       
-
         Vector3 direction = Vector3.Slerp(targetDirection, aimDirection, blendOut);
         
 
@@ -120,7 +135,6 @@ public class WeaponIk : MonoBehaviour
         //targetTransform = target;
     }
 
-
     public void SetAimTransform(Transform aim)
     {
         aimTransform = aim;
@@ -129,10 +143,9 @@ public class WeaponIk : MonoBehaviour
     public void setShootMode(bool mode)
     {
         shootMode = mode;
-        
-
     }
 
+    //This function handles the shooting
     public void playMuzzleFlash()
     {
         Vector3 p1 = aimTransform.position;
@@ -143,8 +156,64 @@ public class WeaponIk : MonoBehaviour
         Vector3 aimDirection = aimTransform.forward;
         Quaternion rot = Quaternion.FromToRotation(aimDirection, dir);
 
-        //var poof = GameObject.Instantiate(muzzleFlash, aimTransform.position, rot);
-        var poof = GameObject.Instantiate(muzzleFlash, aimTransform.position, aimTransform.rotation);
-        var wee = GameObject.Instantiate(bullet, aimTransform.position, aimTransform.rotation);
+        //Cointoss for damage taking into account distance of Eagle
+        //Calculate distance of hunter to eagle
+        float dist = Vector3.Distance(transform.position, eagleTransform.position);
+
+        //Convert to percent chance
+        //Debug.Log("Eagle detected: " + dist);
+
+        //Change depending on gun type here
+        float chanceToHit = ((maxRange - dist) / maxRange) * 100;
+        bool contact = false;
+
+        //Always has a chance to hit
+        if(chanceToHit < minHitChance)
+        {
+            chanceToHit = minHitChance;
+
+            float tryHit = Random.Range(0, 100);
+
+            if(tryHit < chanceToHit)
+            {
+                contact = true;
+            }
+        }
+
+        //Hit guranteed
+        else if(chanceToHit > 100)
+        {
+            eagleTransform.gameObject.GetComponent<BirdMainScript>().Hurt(damage);
+        }
+
+        //Do hit calculations
+        else
+        {
+            float tryHit = Random.Range(0, 100);
+
+            if (tryHit < chanceToHit)
+            {
+                contact = true;
+            }
+        }
+
+        //Call only when bullet is launched
+        if (contact) //Simulate hit
+        {
+            eagleTransform.gameObject.GetComponent<BirdMainScript>().Hurt(damage);
+
+            //var poof = GameObject.Instantiate(muzzleFlash, aimTransform.position, rot);
+            var poof = GameObject.Instantiate(muzzleFlash, aimTransform.position, aimTransform.rotation);
+            var wee = GameObject.Instantiate(bullet, aimTransform.position, aimTransform.rotation);
+
+            //Debug.Log("Hit");
+        }
+
+        else //Simulate Miss
+        {
+            var poof = GameObject.Instantiate(muzzleFlash, aimTransform.position, aimTransform.rotation);
+            //Debug.Log("Miss");
+        }
+        
     }
 }
