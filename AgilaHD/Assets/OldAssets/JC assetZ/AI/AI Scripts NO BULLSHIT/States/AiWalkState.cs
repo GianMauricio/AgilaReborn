@@ -5,8 +5,8 @@ using UnityEngine;
 public class AiWalkState : AiState
 {
     private float walkTime = 0.0f;
-    private float force = 2.0f;
-    private float maxRotateTime = 5;
+    private float force = 9.6f;
+    private float maxRotateTime = 2;
     private Quaternion finalRotation;
     private float randomAngle;
     
