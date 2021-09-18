@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000015258789, y: -26.825}
+  m_AnchoredPosition: {x: 0, y: -26.825}
   m_SizeDelta: {x: 0, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4211795927914720492
@@ -302,8 +302,7 @@ MonoBehaviour:
   cameraT: {fileID: 2263009516522852903}
   tpsReference: {fileID: 2263009516320857291}
   rotationSmoothTime: 0.02
-  sphereColliderReference: {fileID: 2027770837025209614}
-  healthBar: {fileID: 5219964391992869138}
+  healthBar: {fileID: 7693364829691181864}
   staminaBarBG: {fileID: 8771685852444156522}
   staminaBar: {fileID: 5219964391992869138}
   dmgVignette: {fileID: 6029550820409466741}
@@ -502,7 +501,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelObjectives: {fileID: 0}
-  MainBirdreference: {fileID: 2027770838155507518}
 --- !u!1 &2263009516320857293
 GameObject:
   m_ObjectHideFlags: 0

@@ -208,6 +208,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2203443896454558327, guid: 0de6b901114e20e478d9b2976ab2a333,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6818976207342451297, guid: 0de6b901114e20e478d9b2976ab2a333,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -882,7 +887,7 @@ Transform:
   m_Children:
   - {fileID: 746726485}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1722187468 stripped
 GameObject:
@@ -993,7 +998,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: c1b2fcc1a17cb434395f809509ef511f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1275,7 +1280,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3688705832474165361}
-  m_Mesh: {fileID: 7757053818532098590, guid: e7f95a5b650be5f47b3314ecb649dfa2, type: 3}
+  m_Mesh: {fileID: -172915495610587594, guid: 636d02d0d8e5ee346929aaa4f80922ea, type: 3}
 --- !u!4 &1193588700046979004
 Transform:
   m_ObjectHideFlags: 0
@@ -1834,7 +1839,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 63dad7a0676c24e4ead2b6284c3843cb, type: 2}
+  - {fileID: 2100000, guid: 4f6be8827633cab459c3beb2c25aefed, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2038,7 +2043,7 @@ GameObject:
   - component: {fileID: 1140784343190836590}
   - component: {fileID: 2895838857283461540}
   m_Layer: 0
-  m_Name: IEPROJ3 Hunting Rifle
+  m_Name: IEPROJ3 Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2129,14 +2134,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3688705832474165361}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0.074, y: 0.311, z: 0.026}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalRotation: {x: -0.7301454, y: 0.6713314, z: -0.039242387, w: -0.12108657}
+  m_LocalPosition: {x: -0.034, y: 0.3099, z: 0.0168}
+  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_Children:
   - {fileID: 7201345827257824308}
   m_Father: {fileID: 6337519625451326046}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: -193.268, y: 6.2089844, z: 85.91699}
 --- !u!4 &4286540071443767656
 Transform:
   m_ObjectHideFlags: 0
@@ -2330,6 +2335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: febf57a511af4fc429b3274dda12e884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 1
   targetTransform: {fileID: 5640415828181907257}
   aimTransform: {fileID: 7201345827257824308}
   initTransform: {fileID: 5640415828521570803}
@@ -2346,6 +2352,8 @@ MonoBehaviour:
   rotationSpeed: 11
   positionSpeed: 11
   shootMode: 0
+  minHitChance: 0
+  damage: 50
   muzzleFlash: {fileID: 1336949550903370, guid: 4543ab5e3d405ec40a8d4e9aa5165030,
     type: 3}
   bullet: {fileID: 9091885684153166852, guid: 1c32195b89b40e340bd4dfe0f364d391, type: 3}
@@ -2387,7 +2395,7 @@ GameObject:
   - component: {fileID: 4793978029366905029}
   - component: {fileID: 4793978029366905028}
   m_Layer: 0
-  m_Name: Hunter A
+  m_Name: Hunter B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2420,8 +2428,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 15
-  m_Center: {x: 0, y: 0, z: 15.61}
+  m_Radius: 10
+  m_Center: {x: 0, y: 0, z: 10}
 --- !u!136 &4793978029366905051
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2495,7 +2503,7 @@ Transform:
   - {fileID: 5640415828521570803}
   - {fileID: 5640415828181907257}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &5427438089759909369
 Transform:
@@ -2923,14 +2931,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7201345827257824309}
-  m_LocalRotation: {x: 0.000000059604638, y: 0.000000059604638, z: -0.00000017881392,
-    w: 1}
-  m_LocalPosition: {x: -0.0032001014, y: -0.0028000474, z: 0.10960002}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -6.175, y: 0.873, z: 0.029}
   m_LocalScale: {x: 0.19999997, y: 0.19999994, z: 0.20000003}
   m_Children: []
   m_Father: {fileID: 4069911308780739275}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &7201345827257824309
 GameObject:
   m_ObjectHideFlags: 0
