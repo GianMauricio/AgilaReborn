@@ -10,6 +10,12 @@ public class MenuScript : MonoBehaviour
         Cursor.visible = true;
     }
 
+    //This function will load the scene using the build order
+    public void Reload()
+    {
+        SceneManager.LoadScene(LevelTracker.getLastLevel());
+    }
+
     public void unPause()
     {
         transform.GetComponentInParent<BirdMainScript>().Paused();
