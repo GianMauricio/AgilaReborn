@@ -15,26 +15,16 @@ public class SceneChange : MonoBehaviour
         sceneLinker = gameObject.GetComponent<MenuScript>();
     }
 
-    /*
     private void OnTriggerEnter(Collider other)
     {
-        if (!(collision.gameObject.name == "EagleBody"))
+        //If the player hits this volume, then check all objectives
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("LoL Nope");
-            return;
-        }
-
-        if (SceneManager.GetActiveScene().name == "TUTORIAL TERRAIN")
-        {
-            Debug.Log("Active scene is: " + SceneManager.GetActiveScene().name);
-            SceneManager.LoadScene("MAINTERRAIN");
-        }
-
-        if (SceneManager.GetActiveScene().name == "MAINTERRAIN")
-        {
-            Debug.Log("Active scene is: " + SceneManager.GetActiveScene().name);
-            SceneManager.LoadScene("GameOver"); //CHANGE DA WORLD, MY FINAL MESSAGE
+            //Leave if can
+            if (other.GetComponent<BirdMainScript>().attemptToLeave())
+            {
+                sceneLinker.loadNext();
+            }
         }
     }
-    */
 }

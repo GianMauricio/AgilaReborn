@@ -45,6 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnObject: {fileID: 7536956564740131832, guid: 818a2d528ac7f134794a7e9ce339c7a7,
     type: 3}
-  HowManyToSpawn: 35
+  HowManyToSpawn: 10
   spawnTime: 2
   spawnDelay: 10

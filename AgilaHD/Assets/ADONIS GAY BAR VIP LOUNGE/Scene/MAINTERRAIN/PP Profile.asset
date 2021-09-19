@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.132
+    m_Value: 0.264
     min: 0
     max: 1
   response:
@@ -46,10 +46,10 @@ MonoBehaviour:
   m_AdvancedMode: 0
   postExposure:
     m_OverrideState: 1
-    m_Value: 0.46
+    m_Value: 0.9
   contrast:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 8
     min: -100
     max: 100
   colorFilter:
@@ -60,12 +60,12 @@ MonoBehaviour:
     showEyeDropper: 1
   hueShift:
     m_OverrideState: 1
-    m_Value: -10
+    m_Value: 0
     min: -180
     max: 180
   saturation:
     m_OverrideState: 1
-    m_Value: -8
+    m_Value: 20
     min: -100
     max: 100
 --- !u!114 &-2130108572168673576
@@ -104,7 +104,7 @@ MonoBehaviour:
     max: 200
   greenOutGreenIn:
     m_OverrideState: 1
-    m_Value: 92
+    m_Value: 101
     min: -200
     max: 200
   greenOutBlueIn:
@@ -124,10 +124,10 @@ MonoBehaviour:
     max: 200
   blueOutBlueIn:
     m_OverrideState: 1
-    m_Value: 92
+    m_Value: 98
     min: -200
     max: 200
-  m_SelectedChannel: 0
+  m_SelectedChannel: 2
 --- !u!114 &-1107536377020109781
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -388,13 +388,13 @@ MonoBehaviour:
   m_AdvancedMode: 0
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.14669926}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.16748929}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0.024449881}
+    m_Value: {x: 1, y: 1, z: 1, w: 0.003659863}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.24449882}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.36923894}
   shadowsStart:
     m_OverrideState: 0
     m_Value: 0
@@ -452,7 +452,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   temperature:
     m_OverrideState: 1
-    m_Value: -4
+    m_Value: -1
     min: -100
     max: 100
   tint:
@@ -476,13 +476,13 @@ MonoBehaviour:
   m_AdvancedMode: 0
   lift:
     m_OverrideState: 1
-    m_Value: {x: 0.9280295, y: 0.9166387, z: 1, w: 6.0248323e-10}
+    m_Value: {x: 0.9280295, y: 0.9166387, z: 1, w: -0.041580122}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.024449881}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.0036598593}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0.024449881}
+    m_Value: {x: 1, y: 1, z: 1, w: 0.7484406}
 --- !u!114 &1310985143580974607
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -547,11 +547,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1bfcd0f0fa7b8468f281d6bbbaf320, type: 3}
   m_Name: LensDistortion
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   m_AdvancedMode: 0
   intensity:
     m_OverrideState: 1
-    m_Value: -0.45
+    m_Value: -0.35
     min: -1
     max: 1
   xMultiplier:
@@ -584,14 +584,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f086a068d4c5889438831b3ae9afc11c, type: 3}
   m_Name: Tonemapping
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   m_AdvancedMode: 0
   mode:
     m_OverrideState: 1
     m_Value: 3
   toeStrength:
     m_OverrideState: 1
-    m_Value: 0.425
+    m_Value: 0.337
     min: 0
     max: 1
   toeLength:
@@ -615,7 +615,7 @@ MonoBehaviour:
     max: 1
   gamma:
     m_OverrideState: 1
-    m_Value: 0.92
+    m_Value: 0.77
     min: 0.001
   lutTexture:
     m_OverrideState: 0
