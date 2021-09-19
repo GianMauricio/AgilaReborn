@@ -167,7 +167,7 @@ public class BirdMainScript : MonoBehaviour
         }
 
         //Detect pause key
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
         {
             isPaused = !isPaused;
             Debug.Log(isPaused);
