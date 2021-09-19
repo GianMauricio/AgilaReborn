@@ -470,7 +470,10 @@ public class BirdMainScript : MonoBehaviour
         {
             SceneManager.LoadScene("GameLost");
         }
-
+        else if(currhealth > maxhealth)
+        {
+            currhealth = maxhealth;
+        }
         //Update UI
         setHealthPercent();
 
