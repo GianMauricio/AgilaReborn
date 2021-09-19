@@ -43,14 +43,14 @@ public class WeaponIk : MonoBehaviour
         if(type == GunType.RIFLE)
         {
             damage = 35;
-            maxRange = 22.5f;
+            maxRange = 90f;
             minHitChance = 30.0f;
         }
 
         else if(type == GunType.SHOTGUN)
         {
             damage = 50;
-            maxRange = 15.0f;
+            maxRange = 77.5f;
             minHitChance = 10.0f;
         }
 
@@ -196,6 +196,28 @@ public class WeaponIk : MonoBehaviour
         //Change depending on gun type here
         float chanceToHit = ((maxRange - dist) / maxRange) * 100;
         bool contact = false;
+
+        //Add or remove hit chance based on speed
+        float moreHitChance;
+
+        //Almost still
+        if(eagleTransform.gameObject.GetComponent<BirdMainScript>().current_speed < 5.0f)
+        {
+            moreHitChance = 20.0f;
+        }
+        
+        else if(eagleTransform.gameObject.GetComponent<BirdMainScript>().current_speed < 27.5f)
+        {
+            moreHitChance = 5.0f;
+        }
+
+        //More than half speed
+        else
+        {
+            moreHitChance = -10.0f;
+        }
+
+        chanceToHit += moreHitChance;
 
         //Always has a chance to hit
         if(chanceToHit < minHitChance)
