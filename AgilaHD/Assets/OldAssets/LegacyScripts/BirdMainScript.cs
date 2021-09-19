@@ -530,8 +530,12 @@ public class BirdMainScript : MonoBehaviour
         gameObject.transform.position = spawnPos;
     }
 
-    public void attemptToLeave()
+    public bool attemptToLeave()
     {
+        bool canLeave = false;
 
+        canLeave = levelObjectives.CheckProgress();
+
+        return canLeave;
     }
 }

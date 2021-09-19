@@ -20,7 +20,11 @@ public class SceneChange : MonoBehaviour
         //If the player hits this volume, then check all objectives
         if (other.CompareTag("Player"))
         {
-            if(other.GetComponent<BirdMainScript>().)
+            //Leave if can
+            if (other.GetComponent<BirdMainScript>().attemptToLeave())
+            {
+                sceneLinker.loadNext();
+            }
         }
     }
 }
