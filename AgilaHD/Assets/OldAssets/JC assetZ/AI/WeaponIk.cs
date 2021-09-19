@@ -67,9 +67,9 @@ public class WeaponIk : MonoBehaviour
         Vector3 forw = this.gameObject.transform.position;
         Vector3 dir;
         dir = this.gameObject.transform.forward;
-        float length = 5.5f;
+        float length = 9.0f;
         Vector3 finalpos = forw + dir * length;
-        finalpos.y += 7;
+        finalpos.y += 9;
         initTransform.position = finalpos;
 
     }
