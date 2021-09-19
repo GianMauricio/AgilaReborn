@@ -13,8 +13,8 @@ public class AiAgent : MonoBehaviour
     public enum ANIMATIONSTATE
     {
         idle = (int)0,
-        run = (int)2,
-        aim = (int)1,
+        run = (int)1,
+        aim = (int)2,
     };
 
     public string AnimationName = "AIState";
@@ -37,6 +37,7 @@ public class AiAgent : MonoBehaviour
     //check for the state
     public AiStateId currentStateRead;
 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -55,16 +56,27 @@ public class AiAgent : MonoBehaviour
         weaponikReference.GetComponent<WeaponIk>();
 
         //Eagle reference for the location and damage calls
-        eagleReference = GameObject.FindGameObjectWithTag("Player");
+        eagleReference = GameObject.FindWithTag("Player");
 
+        if(eagleReference == null)
+        {
+            Debug.LogWarning("null eagle reference");
+        }
+      
         currentStateRead = stateMachine.currentState;
+
+        //rb component defaults
+        rb.drag = 2.0f;
+        rb.angularDrag = 2;
+       
+  
     }
 
     // Update is called once per frame
     void Update()
     {
         stateMachine.Update();
-        
+       
         
         /*if (Input.GetKeyDown(KeyCode.W))
         {
