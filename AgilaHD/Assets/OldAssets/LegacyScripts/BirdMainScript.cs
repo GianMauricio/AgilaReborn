@@ -71,6 +71,9 @@ public class BirdMainScript : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         //Set spawn position
         spawnPos = transform.position;
 
