@@ -9,7 +9,7 @@ using UnityEngine;
 /// </summary>
 public static class LevelTracker
 {
-    private static int lastLevelLoaded;
+    private static int lastLevelLoaded = new();
 
     public static void updateLevelLoaded(int level)
     {
