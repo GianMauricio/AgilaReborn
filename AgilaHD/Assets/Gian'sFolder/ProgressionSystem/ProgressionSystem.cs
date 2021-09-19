@@ -45,6 +45,9 @@ public class ProgressionSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         //Make sure
         //all current objectives are 0'd out
         current1 = 0;
