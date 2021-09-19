@@ -67,9 +67,13 @@ public class BirdMainScript : MonoBehaviour
 
     //Objectives implementation
     public ProgressionSystem levelObjectives;
+    private Vector3 spawnPos;
 
     void Start()
     {
+        //Set spawn position
+        spawnPos = transform.position;
+
         //Set initials for use in succeeding calculations due to being suspended in air already
         initialDrag = gameObject.GetComponent<Rigidbody>().drag;
         initialAngularDrag = gameObject.GetComponent<Rigidbody>().angularDrag;
@@ -516,5 +520,10 @@ public class BirdMainScript : MonoBehaviour
 
         //Set new force using the new forward direction to give the player time to course correct themselves
         rb.AddForce(0.015f * (target.eulerAngles - this.transform.forward), ForceMode.Impulse);
+    }
+
+    public void ReturnToSpawn()
+    {
+        gameObject.transform.position = spawnPos;
     }
 }
