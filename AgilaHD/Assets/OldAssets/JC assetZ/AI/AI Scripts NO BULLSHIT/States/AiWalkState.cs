@@ -21,7 +21,6 @@ public class AiWalkState : AiState
     {
         Debug.Log("Entered walk state");
         agent.currentStateRead = AiStateId.Walk;
-        agent.animator.SetInteger(agent.AnimationName, (int)AiAgent.ANIMATIONSTATE.run);
         walkTime = Random.Range(Mathf.Abs(agent.config.minWalkTIme), Mathf.Abs(agent.config.maxWalkTime));
         walkTime = Mathf.Abs(walkTime);
         randomAngle = Random.Range(agent.config.minAngle, agent.config.maxAngle);
@@ -66,6 +65,7 @@ public class AiWalkState : AiState
             {
                 //Debug.Log("Done Rotating");
                 substate = SUBSTATE.walking;
+                agent.animator.SetInteger(agent.AnimationName, (int)AiAgent.ANIMATIONSTATE.run);
             }
             /*if(rotateTime <= 0)
             {
