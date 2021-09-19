@@ -59,8 +59,10 @@ public class WeaponIk : MonoBehaviour
         distanceLimit = 2.5f;
         angleLimit = 100;
 
-        main_bones = new Transform[1];
-        main_bones[0] = this.gameObject.transform.Find("mixamorig:Hips").transform.Find("mixamorig:Spine").transform.Find("mixamorig:Spine1").transform;
+        main_bones = new Transform[2];
+       // main_bones[0] = this.gameObject.transform.Find("mixamorig:Hips").transform.Find("mixamorig:Spine").transform.Find("mixamorig:Spine1").transform;
+        main_bones[0] = this.gameObject.transform.Find("mixamorig:Hips").transform.Find("mixamorig:Spine").transform.Find("mixamorig:Spine1").transform.Find("mixamorig:Spine2").transform;//.transform.Find("mixamorig:Spine1").transform.Find("mixamorig:Spine2").transform
+        main_bones[1] = this.gameObject.transform.Find("mixamorig:Hips").transform.Find("mixamorig:Spine").transform.Find("mixamorig:Spine1").transform.Find("mixamorig:Spine2").transform.Find("mixamorig:Neck").transform;
 
         Vector3 forw = this.gameObject.transform.position;
         Vector3 dir;
