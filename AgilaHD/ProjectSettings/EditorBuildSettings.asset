@@ -14,34 +14,49 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Gian'sFolder/HunterTest.unity
     guid: f098eeac2d211e943828398c61a9e107
-  - enabled: 1
+  - enabled: 0
     path: Assets/ADONIS GAY BAR VIP LOUNGE/Scene/MAINTERRAIN.unity
     guid: a301bddbdb7e14b4baa337f297330a0c
-  - enabled: 1
+  - enabled: 0
     path: Assets/ADONIS GAY BAR VIP LOUNGE/Scene/TUTORIAL TERRAIN.unity
     guid: cb52259e9f7c3824083fc378f30275bf
-  - enabled: 1
+  - enabled: 0
     path: Assets/Gian'sFolder/GameLost.unity
     guid: 7ae97938112874943b9d45bd4da70171
-  - enabled: 1
+  - enabled: 0
     path: Assets/Gian'sFolder/GameWon.unity
     guid: b6776bca6e7a27b4388beabaa5542e2b
   - enabled: 0
     path: Assets/Gian'sFolder/StoryIntro.unity
     guid: dd891682f3ea3434eadeccacb6bb6bd1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Jacob's Folder/JScenes/StoryScene3.unity
     guid: e7cfa2fbb1eff92438e9640c766533f0
   - enabled: 1
     path: Assets/Jacob's Folder/JScenes/StoryScene1.unity
     guid: b288aae0022d9264dadd87ab82f36147
-  - enabled: 1
+  - enabled: 0
     path: Assets/Jacob's Folder/JScenes/StoryScene2.unity
     guid: 7137b910838dd6a4488beba9de416ac8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Jacob's Folder/JScenes/StoryScene4.unity
     guid: 1dfa65a08493e2747aaf0fc230b40458
-  - enabled: 1
+  - enabled: 0
     path: Assets/Jacob's Folder/JScenes/StoryScene5.unity
     guid: 2c0a9ec465c16fd4a805edd1f656dea5
+  - enabled: 0
+    path: Assets/ADONIS GAY BAR VIP LOUNGE/Scene/Level 2.unity
+    guid: 82024af48a222754e9e3e930890b771f
+  - enabled: 0
+    path: Assets/ADONIS GAY BAR VIP LOUNGE/Scene/Level 1.unity
+    guid: a26aec57ad698e748b4012bb55335fc6
+  - enabled: 0
+    path: Assets/ADONIS GAY BAR VIP LOUNGE/Scene/Level 3(RavineLevel).unity
+    guid: 0b1ad9ae63f135b4fbb1b75a02651db6
+  - enabled: 0
+    path: Assets/ADONIS GAY BAR VIP LOUNGE/Scene/Level 4.unity
+    guid: 5e47a190e5fdb1744bf6b78f25175e1d
+  - enabled: 0
+    path: Assets/ADONIS GAY BAR VIP LOUNGE/Scene/Level 5.unity
+    guid: 5153c7f3016942b4bad95f52092da89d
   m_configObjects: {}
