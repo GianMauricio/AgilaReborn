@@ -529,4 +529,9 @@ public class BirdMainScript : MonoBehaviour
     {
         gameObject.transform.position = spawnPos;
     }
+
+    public void attemptToLeave()
+    {
+
+    }
 }

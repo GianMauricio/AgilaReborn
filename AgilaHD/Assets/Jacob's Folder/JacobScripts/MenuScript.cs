@@ -23,18 +23,7 @@ public class MenuScript : MonoBehaviour
 
     public void onClickPlay()
     {
-        SceneManager.LoadScene("IntroStoryScene");
-    }
-
-    //LEGACY
-    public void OnClickStart()
-    {
-        SceneManager.LoadScene("TUTORIAL TERRAIN"); //Replace with Tutorial scene later
-    }
-
-    public void OnClickEnd()
-    {
-        Application.Quit(); //Quit the application
+        SceneManager.LoadScene("Level 1");
     }
 
     public void OnClickBack()
@@ -42,30 +31,6 @@ public class MenuScript : MonoBehaviour
         SceneManager.LoadScene("MenuScene");
     }
 
-    public void StoryScene1()
-    {
-        SceneManager.LoadScene("StoryScene1");
-    }
-
-    public void StoryScene2()
-    {
-        SceneManager.LoadScene("StoryScene2");
-    }
-
-    public void StoryScene3()
-    {
-        SceneManager.LoadScene("StoryScene3");
-    }
-
-    public void StoryScene4()
-    {
-        SceneManager.LoadScene("StoryScene4");
-    }
-
-    public void StoryScene5()
-    {
-        SceneManager.LoadScene("StoryScene5");
-    }
     public void Level1Play()
     {
         SceneManager.LoadScene("Level1");
@@ -100,7 +65,6 @@ public class MenuScript : MonoBehaviour
     public void loadNext()
     {
         int currScene = SceneManager.GetActiveScene().buildIndex;
-
         int nextScene = currScene + 1;
 
         SceneManager.LoadScene(nextScene);
