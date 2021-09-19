@@ -13,7 +13,11 @@ public class HuntTracker : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         Debug.Log("Impact confirmed");
-        
+
+        if (levelObjectives != null)
+        {
+            levelObjectives.updateObjectives(other.gameObject.tag);
+        }
 
         if (other.CompareTag("Cage"))
         {
@@ -23,11 +27,6 @@ public class HuntTracker : MonoBehaviour
         if (other.CompareTag("Bunny"))
         {
             MainBirdreference.Hurt(-20);
-        }
-
-        if (levelObjectives != null)
-        {
-            levelObjectives.updateObjectives(other.gameObject.tag);
         }
     }
 }
