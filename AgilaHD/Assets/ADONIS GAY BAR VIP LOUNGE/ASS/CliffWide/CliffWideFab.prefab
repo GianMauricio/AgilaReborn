@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 871446337393122261}
   m_Layer: 0
   m_Name: CliffWideFab
-  m_TagString: Untagged
+  m_TagString: Flour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,6 +91,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2621134531293624815, guid: a3ff970bc2eb10d4a85c7d9c8a9fd975, type: 3}
