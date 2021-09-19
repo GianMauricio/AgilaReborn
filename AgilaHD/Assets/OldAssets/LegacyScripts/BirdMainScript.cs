@@ -74,6 +74,9 @@ public class BirdMainScript : MonoBehaviour
         //Set spawn position
         spawnPos = transform.position;
 
+        //Update the level manager with the current level
+        LevelTracker.updateLevelLoaded(SceneManager.GetActiveScene().buildIndex);
+
         //Set initials for use in succeeding calculations due to being suspended in air already
         initialDrag = gameObject.GetComponent<Rigidbody>().drag;
         initialAngularDrag = gameObject.GetComponent<Rigidbody>().angularDrag;
