@@ -26,7 +26,7 @@ public class HuntTracker : MonoBehaviour
 
         if (other.CompareTag("Bunny"))
         {
-            MainBirdreference.Hurt(-20);
+            MainBirdreference.Hurt(-50);
         }
     }
 }
