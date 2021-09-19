@@ -62,6 +62,10 @@ public class ProgressionSystem : MonoBehaviour
         //Edit visibility of objectives depending on the number in the level
         switch (objectives)
         {
+            case 0:
+
+                break;
+
             case 1:
                 Header1.gameObject.SetActive(true);
                 Progress1.gameObject.SetActive(true);
@@ -529,7 +533,12 @@ public class ProgressionSystem : MonoBehaviour
         bool isDone = false;
 
         //Check if all objectives have been met
-        if (objectives == 1)
+        if(objectives == 0)
+        {
+            isDone = true;
+        }
+
+        else if (objectives == 1)
         {
             if (current1 >= Total1)
             {
