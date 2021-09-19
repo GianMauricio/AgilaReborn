@@ -19,6 +19,8 @@ public class RepeatedSpawning : MonoBehaviour
     [SerializeField] float spawnTime = 0.0f;
     [SerializeField] int spawnDelay = 3; //Spawn object every 3 seconds
 
+    public int spawnHeight = 0;
+
 
     private readonly List<GameObject> spawnedObjects = new List<GameObject>();
 
@@ -44,7 +46,7 @@ public class RepeatedSpawning : MonoBehaviour
                 float randomZ = Random.Range(-100.0f, 100.0f);
 
                 //Spawn some units away from the spawner, y is 50 just to make sure that rabbits don't fall through the world
-                Vector3 spawnPos = new Vector3(transform.position.x + randomX, 50, transform.position.z + randomZ);
+                Vector3 spawnPos = new Vector3(transform.position.x + randomX, spawnHeight, transform.position.z + randomZ);
 
                 spawnedObjects.Add(Instantiate(SpawnObject, spawnPos, transform.rotation));
             }

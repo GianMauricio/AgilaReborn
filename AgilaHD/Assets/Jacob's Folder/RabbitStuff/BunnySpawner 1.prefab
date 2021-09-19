@@ -48,3 +48,4 @@ MonoBehaviour:
   HowManyToSpawn: 10
   spawnTime: 2
   spawnDelay: 10
+  spawnHeight: 50
