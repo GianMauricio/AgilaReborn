@@ -488,8 +488,8 @@ public class BirdMainScript : MonoBehaviour
 
         if(healthPercent <= 0)
         {
-            //If he died then demo ends U wU
-            SceneManager.LoadScene("GameOver");
+            //If he died then demo ends Uw U
+            SceneManager.LoadScene("GameLost");
         }
     }
 
