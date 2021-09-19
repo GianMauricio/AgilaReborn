@@ -39,6 +39,7 @@ public class WeaponIk : MonoBehaviour
 
     private void Start()
     {
+        
         if(type == GunType.RIFLE)
         {
             damage = 35;
@@ -52,12 +53,37 @@ public class WeaponIk : MonoBehaviour
             maxRange = 15.0f;
             minHitChance = 10.0f;
         }
+
+        positionSpeed = 11.0f;
+        rotationSpeed = 11.0f;
+        distanceLimit = 2.5f;
+        angleLimit = 100;
+
+        main_bones = new Transform[2];
+       // main_bones[0] = this.gameObject.transform.Find("mixamorig:Hips").transform.Find("mixamorig:Spine").transform.Find("mixamorig:Spine1").transform;
+        main_bones[0] = this.gameObject.transform.Find("mixamorig:Hips").transform.Find("mixamorig:Spine").transform.Find("mixamorig:Spine1").transform.Find("mixamorig:Spine2").transform;//.transform.Find("mixamorig:Spine1").transform.Find("mixamorig:Spine2").transform
+        main_bones[1] = this.gameObject.transform.Find("mixamorig:Hips").transform.Find("mixamorig:Spine").transform.Find("mixamorig:Spine1").transform.Find("mixamorig:Spine2").transform.Find("mixamorig:Neck").transform;
+
+        Vector3 forw = this.gameObject.transform.position;
+        Vector3 dir;
+        dir = this.gameObject.transform.forward;
+        float length = 5.5f;
+        Vector3 finalpos = forw + dir * length;
+        finalpos.y += 7;
+        initTransform.position = finalpos;
+
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        if(targetTransform == null || aimTransform == null)
+        eagleTransform = this.gameObject.GetComponent<AiAgent>().eagleReference.transform;
+        if (main_bones[0] == null)
+        {
+            Debug.LogWarning("null main bones reference");
+        }
+
+        if (targetTransform == null || aimTransform == null)
         {
             return;
         }

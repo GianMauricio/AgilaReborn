@@ -16,4 +16,4 @@ MonoBehaviour:
   minWalkTIme: 2
   minAngle: 30
   maxAngle: 360
-  turnSpeed: 30
+  turnSpeed: 9.83
