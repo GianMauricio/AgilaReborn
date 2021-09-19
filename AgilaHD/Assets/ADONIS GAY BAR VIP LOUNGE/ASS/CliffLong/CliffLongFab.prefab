@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3647326139523977290}
   m_Layer: 0
   m_Name: CliffLongFab
-  m_TagString: Untagged
+  m_TagString: Flour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
