@@ -26,6 +26,7 @@ public class MenuScript : MonoBehaviour
         SceneManager.LoadScene("IntroStoryScene");
     }
 
+    //LEGACY
     public void OnClickStart()
     {
         SceneManager.LoadScene("TUTORIAL TERRAIN"); //Replace with Tutorial scene later
@@ -88,6 +89,21 @@ public class MenuScript : MonoBehaviour
     public void Level5Play()
     {
         SceneManager.LoadScene("Level5");
+    }
+
+    public void Leave()
+    {
+        Application.Quit();
+    }
+
+    //DO NOT call this via the last scene.
+    public void loadNext()
+    {
+        int currScene = SceneManager.GetActiveScene().buildIndex;
+
+        int nextScene = currScene + 1;
+
+        SceneManager.LoadScene(nextScene);
     }
 }
 
