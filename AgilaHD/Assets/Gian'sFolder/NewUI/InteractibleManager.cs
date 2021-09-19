@@ -17,18 +17,21 @@ public class InteractibleManager
         foreach (GameObject hit in interactible)
         {
             //Get the UI element of the object
-            HunterVisionUI ping = hit.GetComponent<HunterVisionUI>();
-
-            //Contemplate adding a security check here
-
-            if(ping != null)
+            if(hit != null)
             {
-                ping.EngagePing(radarCenter);
-            }
+                HunterVisionUI ping = hit.GetComponent<HunterVisionUI>();
 
-            else
-            {
-                Debug.LogError("UI Element Missing");
+                //Contemplate adding a security check here
+
+                if (ping != null)
+                {
+                    ping.EngagePing(radarCenter);
+                }
+
+                else
+                {
+                    Debug.LogError("UI Element Missing");
+                }
             }
         }
     }
@@ -63,12 +66,14 @@ public class InteractibleManager
         {
             //Because of course, the only script that has connections to all is the UI
             //Because why not
-            target.GetComponent<HunterVisionUI>().Pause();
+            if (target != null)
+                target.GetComponent<HunterVisionUI>().Pause();
         }
 
         foreach (GameObject spawner in spawners)
         {
-            spawner.GetComponent<RepeatedSpawning>().Pause();
+            if(spawner != null)
+                spawner.GetComponent<RepeatedSpawning>().Pause();
         }
     }
 
@@ -78,12 +83,14 @@ public class InteractibleManager
         {
             //Because of course, the only script that has connections to all is the UI
             //Because why not(2)
-            target.GetComponent<HunterVisionUI>().Unpause();
+            if (target != null)
+                target.GetComponent<HunterVisionUI>().Unpause();
         }
 
         foreach (GameObject spawner in spawners)
         {
-            spawner.GetComponent<RepeatedSpawning>().Unpause();
+            if (spawner != null)
+                spawner.GetComponent<RepeatedSpawning>().Unpause();
         }
     }
 
