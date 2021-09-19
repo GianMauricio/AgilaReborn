@@ -39,17 +39,20 @@ public class InteractibleManager
         foreach (GameObject hit in interactible)
         {
             //Get the UI element of the object
-            HunterVisionUI ping = hit.GetComponent<HunterVisionUI>();
-
-            //Contemplate adding a security check here
-            if (ping != null)
+            if(hit != null)
             {
-                ping.DisablePing();
-            }
+                HunterVisionUI ping = hit.GetComponent<HunterVisionUI>();
 
-            else
-            {
-                Debug.Log("UI Element Missing");
+                //Contemplate adding a security check here
+                if (ping != null)
+                {
+                    ping.DisablePing();
+                }
+
+                else
+                {
+                    Debug.Log("UI Element Missing");
+                }
             }
         }
     }
